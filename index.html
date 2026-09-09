@@ -1,0 +1,766 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<title>Barcelona &amp; Madrid — November 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;0,9..144,800;1,9..144,400&family=Karla:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+<style>
+:root{
+  --ink:#181614; --ink2:#4A423C; --muted:#7C726A;
+  --paper:#FBF9F5; --paper2:#F2EDE4; --card:#FFFFFF;
+  --line:#E2D9CC; --line2:#EFE8DC;
+  --glaze:#1C6E63;      /* tile green   */
+  --cobalt:#2A4A8A;     /* tile blue    */
+  --ochre:#B87514;      /* glaze gold   */
+  --oxblood:#96322A;    /* tile red     */
+  --maxw:1120px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--paper);color:var(--ink);
+  font-family:"Karla",ui-sans-serif,system-ui,-apple-system,sans-serif;
+  font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;
+}
+h1,h2,h3,h4,h5{font-family:"Fraunces","Iowan Old Style",Georgia,serif;margin:0;line-height:1.1;text-wrap:balance;font-weight:600}
+a{color:var(--glaze)}
+img{max-width:100%;display:block}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px}
+.narrow{max-width:720px;margin:0 auto;padding:0 28px}
+.mono{font-family:"IBM Plex Mono",ui-monospace,Menlo,monospace;font-variant-numeric:tabular-nums}
+.kicker{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+
+/* ---------- cover ---------- */
+.cover{position:relative;height:min(88vh,760px);overflow:hidden;background:var(--ink)}
+.cover img{width:100%;height:100%;object-fit:cover;opacity:.72}
+.cover .veil{position:absolute;inset:0;background:linear-gradient(180deg,rgba(24,22,20,.45) 0%,rgba(24,22,20,.15) 35%,rgba(24,22,20,.82) 100%)}
+.cover .inner{position:absolute;inset:auto 0 0 0;padding:0 28px 54px;color:#fff}
+.cover .inner .box{max-width:var(--maxw);margin:0 auto}
+.cover h1{font-size:clamp(40px,7vw,86px);font-weight:800;letter-spacing:-.025em;color:#fff}
+.cover h1 em{font-style:italic;font-weight:300}
+.cover .sub{font-size:clamp(16px,2vw,20px);max-width:44ch;margin-top:14px;color:rgba(255,255,255,.88)}
+.cover .kicker{color:rgba(255,255,255,.75);margin-bottom:16px}
+
+/* ---------- day strip ---------- */
+.strip{background:var(--paper2);border-bottom:1px solid var(--line);padding:22px 0}
+.strip .row{display:flex;gap:6px}
+.strip .d{flex:1;background:var(--card);border:1px solid var(--line);border-radius:5px;padding:10px 8px;text-align:center;min-width:0}
+.strip .d b{display:block;font-family:"IBM Plex Mono",monospace;font-size:16px}
+.strip .d span{display:block;font-size:10.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.strip .d.b{border-bottom:3px solid var(--glaze)} .strip .d.m{border-bottom:3px solid var(--oxblood)} .strip .d.t{border-bottom:3px solid var(--ochre)}
+
+/* ---------- section furniture ---------- */
+.citybreak{padding:74px 0 10px;border-top:1px solid var(--line)}
+.citybreak h2{font-size:clamp(34px,6vw,64px);font-weight:800;letter-spacing:-.02em}
+.citybreak p{font-size:19px;color:var(--ink2);max-width:56ch;margin:16px 0 0}
+.dayhead{padding:56px 0 6px}
+.dayhead .bar{display:flex;align-items:baseline;gap:16px;border-bottom:2px solid var(--ink);padding-bottom:12px;flex-wrap:wrap}
+.dayhead .date{font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;background:var(--ink);color:var(--paper);padding:4px 10px;border-radius:3px}
+.dayhead h3{font-size:clamp(24px,3.4vw,34px)}
+.dayhead .theme{margin-left:auto;font-size:14px;color:var(--muted)}
+
+/* ---------- spread ---------- */
+.spread{margin:44px 0 0}
+.spread figure{margin:0;position:relative}
+.spread figure img{width:100%;height:clamp(280px,46vw,520px);object-fit:cover;border-radius:3px;background:var(--paper2)}
+.spread figcaption{font-size:11px;color:var(--muted);margin-top:7px;font-family:"IBM Plex Mono",monospace}
+.spread figcaption a{color:var(--muted)}
+.spread .body{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(240px,.85fr);gap:38px;margin-top:26px;align-items:start}
+.spread h4{font-size:clamp(26px,3.6vw,38px);letter-spacing:-.015em;margin-bottom:10px}
+.spread .when{color:var(--glaze);font-weight:700}
+.spread .lede{font-size:18px;color:var(--ink2)}
+.spread .why{margin-top:18px;padding-left:16px;border-left:3px solid var(--ochre);font-size:16px;color:var(--ink2)}
+.spread .why b{color:var(--ink);font-family:"Fraunces",serif;font-weight:600}
+.hl{list-style:none;padding:0;margin:0 0 18px}
+.hl li{position:relative;padding-left:20px;font-size:15.5px;color:var(--ink2);margin-bottom:8px}
+.hl li::before{content:"";position:absolute;left:0;top:9px;width:8px;height:8px;background:var(--glaze);border-radius:1px;transform:rotate(45deg)}
+.facts{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:16px 18px}
+.facts dl{display:grid;grid-template-columns:auto 1fr;gap:7px 12px;margin:0;font-size:13.5px}
+.facts dt{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);padding-top:3px}
+.facts dd{margin:0;color:var(--ink2)}
+.facts .go{display:inline-block;margin-top:12px;font-size:12.5px;font-family:"IBM Plex Mono",monospace;text-decoration:none;border-bottom:1px solid currentColor}
+
+/* ---------- connector ---------- */
+.hop{display:flex;gap:14px;align-items:flex-start;margin:30px 0 0;padding:16px 20px;background:var(--paper2);border-radius:6px;font-size:15.5px;color:var(--ink2)}
+.hop .ic{flex:none;width:22px;height:22px;color:var(--ochre);margin-top:1px}
+.hop b{color:var(--ink)}
+.warn{margin-top:16px;padding:13px 16px;background:#FDF3E2;border:1px solid #E8CE9A;border-left:3px solid var(--ochre);border-radius:0 5px 5px 0;font-size:14.5px;color:#6B4E15}
+.choice{margin:42px 0 0;border-top:2px solid var(--ink);padding-top:26px}
+.choice > h4{font-size:clamp(22px,3vw,30px);margin-bottom:6px}
+.choice > p.intro{color:var(--ink2);max-width:64ch;margin:0 0 24px}
+.opts{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:22px}
+.opt{background:var(--card);border:1px solid var(--line);border-radius:6px;overflow:hidden;display:flex;flex-direction:column}
+.opt img{width:100%;height:190px;object-fit:cover;background:var(--paper2)}
+.opt .in{padding:18px 20px;flex:1;display:flex;flex-direction:column}
+.opt .lbl{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.opt.pick .lbl{color:var(--glaze)}
+.opt h5{font-size:21px;margin:5px 0 8px}
+.opt p{margin:0 0 10px;font-size:15px;color:var(--ink2)}
+.opt ul{list-style:none;padding:0;margin:0 0 12px;font-size:14px;color:var(--ink2)}
+.opt ul li{padding-left:16px;position:relative;margin-bottom:5px}
+.opt ul li::before{content:"";position:absolute;left:0;top:8px;width:6px;height:6px;background:var(--ochre);border-radius:1px;transform:rotate(45deg)}
+.opt .foot{margin-top:auto;padding-top:12px;border-top:1px solid var(--line2);font-size:13px;color:var(--muted);font-family:"IBM Plex Mono",monospace}
+.opt.pick{border-color:var(--glaze);box-shadow:0 0 0 2px color-mix(in srgb,var(--glaze) 22%,transparent)}
+
+/* ---------- hotels ---------- */
+.hotels{display:grid;gap:26px;margin-top:30px}
+.hotel{background:var(--card);border:1px solid var(--line);border-radius:6px;overflow:hidden;display:grid;grid-template-columns:minmax(0,1fr) minmax(260px,.62fr)}
+.hotel .l{padding:26px 28px}
+.hotel .r{background:var(--paper2);padding:26px 24px;border-left:1px solid var(--line)}
+.hotel .tag{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--glaze)}
+.hotel h4{font-size:27px;margin:6px 0 3px}
+.hotel .addr{font-size:12.5px;color:var(--muted);font-family:"IBM Plex Mono",monospace}
+.hotel .feel{font-size:16.5px;color:var(--ink2);margin:16px 0 0}
+.hotel .feel b{color:var(--ink)}
+.hotel .rate{font-family:"IBM Plex Mono",monospace;font-size:30px;font-weight:500;letter-spacing:-.02em}
+.hotel .rate span{font-size:12.5px;color:var(--muted);font-family:"Karla",sans-serif;display:block;margin-top:2px}
+.hotel dl{display:grid;grid-template-columns:auto 1fr;gap:6px 12px;margin:16px 0 0;font-size:13.5px}
+.hotel dt{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);padding-top:3px}
+.hotel dd{margin:0;color:var(--ink2)}
+.hotel .links{margin-top:18px;display:flex;flex-direction:column;gap:7px}
+.hotel .links a{font-size:13px;font-family:"IBM Plex Mono",monospace;text-decoration:none;border-bottom:1px solid color-mix(in srgb,var(--glaze) 35%,transparent);align-self:flex-start}
+.hotel .catch{font-size:14.5px;color:var(--ink2);margin-top:14px;padding-top:13px;border-top:1px solid var(--line2)}
+.hotel .catch b{color:var(--oxblood)}
+.dinner{margin-top:20px;padding-top:16px;border-top:1px solid var(--line2)}
+.dinner h5{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:0 0 12px;font-weight:400}
+.dinner .d{display:grid;grid-template-columns:66px minmax(0,1fr);gap:4px 12px;padding:9px 0;border-bottom:1px dotted var(--line);align-items:baseline}
+.dinner .d:last-child{border-bottom:0}
+.dinner .t{font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.07em;text-transform:uppercase;color:var(--glaze);padding-top:3px}
+.dinner .nm{font-family:"Fraunces",serif;font-size:16.5px;font-weight:600;color:var(--ink)}
+.dinner .nm span{font-family:"IBM Plex Mono",monospace;font-size:10.5px;font-weight:400;color:var(--muted);margin-left:7px}
+.dinner .ds{font-size:13.8px;color:var(--ink2);grid-column:2}
+.dinner .hr{font-size:12px;color:var(--muted);grid-column:2;font-family:"IBM Plex Mono",monospace}
+.dinner .pr{grid-column:2;font-size:12.5px;color:var(--ink2);font-family:"IBM Plex Mono",monospace}
+
+/* ---------- map ---------- */
+#map{height:min(72vh,660px);width:100%;border-radius:6px;border:1px solid var(--line);background:var(--paper2);z-index:1}
+.maplegend{display:flex;gap:22px;flex-wrap:wrap;margin-top:14px;font-size:13.5px;color:var(--ink2);align-items:center}
+.maplegend i{display:inline-block;width:13px;height:13px;border-radius:50%;margin-right:7px;vertical-align:-2px}
+.mapctl{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:14px}
+.mapctl button{font-family:"IBM Plex Mono",monospace;font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;padding:7px 13px;border:1px solid var(--line);background:var(--card);border-radius:20px;cursor:pointer;color:var(--ink2)}
+.mapctl button[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.leaflet-container{font-family:"Karla",sans-serif}
+.pinlbl{background:transparent;border:0;box-shadow:none}
+.pinlbl .b{background:var(--glaze);color:#fff;font-family:"IBM Plex Mono",monospace;font-size:11px;font-weight:500;padding:3px 7px;border-radius:3px;white-space:nowrap;box-shadow:0 1px 4px rgba(0,0,0,.3)}
+.pinlbl .b.alt{background:rgba(120,112,104,.82);font-size:10px;padding:2px 6px}
+.pinlbl .b.hotel{background:var(--cobalt)}
+
+/* ---------- collapsed alternates ---------- */
+details.alts{margin-top:34px;background:var(--card);border:1px solid var(--line);border-radius:6px;overflow:hidden}
+details.alts>summary{padding:18px 24px;cursor:pointer;list-style:none;display:flex;align-items:center;gap:12px;font-family:"Fraunces",serif;font-size:20px;font-weight:600}
+details.alts>summary::-webkit-details-marker{display:none}
+details.alts>summary::after{content:"+";margin-left:auto;font-family:"IBM Plex Mono",monospace;color:var(--muted);font-size:22px;line-height:1}
+details.alts[open]>summary::after{content:"–"}
+details.alts>summary small{font-family:"Karla",sans-serif;font-weight:400;font-size:13.5px;color:var(--muted)}
+details.alts .in{padding:4px 24px 24px}
+.altgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:2px}
+.alt{padding:14px 16px;border-bottom:1px solid var(--line2)}
+.alt h5{font-size:16px;margin-bottom:3px}
+.alt .m{font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}
+.alt p{margin:6px 0 0;font-size:14px;color:var(--ink2)}
+.alt a{font-size:12.5px}
+
+/* ---------- info blocks ---------- */
+.notes{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;margin-top:28px}
+.note{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--glaze);border-radius:0 6px 6px 0;padding:18px 22px}
+.note.warn{border-left-color:var(--ochre)} .note.stop{border-left-color:var(--oxblood)}
+.note h4{font-size:17px;margin-bottom:7px}
+.note p{margin:0;font-size:15px;color:var(--ink2)} .note p+p{margin-top:9px}
+.check{list-style:none;padding:0;margin:26px 0 0;display:grid;gap:3px}
+.check li{display:flex;gap:13px;align-items:flex-start;padding:13px 16px;background:var(--card);border:1px solid var(--line2);border-radius:6px;font-size:15px;color:var(--ink2)}
+.check li b{color:var(--ink)}
+.check li .w{margin-left:auto;font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);white-space:nowrap;padding-left:14px}
+.credits{font-size:12.5px;color:var(--muted);line-height:1.7}
+.credits a{color:var(--muted)}
+footer{background:var(--paper2);border-top:1px solid var(--line);padding:48px 0 64px;margin-top:70px}
+:focus-visible{outline:2px solid var(--glaze);outline-offset:2px}
+@media (max-width:820px){
+  .spread .body{grid-template-columns:1fr;gap:24px}
+  .hotel{grid-template-columns:1fr}
+  .hotel .r{border-left:0;border-top:1px solid var(--line)}
+  .strip .row{flex-wrap:wrap}
+  .strip .d{min-width:calc(25% - 6px)}
+}
+@media print{
+  .mapctl,#map,nav{display:none}
+  .spread{break-inside:avoid}
+}
+</style>
+</head>
+<body>
+<div class="cover">
+  <img id="coverimg" alt="Barcelona seen from the Bunkers del Carmel">
+  <div class="veil"></div>
+  <div class="inner"><div class="box">
+    <p class="kicker">21 – 27 November 2026 · two adults and a ten-year-old</p>
+    <h1>Barcelona,<br>then <em>Madrid</em></h1>
+    <p class="sub">Three days of Gaudí and two workshops with your hands in things, a train across the middle of Spain, and a free day you get to choose the shape of.</p>
+  </div></div>
+</div>
+
+<div class="strip"><div class="wrap"><div class="row">
+  <div class="d b"><b>21</b><span>Sat · arrive</span></div>
+  <div class="d b"><b>22</b><span>Sun · Gaudí</span></div>
+  <div class="d b"><b>23</b><span>Mon · chocolate</span></div>
+  <div class="d t"><b>24</b><span>Tue · train</span></div>
+  <div class="d m"><b>25</b><span>Wed · palace</span></div>
+  <div class="d m"><b>26</b><span>Thu · your call</span></div>
+  <div class="d m"><b>27</b><span>Fri · fly</span></div>
+</div></div></div>
+
+<section class="wrap" style="padding-top:56px">
+  <p class="kicker">Everywhere you are going</p>
+  <h2 style="font-size:clamp(28px,4vw,42px);margin:10px 0 8px">The map</h2>
+  <p style="color:var(--ink2);max-width:60ch;margin:0 0 22px">Bright markers are the plan. Faded ones are the alternatives — worth seeing where they sit before you decide to swap anything in. Blue squares are the hotels. Scroll to zoom, drag to pan.</p>
+  <div class="mapctl">
+    <button type="button" data-city="bcn" aria-pressed="true">Barcelona</button>
+    <button type="button" data-city="mad" aria-pressed="false">Madrid</button>
+    <button type="button" data-city="seg" aria-pressed="false">Segovia</button>
+  </div>
+  <div id="map"></div>
+  <div class="maplegend">
+    <span><i style="background:#1C6E63"></i>In the plan</span>
+    <span><i style="background:#787068;opacity:.75"></i>Alternative</span>
+    <span><i style="background:#2A4A8A;border-radius:2px"></i>Hotel</span>
+    <span style="color:var(--muted)">Map data © OpenStreetMap contributors</span>
+  </div>
+</section>
+
+<section class="citybreak wrap" id="barcelona">
+  <p class="kicker">Part one · three nights</p>
+  <h2>Barcelona</h2>
+  <p>Short days — the sun is gone by twenty-five past five — so the outdoor and hilltop things go in the morning and the houses that stay open late take the evenings. Monday is the awkward one: most museums shut. That is exactly why it becomes the making day, with chocolate in the morning and ceramic after lunch.</p>
+</section>
+<div id="bcn-days"></div>
+
+<section class="wrap" style="padding-top:60px">
+  <p class="kicker">Three nights · 21–24 November</p>
+  <h2 style="font-size:clamp(28px,4vw,42px);margin:10px 0 8px">Where to stay in Barcelona</h2>
+  <p style="color:var(--ink2);max-width:62ch;margin:0 0 6px">Five options, cheapest first, and <b>every price below includes breakfast for all three of you</b> — booked on the hotel's breakfast-inclusive rate rather than the headline room-only one. Each also has a proper double bed plus a separate bed or pullout for her, confirmed on the live booking page. Three nights, taxes and the city tourist tax in.</p>
+  <div class="hotels" id="bcn-hotels"></div>
+  <div id="bcn-hoteldiscard"></div>
+</section>
+<div class="wrap" id="bcn-alts"></div>
+
+<section class="citybreak wrap" id="madrid">
+  <p class="kicker">Part two · three nights</p>
+  <h2>Madrid</h2>
+  <p>You arrive off the train at two on Tuesday with the Christmas lights already up, give Wednesday to the Royal Palace and the galleries under it, and have the whole of Thursday free to spend however you like. Friday is one museum and the airport.</p>
+</section>
+<div id="mad-days"></div>
+
+<section class="wrap" style="padding-top:60px">
+  <p class="kicker">Three nights · 24–27 November</p>
+  <h2 style="font-size:clamp(28px,4vw,42px);margin:10px 0 8px">Where to stay in Madrid</h2>
+  <p style="color:var(--ink2);max-width:62ch;margin:0 0 6px">Harder than Barcelona: you are booking straight through a trade fair — Genera + Matelec at IFEMA, 24 to 26 November — and Madrid's four-star stock is unusually committed to twins and bunk beds. Five options, cheapest first, <b>all with breakfast included</b>, one deliberately over the ceiling. Comparable hotels a week later are 23–39% cheaper.</p>
+  <div class="hotels" id="mad-hotels"></div>
+  <div id="mad-hoteldiscard"></div>
+</section>
+<div class="wrap" id="mad-alts"></div>
+
+<section class="wrap" style="padding-top:70px">
+  <p class="kicker">The practical layer</p>
+  <h2 style="font-size:clamp(28px,4vw,42px);margin:10px 0 0">Money, trains and small print</h2>
+  <div class="notes">
+    <div class="note">
+      <h4>Barcelona charges a tourist tax. Madrid doesn't.</h4>
+      <p>A Barcelona four-star is <b>€8.40 per person per night</b>. Guests sixteen and under are exempt, so she pays nothing: two adults × three nights = <b>€54</b>, settled at checkout.</p>
+      <p>Madrid has no city tourist tax. Spanish rates quoted to consumers already include the 10% IVA, so there is no second surprise at the desk.</p>
+    </div>
+    <div class="note">
+      <h4>The train is three hours, not two and a half</h4>
+      <p>Speed restrictions on the Madrid–Barcelona line run through 13 December 2026. Real journeys are <b>3h02 at best, 3h15 typical</b>. Thirty-four trains a day, first at 05:40, last at 20:20.</p>
+      <p>Renfe gives under-14s <b>40% off</b>. Ouigo charges a flat €7 for ages 4–13 but €5 per extra bag — with three transatlantic suitcases, price it fully before assuming it is cheaper.</p>
+    </div>
+    <div class="note">
+      <h4>She pays full fare on the metro</h4>
+      <p>Only under-4s ride free in Barcelona. Buy <b>3 × T-casual</b> (€13.00 each, ten journeys) or <b>4 × T-familiar</b> (€11.50, eight shared journeys). Either lands around €40–46 for the stay.</p>
+      <p>Taxis are worth it in three situations: the airport with luggage, coming down from Park Güell with a tired child, and any evening that has run long. A cross-city fare is €7–15.</p>
+    </div>
+    <div class="note">
+      <h4>Madrid airport: the €33 rule</h4>
+      <p>A taxi between Barajas and anywhere inside the M-30 is a flat <b>€33</b>, around the clock, no supplements. All the Madrid hotels here qualify. The 203 bus from Atocha is €5 each and takes forty minutes to T4.</p>
+      <p>Allow <b>three hours</b> before a transatlantic departure from T4 or T4S; two and a half from T1. Check your terminal in the airline app the night before.</p>
+    </div>
+    <div class="note">
+      <h4>Dinner at nine, and how to cope</h4>
+      <p>Spanish kitchens open for dinner at 20:00–20:30 and 21:00 is normal. Make <b>lunch</b> the big meal and take the €13–20 <i>menú del día</i>, and bridge the gap with a <b>merienda</b> of churros and thick chocolate around half five — a real meal slot here, not a cheat.</p>
+      <p>The trick that actually works with a child is <b>eat at a counter, not a table</b>. Barcelona's Eixample tapas houses — Cervecería Catalana, Vinitus, Ciudad Condal, La Bodegueta — serve straight through the afternoon, so at 20:00 you get instant service in an empty room, while the same place at 21:15 is a forty-minute wait. In Madrid the equivalents are <b>Casa Labra, which starts dinner at 18:00</b>, La Barraca at 19:30, and Lhardy's continuous kitchen.</p>
+      <p>Each hotel above lists three places within a few minutes' walk, checked for the nights you are actually there — which matters in Barcelona, where a lot of good restaurants close on Sunday or Monday.</p>
+    </div>
+    <div class="note">
+      <h4>Why every rate here includes breakfast</h4>
+      <p>Spanish hotels sell the same room at three prices — room only, breakfast included, and half board — and the number you see first is almost always the room-only one. Every figure in this brochure is the <b>breakfast-inclusive</b> rate for the right room, so the comparison is like for like.</p>
+      <p>It is usually worth it. Catalonia Plaza Catalunya charges <b>€29 a head</b> for breakfast bought separately, so for three people the inclusive rate nearly pays for itself. Two properties dropped off the list entirely on this rule: an apart-hotel with no meal service, and one whose breakfast rate pushed a small room over your ceiling.</p>
+    </div>
+    <div class="note warn">
+      <h4>Book the scarce things now</h4>
+      <p>Sagrada Família tower slots and Park Güell entries genuinely sell out. The chocolate workshop has no published schedule at all. Hotel rooms that sleep three are down to <b>one left</b> at two of the Madrid options. Everything recommended here has free cancellation — hold it now and re-shop in October.</p>
+    </div>
+  </div>
+</section>
+
+<section class="wrap" style="padding-top:64px">
+  <p class="kicker">Loose ends</p>
+  <h2 style="font-size:clamp(28px,4vw,42px);margin:10px 0 8px">Before you book</h2>
+  <p style="color:var(--ink2);max-width:62ch;margin:0">What is still genuinely open. Spanish cities publish their Christmas and winter programmes in late October, so some of this cannot be known yet.</p>
+  <ul class="check" id="check"></ul>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p class="kicker">Photographs</p>
+    <p class="credits" id="credits"></p>
+    <p class="credits" style="margin-top:22px">Compiled 9 September 2026. Prices, opening hours and room availability are what the operators, official sites and booking engines published on that date; Spanish attractions revise their winter hours in October. Map data © OpenStreetMap contributors, tiles by Carto.</p>
+  </div>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js"></script>
+<script>
+var IMG={"sagrada_ext": {"url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Sagrada_Fam%C3%ADlia_2010.JPG/1280px-Sagrada_Fam%C3%ADlia_2010.JPG", "page": "https://commons.wikimedia.org/wiki/File:Sagrada_Fam%C3%ADlia_2010.JPG", "lic": "CC BY-SA 3.0", "by": "Jopparn"}, "sagrada_int": {"url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/Sagrada_Familia,_interior_(13)_(30907447600).jpg/1280px-Sagrada_Familia,_interior_(13)_(30907447600).jpg", "page": "https://commons.wikimedia.org/wiki/File:Sagrada_Familia,_interior_(13)_(30907447600).jpg", "lic": "CC BY 2.0", "by": "Richard Mortel"}, "santpau": {"url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Hospital_de_Sant_Pau_02.jpg/1280px-Hospital_de_Sant_Pau_02.jpg", "page": "https://commons.wikimedia.org/wiki/File:Hospital_de_Sant_Pau_02.jpg", "lic": "CC BY-SA 3.0", "by": "Bernard Gagnon"}, "guell_bench": {"url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/Barcelona_parc_G%C3%BCell_la_placa_benches.jpg/1280px-Barcelona_parc_G%C3%BCell_la_placa_benches.jpg", "page": "https://commons.wikimedia.org/wiki/File:Barcelona_parc_G%C3%BCell_la_placa_benches.jpg", "lic": "CC BY-SA 3.0", "by": "Isiwal"}, "guell_drac": {"url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Barcelona_Parc_G%C3%BCell_el_drac.jpg/1280px-Barcelona_Parc_G%C3%BCell_el_drac.jpg", "page": "https://commons.wikimedia.org/wiki/File:Barcelona_Parc_G%C3%BCell_el_drac.jpg", "lic": "CC BY-SA 3.0", "by": "Isiwal"}, "batllo": {"url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ed/Casa_Batll%C3%B3_in_2015.02.jpg/1280px-Casa_Batll%C3%B3_in_2015.02.jpg", "page": "https://commons.wikimedia.org/wiki/File:Casa_Batll%C3%B3_in_2015.02.jpg", "lic": "CC BY-SA 4.0", "by": "CAPTAIN RAJU"}, "fountain": {"url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Font_M%C3%A0gica_20170504_212148.jpg/1280px-Font_M%C3%A0gica_20170504_212148.jpg", "page": "https://commons.wikimedia.org/wiki/File:Font_M%C3%A0gica_20170504_212148.jpg", "lic": "CC BY-SA 4.0", "by": "Jordiferrer"}, "mnac": {"url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/Palau_Nacional_Barcelona_Pano_2013.jpg/1280px-Palau_Nacional_Barcelona_Pano_2013.jpg", "page": "https://commons.wikimedia.org/wiki/File:Palau_Nacional_Barcelona_Pano_2013.jpg", "lic": "CC BY 3.0", "by": "Felix König"}, "xocolata": {"url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/Museu_de_la_Xocolata_de_Barcelona_fa%C3%A7ana.JPG/1280px-Museu_de_la_Xocolata_de_Barcelona_fa%C3%A7ana.JPG", "page": "https://commons.wikimedia.org/wiki/File:Museu_de_la_Xocolata_de_Barcelona_fa%C3%A7ana.JPG", "lic": "CC BY-SA 3.0", "by": "Kippelboy"}, "born": {"url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ed/Barcelona_-_El_Born._Passeig_del_Born.jpg/1280px-Barcelona_-_El_Born._Passeig_del_Born.jpg", "page": "https://commons.wikimedia.org/wiki/File:Barcelona_-_El_Born._Passeig_del_Born.jpg", "lic": "CC BY 2.0", "by": "Fred Romero"}, "ave": {"url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/J21_046_Bf_Barna_Sants,_102_017,_121.jpg/1280px-J21_046_Bf_Barna_Sants,_102_017,_121.jpg", "page": "https://commons.wikimedia.org/wiki/File:J21_046_Bf_Barna_Sants,_102_017,_121.jpg", "lic": "CC BY-SA 4.0", "by": "Falk2"}, "palacio_ext": {"url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/Palacio_Real_de_Madrid_-_13.jpg/1280px-Palacio_Real_de_Madrid_-_13.jpg", "page": "https://commons.wikimedia.org/wiki/File:Palacio_Real_de_Madrid_-_13.jpg", "lic": "CC BY-SA 3.0", "by": "Carlos Delgado"}, "palacio_int": {"url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Hall_of_Halberdiers_(Royal_Palace,_Madrid).jpg/1280px-Hall_of_Halberdiers_(Royal_Palace,_Madrid).jpg", "page": "https://commons.wikimedia.org/wiki/File:Hall_of_Halberdiers_(Royal_Palace,_Madrid).jpg", "lic": "CC BY 4.0", "by": "Joseolgon"}, "guardia": {"url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Desfile_guardia_saliente_de_la_Guardia_Real_de_Palacio_-_Madrid_01.jpg/1280px-Desfile_guardia_saliente_de_la_Guardia_Real_de_Palacio_-_Madrid_01.jpg", "page": "https://commons.wikimedia.org/wiki/File:Desfile_guardia_saliente_de_la_Guardia_Real_de_Palacio_-_Madrid_01.jpg", "lic": "CC BY-SA 4.0", "by": "Javier Perez Montes"}, "colecciones": {"url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/Galer%C3%ADa_de_las_Colecciones_Reales.jpg/1280px-Galer%C3%ADa_de_las_Colecciones_Reales.jpg", "page": "https://commons.wikimedia.org/wiki/File:Galer%C3%ADa_de_las_Colecciones_Reales.jpg", "lic": "CC BY 4.0", "by": "Joseolgon"}, "plazamayor": {"url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/Madrid_-_Plaza_Mayor_-_121212_140648.jpg/1280px-Madrid_-_Plaza_Mayor_-_121212_140648.jpg", "page": "https://commons.wikimedia.org/wiki/File:Madrid_-_Plaza_Mayor_-_121212_140648.jpg", "lic": "CC BY-SA 3.0", "by": "Barcex"}, "granvia": {"url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Madrid_Gran_Via_Metropolis_(28895522813).jpg/1280px-Madrid_Gran_Via_Metropolis_(28895522813).jpg", "page": "https://commons.wikimedia.org/wiki/File:Madrid_Gran_Via_Metropolis_(28895522813).jpg", "lic": "CC BY 2.0", "by": "Nan Palmero"}, "sangines": {"url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Luces_-_Chocolater%C3%ADa_San_Gin%C3%A9s.JPG/1280px-Luces_-_Chocolater%C3%ADa_San_Gin%C3%A9s.JPG", "page": "https://commons.wikimedia.org/wiki/File:Luces_-_Chocolater%C3%ADa_San_Gin%C3%A9s.JPG", "lic": "CC BY-SA 3.0", "by": "Tamorlan"}, "churros": {"url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/Churros_con_Chocolate_en_Chocolateria_San_Gines.jpg/1280px-Churros_con_Chocolate_en_Chocolateria_San_Gines.jpg", "page": "https://commons.wikimedia.org/wiki/File:Churros_con_Chocolate_en_Chocolateria_San_Gines.jpg", "lic": "CC BY-SA 2.0", "by": "ctj71081"}, "man": {"url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/Museo_Arqueologico_Nacional_-_Madrid_02.jpg/1280px-Museo_Arqueologico_Nacional_-_Madrid_02.jpg", "page": "https://commons.wikimedia.org/wiki/File:Museo_Arqueologico_Nacional_-_Madrid_02.jpg", "lic": "CC BY-SA 4.0", "by": "Javier Pérez Montes"}, "alcazar": {"url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Alc%C3%A1zar,_Segovia,_Espa%C3%B1a,_2024-06-14,_DD_04-06_HDR.jpg/1280px-Alc%C3%A1zar,_Segovia,_Espa%C3%B1a,_2024-06-14,_DD_04-06_HDR.jpg", "page": "https://commons.wikimedia.org/wiki/File:Alc%C3%A1zar,_Segovia,_Espa%C3%B1a,_2024-06-14,_DD_04-06_HDR.jpg", "lic": "CC BY-SA 4.0", "by": "Diego Delso"}, "alcazar2": {"url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/Alc%C3%A1zar_de_Segovia,_desde_la_pradera_de_San_Marcos.jpg/1280px-Alc%C3%A1zar_de_Segovia,_desde_la_pradera_de_San_Marcos.jpg", "page": "https://commons.wikimedia.org/wiki/File:Alc%C3%A1zar_de_Segovia,_desde_la_pradera_de_San_Marcos.jpg", "lic": "CC BY-SA 4.0", "by": "Malopez 21"}, "acueducto": {"url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/Acueducto,_Segovia,_Espa%C3%B1a,_2024-06-14,_DD_12.jpg/1280px-Acueducto,_Segovia,_Espa%C3%B1a,_2024-06-14,_DD_12.jpg", "page": "https://commons.wikimedia.org/wiki/File:Acueducto,_Segovia,_Espa%C3%B1a,_2024-06-14,_DD_12.jpg", "lic": "CC BY-SA 4.0", "by": "Diego Delso"}, "bcn_view": {"url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Barcelona,_View_from_Bunkers_del_Carmel.jpg/1280px-Barcelona,_View_from_Bunkers_del_Carmel.jpg", "page": "https://commons.wikimedia.org/wiki/File:Barcelona,_View_from_Bunkers_del_Carmel.jpg", "lic": "CC BY-SA 4.0", "by": "Alexey Komarov"}, "mad_view": {"url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c0/Plaza_de_Cibeles_Palacio_de_Comunicaciones.jpg/1280px-Plaza_de_Cibeles_Palacio_de_Comunicaciones.jpg", "page": "https://commons.wikimedia.org/wiki/File:Plaza_de_Cibeles_Palacio_de_Comunicaciones.jpg", "lic": "CC BY-SA 4.0", "by": "kallerna"}, "toledo": {"url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/Toledo_-_Panorama_desde_Mirador_del_Valle.jpg/1280px-Toledo_-_Panorama_desde_Mirador_del_Valle.jpg", "page": "https://commons.wikimedia.org/wiki/File:Toledo_-_Panorama_desde_Mirador_del_Valle.jpg", "lic": "CC BY-SA 3.0", "by": "Rafesmar"}, "trencadis": {"url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/067_Parc_G%C3%BCell,_banc_de_trencad%C3%ADs.jpg/1280px-067_Parc_G%C3%BCell,_banc_de_trencad%C3%ADs.jpg", "page": "https://commons.wikimedia.org/wiki/File:067_Parc_G%C3%BCell,_banc_de_trencad%C3%ADs.jpg", "lic": "CC BY-SA 3.0", "by": "Enfo"}};
+var DAYS = [
+{city:'bcn',date:'Sat 21 Nov',title:'Arrive, and go straight up the hill',theme:'Montjuïc',stops:[
+  {id:'mnac',when:'Late afternoon',name:'MNAC, in the Palau Nacional',img:'mnac',lat:41.3684,lng:2.1533,
+   lede:'A palace on the shoulder of Montjuïc holding the greatest collection of Romanesque painting anywhere — frescoes lifted whole off the walls of Pyrenean churches and rebuilt inside apses in the galleries. The building itself is the other half of the point, and the rooftop terrace looks straight back over the city.',
+   hl:['Under-16s are always free — and on Saturdays after three, so is everyone else','The rooftop viewpoint, included, at the hour the light goes','Romanesque apses reassembled at full scale, which is genuinely strange and good'],
+   why:'It is free on the one afternoon you arrive, it is warm and indoors after a flight, and it sits directly above the fountain you are coming back to at eight. No other first afternoon does that much work.',
+   facts:{'Hours':'Tue–Sat 10:00–18:00 · closed Mondays','Price':'Free from 15:00 on Saturdays (otherwise €24 for the three of you)','Time':'An hour and a half is plenty','Getting there':'Metro L1 or L3 to Espanya, then the escalators up'},
+   link:'https://www.museunacional.cat/en/opening-hours-and-prices'},
+  {hop:'The fountain is at the bottom of the same steps. Come down at dusk, find something to eat near Plaça d\'Espanya, and be back in place before eight.'},
+  {id:'fountain',when:'Evening, 20:00',name:'The Magic Fountain',img:'fountain',lat:41.3712,lng:2.1518,
+   lede:'Two and a half thousand litres of water a second, lit and choreographed to music, below the floodlit palace. Built for the 1929 Exposition and still doing exactly what it was built to do. It is free, it takes twenty minutes, and it is the least complicated thing on this entire itinerary.',
+   hl:['Shows at 20:00 and 20:30 — the first is less crowded','Free, no ticket, no booking, just turn up','Stand on the Avinguda side rather than up by the museum'],
+   why:'It only runs on winter weekend evenings, which makes Saturday the single night of your stay it is possible. Everything else in Barcelona can move; this cannot.',
+   facts:{'When':'Winter season, weekend evenings only','Price':'Free','Time':'20–40 minutes','Worth knowing':'Re-check the timetable in late October — the city publishes the winter schedule then'},
+   link:'https://www.barcelona.cat/en/what-to-do-in-bcn/magic-fountain'}
+]},
+{city:'bcn',date:'Sun 22 Nov',title:'Gaudí, top to bottom',theme:'Eixample and the Gràcia hill',stops:[
+  {id:'sagrada',when:'Morning, from 09:00',name:'Sagrada Família',img:'sagrada_ext',img2:'sagrada_int',lat:41.4036,lng:2.1744,
+   lede:'Go at nine, when the east windows are throwing blue and green across the columns and the nave still has room to walk in. Gaudí described the interior as a forest and then built one: the columns branch, the light falls in patches, and the whole thing behaves more like weather than architecture.',
+   hl:['Under-11s go free — €52 for the three of you, or €82 with tower access','The tower lift up and a narrow spiral staircase down, which is the thrilling part','Morning is blue and green glass; late afternoon is red and orange'],
+   why:'The one unarguable thing in the city. If the trip has a single image she remembers in twenty years, it is the light in this room.',
+   facts:{'Hours':'Mon–Sat 09:00–18:00 in November','Price':'€26 adult, under-11s free · towers +€10 each','Booking':'Essential, and the biggest sell-out risk in Barcelona — two to four weeks ahead','Time':'Two hours with the towers'},
+   link:'https://sagradafamilia.org/en/prices'},
+  {hop:'Walk it. Sixteen minutes straight up Avinguda de Gaudí, a pedestrian street with cafés down both sides — the obvious place to stop for a drink between the two.'},
+  {id:'santpau',when:'Late morning',name:'Recinte Modernista de Sant Pau',img:'santpau',lat:41.4118,lng:2.1745,
+   lede:'A hospital built as a village: twenty-seven pavilions of mosaic, stained glass and tiled domes, set in gardens and connected by tunnels, so that patients would recover among beautiful things. Domènech i Montaner finished it the year Gaudí died. It is a UNESCO site and it is almost always empty.',
+   hl:['Under-12s free; €36 for the three of you','Open space to run around in, which matters by the second hour of a museum day','Tiled domes at eye level rather than four storeys up'],
+   why:'It reads to a child as a castle village rather than a hospital, it is sixteen minutes on foot from the last stop, and almost nobody goes. The best value on the Barcelona list.',
+   facts:{'Hours':'Nov–Mar 09:30–17:00, last entry 16:30','Price':'€18 each before 14:00, €17 after · under-12s free','Time':'An hour and a half','Note':'This is the flex item if the morning runs long'},
+   link:'https://santpaubarcelona.org/en/prepara-la-teva-visita/'},
+  {hop:'Lunch somewhere around Gràcia, then take a taxi up the hill rather than walking — the climb from the nearest metro is steeper than it looks on a map.'},
+  {id:'parkguell',when:'Afternoon, booked slot',name:'Park Güell',img:'guell_bench',img2:'guell_drac',lat:41.4145,lng:2.1527,
+   lede:'A failed housing development that became the best public space in Barcelona. The mosaic bench snakes around a terrace with the whole city underneath it; the gatehouses look like they were piped out of a bag; and the salamander on the stairs is the single most photographed lizard in Europe.',
+   hl:['Children 7–12 pay €13.50 — €49.50 for the three of you','Entry is timed and capped at 1,400 an hour, and it does sell out','Last access 17:30, which is later than most guidebooks claim'],
+   why:'It is the picture she will already have in her head, and the trencadís here is the thing she then makes out of chocolate tomorrow morning. The two stops are deliberately a pair.',
+   facts:{'Hours':'09:30, last access 17:30','Price':'€18 adult, €13.50 age 7–12','Booking':'Timed, in advance. You get thirty minutes\' grace and no re-entry','Getting away':'Walk down into Gràcia — it is downhill all the way'},
+   link:'https://parkguell.barcelona/en/planning-your-visit/prices-and-times'}
+]},
+{city:'bcn',date:'Mon 23 Nov',title:'The making day — chocolate, then ceramic',theme:'El Born, then Passeig de Gràcia',stops:[
+  {id:'xocolata',when:'Morning',name:'The Xoco Trencadís workshop',img:'xocolata',lat:41.3873,lng:2.1826,
+   lede:'A chocolate museum in a former monastery in the Born, where the entry ticket is a bar of chocolate. The family workshop worth booking is Xoco Trencadís: you build a Gaudí-style broken-tile mosaic, in chocolate, having spent yesterday looking at the real thing on a bench above the city.',
+   hl:['€13 a head including museum entry — €39 for all three','Other sessions: Chocolate Artists €11, Lollipops €16, Xocolating €25','Open on Mondays, when the Picasso and Palau Güell are both shut'],
+   why:'It is the mosaic workshop, the chocolate workshop and the Gaudí workshop in one hour, and there is nothing quite like it in another city. Monday is the day it has no competition.',
+   facts:{'Hours':'Mon–Sat 10:00–19:00','Price':'€13 per person, museum included','Booking':'Email reserves@museuxocolata.cat — no schedule is published, so ask early','Time':'About an hour, plus the museum'},
+   link:'https://museudelaxocolata.cat/en/family-workshops-and-all-audiences/family-workshops-and-all-audiences/'},
+  {hop:'Stay in the Born for lunch — the mosaic studio is a four-minute walk from the chocolate museum, so there is no travelling to do between the two.'},
+  {id:'trencadis',when:'Early afternoon, 14:00',name:'Trencadís mosaic workshop',img:'trencadis',lat:41.3856,lng:2.1795,
+   lede:'Two hours in a working mosaic studio in the Born, cutting and laying broken tile in Gaudí\'s trencadís technique. You choose what to make — a photo frame, a box, a coaster, or the Park Güell salamander — and the studio grouts it afterwards. Mosaiccos is a real mosaic school run by an artist with a Catalan government mosaic diploma, not a gift-shop activity.',
+   hl:['€48 a head for the two-hour class — €144 for the three of you','<b>From age ten she works with real ceramic</b>, a tile cutter and safety goggles, not the pre-cut acrylic younger children get','The finished piece is grouted after you leave and collected that evening or the next morning'],
+   why:'She turns ten into exactly the age this studio hands over real tools. Having seen the trencadís bench at Park Güell on Sunday, she spends Monday making it — first in chocolate, then in ceramic.',
+   facts:{'Where':'Mosaiccos, C/ dels Assaonadors 10, El Born — 4 min from the chocolate museum','Sessions':'Tue–Fri 10:00, 14:00, 16:30 · Saturday mornings','Price':'€48 pp, two hours. Book direct — it is cheaper than the resellers','Language':'English, max 30 per session'},
+   flag:'Mosaiccos is CLOSED on Mondays from September to June. Three ways round it: ask them for a private Monday session (they take bespoke bookings), move it to Saturday afternoon, or use the runner-up studio in Gràcia. Email info@Mosaiccos.com before you fix the day.',
+   link:'https://experiencegaudibarcelona.com/'},
+  {hop:'Two stops on the metro up to Passeig de Gràcia for the last of the light.'},
+  {id:'batllo',when:'Late afternoon',name:'Casa Batlló',img:'batllo',lat:41.3917,lng:2.1650,
+   lede:'Gaudí took an ordinary apartment block and gave it a scaled roof, bone-shaped balconies and a light well that shades from white at the bottom to deep blue at the top so the light falls evenly. Inside there is almost no straight line. The tablet you are handed reconstructs each room as Gaudí imagined it.',
+   hl:['Children 0–12 go free — €58 for the two of you','The augmented-reality tablet is included, not an upsell','Last access 19:45, so it works after everything else has shut'],
+   why:'The most theatrical Gaudí interior for a ten-year-old, and the only major sight that stays open late enough to close the day with.',
+   facts:{'Hours':'From 09:00, last access 19:45','Price':'General Visit from €29 · children 0–12 free','Watch out':'The cheaper Night Visit does not include the rooftop','Booking':'Online saves up to €15 a head over the door price'},
+   link:'https://www.casabatllo.es/en/online-tickets/'}
+]},
+{city:'bcn',date:'Tue 24 Nov',title:'Out on the late-morning train',theme:'Sants → Atocha',stops:[
+  {id:'train',when:'11:14, arriving 14:16',name:'Barcelona Sants to Madrid Atocha',img:'ave',lat:41.3792,lng:2.1400,
+   lede:'Three hours and two minutes at up to 300 km/h across Aragón and Castile, which is a pleasant way to spend a Tuesday morning with a book. High-speed departures are security-screened, so allow half an hour at the station rather than turning up at the platform.',
+   hl:['Renfe gives under-14s 40% off — roughly €110–170 for the three of you','Rodalies from Plaça Catalunya or Passeig de Gràcia gets you to Sants in 5–8 minutes','Book now: a Tuesday in a trade-fair week is not a quiet departure'],
+   why:'It leaves a relaxed final Barcelona morning and still puts you in Madrid with the whole afternoon and the lights intact. Anything after one o\'clock costs you the daylight.',
+   facts:{'Journey':'3h02 on the fast services, 3h15 typical','Operators':'Renfe AVE, Ouigo and iryo all run it — Renfe is the comfortable one','Arrives':'Madrid Puerta de Atocha','Allow':'30 minutes at Sants for security'},
+   link:'https://www.renfe.com/es/en'}
+]},
+{city:'mad',date:'Tue 24 Nov',title:'Into Madrid, and the lights are already on',theme:'Los Austrias',stops:[
+  {id:'plazamayor',when:'Afternoon',name:'Plaza Mayor and the Christmas market',img:'plazamayor',lat:40.4155,lng:-3.7074,
+   lede:'A closed rectangle of four-storey buildings with four hundred balconies, which has been in turn a market, a bullring, a place of execution and now — for five weeks a year — a hundred-odd wooden stalls selling nativity figures, tinsel and the traditional Spanish Christmas joke figurines you may have to explain.',
+   hl:['Free, and open Sun–Thu 10:00–21:00','Cortylandia\'s animated musical facade is four hundred metres away on Calle Preciados','The frescoed Casa de la Panadería on the north side is worth looking up at'],
+   why:'You arrive tired with luggage at two in the afternoon. This asks nothing of you, costs nothing, and is the fastest possible way to feel like you are in Madrid.',
+   facts:{'Market hours':'Sun–Thu 10:00–21:00','Price':'Free','Cortylandia':'Shows on the hour, 17:00–21:00 — the 19:00 is the sweet spot','2026 dates':'Described as "late November" and not yet confirmed'},
+   link:'https://www.esmadrid.com/en/whats-on/plaza-mayor-christmas-market'},
+  {hop:'Four minutes on foot through the arcades and down the Pasadizo de San Ginés, an alley you would never find on purpose.'},
+  {id:'sangines',when:'Late afternoon',name:'Chocolate con churros at San Ginés',img:'sangines',lat:40.4165,lng:-3.7075,
+   lede:'Open twenty-four hours a day, every day of the year, since 1894. Green and white tiles, marble tables, waiters in white jackets, and chocolate thick enough that the churro stands up in it. Madrileños come here at six in the morning on the way home; you are coming at six in the evening, which is the civilised version.',
+   hl:['About €5–6 a head','No booking, no menu decisions, open whenever you turn up','This is the merienda that gets you to a 21:00 dinner without a meltdown'],
+   why:'Non-negotiable. It is the single most Madrid thing you can do in twenty minutes, and it solves the gap between a late lunch and a Spanish dinner hour.',
+   facts:{'Hours':'24 hours, 365 days','Price':'≈€17 for three','Where':'Pasadizo de San Ginés 5, behind the church','Booking':'None, except large groups off-peak'},
+   link:'https://chocolateriasangines.com/'},
+  {hop:'Walk up to Gran Vía as it gets dark — ten minutes, and the lights come on at six, nine minutes after sunset.'},
+  {id:'granvia',when:'Evening',name:'The Christmas lights on Gran Vía',img:'granvia',lat:40.4200,lng:-3.7038,
+   lede:'Thirteen million bulbs across two hundred and forty locations, including a 1.3-kilometre run of snowflake arches down Gran Vía itself and a twenty-two-metre tree where it meets Calle de Alcalá. Madrid does this on a scale that is genuinely hard to convey until you are standing under it.',
+   hl:['Free, and on from 18:00 to midnight','Walk Gran Vía east to Cibeles, then down toward your hotel','The switch-on has fallen between 21 and 23 November three years running'],
+   why:'It costs nothing, it happens outside, and it turns a tired arrival evening into the part of the trip she describes first when she gets home.',
+   facts:{'Hours':'Sun–Thu 18:00–24:00','Price':'Free','2026 date':'Not yet announced, but the pattern puts it before you arrive','Best stretch':'Gran Vía between Callao and Alcalá'},
+   link:'https://www.esmadrid.com/agenda/navidadmadrid/luces-navidad-madrid'}
+]},
+{city:'mad',date:'Wed 25 Nov',title:'The palace, and the best modern building in Madrid',theme:'Ópera and Los Austrias',stops:[
+  {hop:'The entrance is via the Almudena Cathedral esplanade rather than the usual gate. Book a timed slot for around ten, when it opens and before the coach parties.'},
+  {id:'palacio',when:'Morning, from 10:00',name:'Palacio Real de Madrid',img:'palacio_ext',img2:'palacio_int',lat:40.4179,lng:-3.7143,
+   lede:'Three thousand rooms, of which you see about fifty: the Hall of Halberdiers, the Gasparini Room with its dripping rococo ceiling, the throne room, and a porcelain room whose walls are entirely made of it. Still the official residence of the Spanish Crown, which is why sections shut at short notice.',
+   hl:['€9 for her, €18 each for you — €45 in total','The Royal Armoury is the bit most children come out talking about','A combined ticket with the Galería next door is €24 and saves €8 a head'],
+   why:'The castle she came for, and the only one in Madrid that delivers on the scale a child expects. Buy the combined ticket and do both in one go.',
+   facts:{'Hours':'Oct–Mar Mon–Sat 10:00–18:00 · ticket office closes 17:00','Price':'€18 adult, €9 ages 5–16','Time':'Sixty to ninety minutes with a child','Note':'The free evening window is EU and Ibero-American passports only'},
+   link:'https://tickets.patrimonionacional.es/en/tickets/palacio-real-de-madrid'},
+  {hop:'Lunch in Los Austrias, or in the iron-and-glass Mercado de San Miguel a few minutes east. The Galería is next door to the palace, so there is no travelling afterwards.'},
+  {id:'colecciones',when:'Afternoon',name:'Galería de las Colecciones Reales',img:'colecciones',lat:40.4183,lng:-3.7152,
+   lede:'The best modern building in Madrid, finished in 2023: vast stone galleries stepping down the hillside under the palace terrace, lit from a clerestory slot along the top. Inside are Bosch, Velázquez, Goya, Titian, royal armour and the state carriages, in rooms the size of aircraft hangars.',
+   hl:['€7 for her, €14 each for you — or €24 each combined with the palace','Open until 20:00, so it absorbs a whole afternoon','The carriages and armour are the child-legible half'],
+   why:'It is the architectural "wow" of the Madrid half, it is next door to the palace, and it stays open long after everything else has closed.',
+   facts:{'Hours':'Mon–Sat 10:00–20:00','Price':'€14 adult, €7 child','Time':'An hour to ninety minutes','Note':'Its free evening window carries the same nationality restriction'},
+   link:'https://www.galeriadelascoleccionesreales.es/horarios-y-tarifas'}
+]},
+{city:'mad',date:'Thu 26 Nov',title:'A day trip — or a day in Madrid',theme:'Choose one of three',stops:[
+  {id:'segovia',when:'All day',name:'Segovia — the Alcázar and the aqueduct',img:'alcazar',img2:'acueducto',lat:40.9429,lng:-4.1088,
+   lede:'A castle on a rock at the point where two rivers meet, with slate turrets and a tower you can climb, plus a two-thousand-year-old Roman aqueduct standing in the middle of a town square with no mortar holding it up. If she likes castles and she likes how buildings work, this is the best day of the trip.',
+   hl:['Alcázar €10 adult, €6 child; the tower is a few euros more and worth it','The aqueduct is free, in the open, and 28 metres tall at the Plaza del Azoguejo','Cochinillo is the local speciality — there is also, mercifully, pizza'],
+   why:'You have a whole day and Madrid does not have a better castle. The Alcázar is the most castle-shaped castle in Spain, and the aqueduct is the clearest lesson in engineering a ten-year-old will ever get for free.',
+   facts:{'Train':'Avant from Chamartín — 27 minutes, twenty-odd a day','The catch':'Segovia-Guiomar station is 6 km out; take the line 11 bus, about 20 min','Door to door':'Roughly 1h30 each way, so leave by nine','Alcázar hours':'Daily 10:00–18:00 in winter · €10 adult, €6 child'},
+   link:'https://www.alcazardesegovia.com/en/'},
+  {choice:true}
+]},
+{city:'mad',date:'Fri 27 Nov',title:'One museum, then Barajas',theme:'Serrano, then the airport',stops:[
+  {id:'man',when:'Morning, from 09:30',name:'Museo Arqueológico Nacional',img:'man',lat:40.4239,lng:-3.6892,
+   lede:'Six euros for the three of you, and it holds a full walk-through reproduction of the Altamira cave paintings, Egyptian mummies, and the Lady of Elche. It opens at half nine, which means you can do it properly and still make an afternoon flight.',
+   hl:['€3 each for you, under-18s free — €6 in total','The Altamira replica is included in general admission','Ninety minutes covers it comfortably'],
+   why:'The best value morning in either city, and it is the right shape for a departure day: opens early, close to the centre, and you can leave whenever you need to.',
+   facts:{'Hours':'Tue–Sat 09:30–20:00','Price':'€3 adult, under-18s free','Time':'An hour and a half','Then':'Taxi to Barajas — €33 flat from anywhere inside the M-30'},
+   link:'https://www.man.es/man/visita/tarifas.html'}
+]}
+];
+
+var CHOICE = {
+ title:'Thursday is the one day you have a real decision to make',
+ intro:'A whole free day in the middle of the Madrid half. Two of Spain\'s great day trips are within half an hour by train, and staying put is a perfectly good third answer. Segovia is in the plan above because it is the easier day and the better castle — but read all three before you book anything, because the trains are the part that sells out.',
+ opts:[
+  {pick:true,img:'alcazar',lbl:'In the plan · the easier day',n:'Segovia',
+   p:'A fairy-tale castle on a rock and a Roman aqueduct standing in a town square with no mortar holding it up. Flatter, smaller and calmer than Toledo — the lower-effort day.',
+   li:['The Alcázar is the storybook castle, turrets and all','The aqueduct is free, enormous and instantly understandable','Much less climbing; a compact old town you cannot get lost in'],
+   foot:'Avant from Chamartín · 27 min · station 6 km out'},
+  {img:'toledo',lbl:'The stronger day, if she has the legs',n:'Toledo',
+   p:'A walled city on a granite spur in a bend of the Tagus, where for centuries Christians, Muslims and Jews built in the same square kilometre. It leaves from Atocha — your own station — and it is the better day for a child who likes art and making things.',
+   li:['<b>Fly Toledo</b>: a 180 m zip line across the Tagus gorge, ~€17 each, minimum 20 kg, open 11:00–18:30 in winter','El Greco\'s <i>Burial of the Count of Orgaz</i> in a small dark room, plus Goya, Titian and Caravaggio in the cathedral sacristy','A €14 tourist wristband covers seven monuments and <b>under-11s go free</b> with an adult','Marzipan workshops where you make it, bake it and eat it warm — and damascene artisans inlaying gold in shop windows for nothing'],
+   foot:'Avant from Atocha · ~33 min · free escalators up the hill'},
+  {img:'mad_view',lbl:'The third answer',n:'Stay in Madrid',
+   p:'You have two and a half days here and a lot of it is already spoken for. Giving Thursday back to the city is not a failure of ambition — it is how you avoid the day where everyone is tired and nobody says so.',
+   li:['The Prado, free 18:00–20:00, with its own illustrated family map and a seven-picture children\'s route','Guernica at the Reina Sofía, free from 19:00, twenty-five minutes if that is all you want','The Templo de Debod at sunset, and the Retiro in the afternoon','The chocolate-and-churros class in Chueca, ages 8 and up, if the Barcelona workshop went well'],
+   foot:'No trains, no tickets, no 09:00 start'}
+ ]
+};
+
+var ALTS = {
+bcn:[
+ {n:'CosmoCaixa science museum',m:'€16 · open daily, including Mondays',lat:41.4118,lng:2.1320,p:'Barcelona\'s science museum, up the hill in Sarrià. Its centrepiece is a <b>thousand square metres of living Amazon rainforest under glass</b> — real trees, fish visible above and below the waterline, and simulated rain every quarter of an hour. Also a 24-metre wall of real rock strata, a planetarium and about a hundred things to push. <i>Excellent — and an excellent science museum you could have in a dozen cities. Held in reserve as the best answer to a morning of rain.</i>',l:'https://cosmocaixa.org/es/visitanos'},
+ {n:'Museu Picasso',m:'€28 · under-18s free · closed Mondays',lat:41.3852,lng:2.1809,p:'Nine linked medieval palaces in the Born holding the world\'s best collection of Picasso\'s <b>early</b> work — including a whole room of fifty-eight variations he painted on Velázquez\'s <i>Las Meninas</i>, which is the part a ten-year-old actually engages with because the game is visible. <i>Needs a Gothic Quarter half-day that only exists if you give up Park Güell, and it is shut on your Monday.</i>',l:'https://museupicassobcn.cat/en/plan-your-visit/buy-tickets-and-opening-hours'},
+ {n:'Palau Güell',m:'≈€30 · closed Mondays',lat:41.3789,lng:2.1743,p:'Gaudí\'s first major commission, a mansion off La Rambla built for his patron in 1888. A <b>cathedral-like central hall with a domed ceiling pricked with holes so it looks like a night sky</b>, and a roof of twenty psychedelic mosaic chimneys. An hour, and cheap. <i>Closed on your Monday, and you leave Tuesday morning.</i>',l:'https://www.palauguell.cat/en/admission-fees'},
+ {n:'Montjuïc Castle and the cable car',m:'≈€70 with the gondola',lat:41.3634,lng:2.1660,p:'A <b>seventeenth-century star fort</b> on the summit of Montjuïc with a dry moat, ramparts you can walk right round, cannon still pointing out to sea and a 360° view over the city and the port. You reach it by gondola strung over the hillside. <i>The castle box gets ticked in Segovia or Toledo instead, on a day with room for it.</i>',l:'https://www.barcelona.cat/en/what-to-do-in-bcn/castell-montjuic'},
+ {n:'Fundació Joan Miró',m:'€34 · under-12s free · closed Mondays',lat:41.3685,lng:2.1600,p:'The gallery Miró built for his own work, a white modernist building on Montjuïc with sculptures on the roof terrace. His paintings are <b>bold, primary-coloured and deliberately childlike</b> — stars, birds, blobs, thick black lines — which makes this the most child-accessible serious art collection in Barcelona. <i>Needs a Montjuïc half-day that three days does not contain.</i>',l:'https://www.fmirobcn.org/en/visit-us/plan-your-visit/'},
+ {n:'La Pedrera Night Experience',m:'€79 · children under 12 free',lat:41.3953,lng:2.1619,p:'Gaudí\'s wave-fronted apartment block on Passeig de Gràcia, visited <b>after dark</b>: a guided walk through the courtyards, the brick attic and the roof of warrior-shaped chimneys, ending with a video-mapping show projected onto the rooftop while the adults get a glass of cava. <i>Costs no daylight at all — the strongest swap on this list if she has the stamina for a late night.</i>',l:'https://www.lapedrera.com/en/night-experience'},
+ {n:'Casa Vicens',m:'€40 · under-11s free',lat:41.4036,lng:2.1509,p:'Gaudí\'s <b>very first house</b>, built at thirty for a tile manufacturer — which is why it is covered inside and out in green-and-white checkerboard tile and painted marigolds, with a Moorish smoking room whose ceiling is a honeycomb of papier-mâché. The cheapest Gaudí house and by far the least crowded. <i>Do not stack it the same day as Casa Batlló — they blur.</i>',l:'https://casavicens.org/visit'},
+ {n:'Poble Espanyol',m:'€37.80 · open daily',lat:41.3690,lng:2.1476,p:'An <b>open-air village of 117 replica buildings</b> from every region of Spain, built for the 1929 Exposition — you walk from an Andalusian white street into a Castilian square. About fifteen working craft workshops operate inside it: glass-blowing, ceramics, leatherwork, jewellery, with artisans at the bench. <i>The nearest thing to a second making-day if the workshops are the point of the trip.</i>',l:'https://poble-espanyol.com/el-poble-espanyol/informacion-practica/'},
+ {n:'Paella class and Boqueria market tour',m:'≈€210 · 3–3.5 hours · ages 6+',lat:41.3826,lng:2.1698,p:'A cooking school a minute from the Boqueria that starts with <b>a guided walk through the market with tastings</b>, then takes you back to the kitchen to make tapas and a paella from scratch, which you then sit down and eat. Children accepted from six or seven. <i>Replaces lunch and most of an afternoon, and it is the most expensive single item considered.</i>',l:'https://paellabarcelona.com/en/paella-cooking-classes-workshops-friends-family-parties-anniversaries-barcelona.php'},
+ {n:'Mercat de la Boqueria',m:'Free · closed Sundays',lat:41.3817,lng:2.1717,p:'Barcelona\'s great covered food market, off La Rambla behind a wrought-iron modernista arch — <b>three hundred stalls of jamón, fruit, fish on ice and sweets</b>, with a handful of tiny counter bars in among them where you sit on a stool and eat what the market sells. <i>Go before ten or after four; at midday it is a crush and genuinely unpleasant with a child at hip height. Enter from the back on Carrer Jerusalem, not off the Rambla.</i>',l:'https://www.boqueria.barcelona/home'},
+ {n:'Museu Egipci',m:'€31 · midday closure',lat:41.3925,lng:2.1631,p:'A private Egyptology collection five minutes from Passeig de Gràcia — <b>mummies, sarcophagi, jewellery and cat statues</b>, about a thousand objects, with a free activity sheet for children in English. Small and unremarkable by world standards. <i>The best wet-afternoon insurance in the city: indoors, central and cheap. Note it shuts 14:00–16:00.</i>',l:'https://www.museuegipci.com/en/visit/'},
+ {n:'Tibidabo, the Aquarium, the zoo and Camp Nou',m:'€60–120 each',lat:41.4222,lng:2.1186,p:'The four things every family guide recommends. <b>Tibidabo</b> is a 1901 clifftop funfair with a hand-painted aeroplane ride. <b>L\'Aquàrium</b> has an 80-metre shark tunnel. <b>The zoo</b> sits in Ciutadella park. <b>Camp Nou</b> is FC Barcelona\'s stadium. <i>All ruled out on value or calendar: Tibidabo runs weekends only in November and charges by height, so at 10 she pays the adult rate; the Aquarium is €83 for two hours; and Camp Nou\'s full tour does not exist during the rebuild — the current product is a relocated museum plus a view of the building site.</i>',l:'https://tibidabo.cat/en/plan-the-visit/rates'},
+ {n:'Montserrat, Girona and Sitges',m:'Full-day trips',lat:41.5930,lng:1.8380,p:'<b>Montserrat</b> is a Benedictine monastery on a mountain of eroded rock pillars, reached by rack railway or cable car. <b>Girona</b> is a walled medieval city with coloured houses over a river and Europe\'s best-preserved Jewish quarter, forty minutes by fast train. <b>Sitges</b> is a whitewashed seaside town half an hour down the coast. <i>All good; all cost a whole Barcelona day out of three. Montserrat additionally risks a closed winter funicular, which is the part a child goes for.</i>',l:'https://www.montserratcard.com/en/trans-montserrat-ticket/'}
+],
+mad:[
+ {n:'Museo del Prado',m:'Free 18:00–20:00 · under-18s free always',lat:40.4138,lng:-3.6921,p:'One of the three or four greatest picture galleries on earth — the Spanish royal collection, so <b>Velázquez\'s <i>Las Meninas</i>, Goya\'s black paintings and Bosch\'s <i>Garden of Earthly Delights</i></b> all in one building. Free for everyone in the last two hours of the day. <i>Download the Prado\'s own illustrated family map before you travel — nine kinds of activity and a seven-picture children\'s route. Their own advice is ninety minutes maximum with children.</i>',l:'https://www.museodelprado.es/visita/horarios-y-tarifas'},
+ {n:'Guernica at the Reina Sofía',m:'Free 19:00–21:00 · closed Tuesdays',lat:40.4080,lng:-3.6945,p:'Spain\'s modern art museum, two minutes from Atocha in a converted eighteenth-century hospital. The reason to go is one room: <b>Picasso\'s <i>Guernica</i></b>, three and a half metres by eight, painted in a month after the bombing of a Basque town in 1937. <i>Free from seven, and you can be in and out in twenty-five minutes having seen one enormous painting properly.</i>',l:'https://www.museoreinasofia.es/en/visit'},
+ {n:'Mirador Madrid, on the Cibeles rooftop',m:'€10 for three',lat:40.4192,lng:-3.6928,p:'Madrid\'s city hall is a colossal white wedding cake of a building from 1919, and you can <b>ride a lift to a viewing terrace on the eighth floor</b> and look straight down Gran Vía and Calle de Alcalá. <i>Ten euros for all three of you, half an hour, and the best cheap view in the city — book the 18:00 or 18:30 slot and the Christmas lights come on while you are up there.</i>',l:'https://www.esmadrid.com/en/tourist-information/mirador-madrid'},
+ {n:'Templo de Debod',m:'Free · closed Mondays',lat:40.4240,lng:-3.7178,p:'A <b>genuine Egyptian temple from the second century BC</b>, dismantled stone by stone and given to Spain in 1968 when the Aswan dam was about to drown it. It now sits in a park west of the palace, reflected in a shallow pool, with the sun going down behind it. <i>Free, and a real "how is this here" moment — but twenty-five minutes from the Prado axis and it clashes with the palace closing.</i>',l:'https://www.esmadrid.com/en/tourist-information/templo-de-debod'},
+ {n:'Chocolate and churros cooking class',m:'≈€210 · ages 8+ · 90 minutes',lat:40.4225,lng:-3.6963,p:'Ninety minutes in a host\'s kitchen off Plaza de Chueca, <b>making churros from the dough up and the thick drinking chocolate to dip them in</b>, then eating the results. Maximum five people, so effectively private, and run in English. <i>The Madrid equivalent of the Barcelona chocolate workshop, at five times the price — a strong second helping if the Born session goes well.</i>',l:'https://www.viator.com/tours/Madrid/Churros-and-Chocolate-Class-in-Madrid/d566-5561038P2'},
+ {n:'Mercado de San Miguel',m:'Free to enter · minutes from Plaza Mayor',lat:40.4154,lng:-3.7091,p:'A <b>1916 iron-and-glass market hall</b> beside Plaza Mayor, restored into a covered arcade of about thirty stalls selling one thing each very well — oysters, croquetas, jamón, vermouth, tiny cakes. You buy a plate here and a plate there and eat standing at a marble counter. <i>Touristy and not cheap, but it solves the "everyone wants something different" lunch problem in about four minutes.</i>',l:'https://www.mercadodesanmiguel.es/en/'},
+ {n:'Museo Naval',m:'Free',lat:40.4180,lng:-3.6930,p:'The Spanish navy\'s own museum on the Paseo del Prado — <b>twelve thousand objects, wall-to-wall scale models of ships</b>, cannon, navigation instruments, and Juan de la Cosa\'s world map of 1500, the first surviving chart to show the Americas. <i>Free, ten minutes from Atocha, and the closest thing Madrid has to an adventure museum.</i>',l:'https://www.esmadrid.com/en/tourist-information/museo-naval'},
+ {n:'CaixaForum Madrid',m:'€12 · under-16s free',lat:40.4110,lng:-3.6934,p:'A former power station reworked by Herzog &amp; de Meuron into a <b>rusted-steel box that appears to float above the pavement</b> — the ground floor was cut away entirely — with a 24-metre vertical garden of fifteen thousand plants growing up the blank wall beside it. <i>Free to look at from the street, which is most of the point; the exhibitions inside change.</i>',l:'https://caixaforum.org/es/madrid/info-centro'},
+ {n:'Retiro Park',m:'Free',lat:40.4153,lng:-3.6844,p:'Madrid\'s central park, 125 hectares of formal gardens that belonged to the monarchy until 1868 — with a <b>boating lake under a colonnaded monument</b>, where you can hire a rowing boat for a few euros. <i>Lovely, and cut on daylight rather than merit: sunset is at 17:55, and the Crystal Palace, which is the reason to walk in, is closed for restoration until 2027.</i>',l:'https://www.esmadrid.com/en/tourist-information/retiro-park'},
+ {n:'The three that are simply closed',m:'Teleférico · Palacio de Cristal · Atocha garden',lat:40.4258,lng:-3.7238,p:'Three of the most-Googled family attractions in Madrid are <b>not operating</b>, and every guide still lists them. The <b>Teleférico</b> cable car over Casa de Campo has been shut since 2022 after a failed cable inspection. The <b>Palacio de Cristal</b>, the glasshouse in the Retiro, is under restoration until 2027. The <b>tropical garden inside Atocha station</b> — 4,000 m² of palms under the old trainshed — is closed for works with no reopening date. <i>Worth knowing before anyone builds an afternoon around one.</i>',l:'https://teleferico.emtmadrid.es/'},
+ {n:'Bernabéu tour, Parque Warner, Faunia, the zoo',m:'€60–150 each',lat:40.4531,lng:-3.6883,p:'<b>The Bernabéu</b> is Real Madrid\'s rebuilt stadium; <b>Parque Warner</b> is a theme park half an hour south; <b>Faunia</b> and the <b>Zoo Aquarium</b> are animal parks in the suburbs. <i>The stadium tour is currently reduced by building works and shuts its dressing rooms the day before a match. Parque Warner is closed on weekdays in late November. The animal parks are half-days in the outskirts on a trip where you have two and a half days in the centre.</i>',l:'https://www.realmadrid.com/es-ES/tour-bernabeu'}
+]};
+
+var HOTELS = {
+bcn:[
+ {tag:'Cheapest, and it fits you exactly',n:'Catalonia Eixample 1864',a:'Carrer de Roger de Llúria 60 · Dreta de l\'Eixample · 4★',lat:41.3958,lng:2.1671,
+  total:'€746',per:'3 nights · €249 a night · breakfast in, taxes in',
+  feel:'An <b>1864 building listed as a Cultural Asset of National Interest</b>, with a restored façade of Venetian frescoes — allegorical figures in bright colour by an Italian painter. Rooms are simple and light: pale wood, parquet, contemporary. The draw is the <b>rooftop terrace with a glass-edged pool</b>, hammocks and Balinese beds over the Eixample.',
+  dl:{'The room':'Triple Room, 20 m² — select "1 twin bed, 1 full bed". 6 left.','Breakfast':'Included on this rate; the room-only rate is €190 a night if you would rather find your own','Metro':'Girona or Verdaguer, 4 min — L4 and L5','Walk':'7 min to Passeig de Gràcia, on a quiet street'},
+  catch:'<b>The catch:</b> 20 m² for three people, so the suitcases will be underfoot. Fine for three nights, and it leaves nearly €700 on the table against the Sixtytwo.',
+  dinner:[["Easy", "Vinitus", "4 min", "Consell de Cent 333 · big, busy tapas counter — bravas, croquetas, tortilla", "€25–35", "Daily 11:00–01:00, no gap, no bookings"], ["Sit down", "Tapas 24", "8 min", "Diputació 269 · Carles Abellán's basement bar. The <i>bikini</i> — a toasted ham-and-cheese — is the house signature", "€30–40", "Daily 12:00–24:00 · book"], ["Treat", "Lomo Alto", "6 min", "Aragó 283 · dry-aged steak house. She eats steak and croquetas without negotiation", "€60–90", "Dinner from 19:30, seven days · book"]],
+  links:[['Hotel site and photos','https://www.cataloniahotels.com/en/hotel/catalonia-eixample-1864'],['Full gallery on Booking','https://www.booking.com/hotel/es/catalonia-eixample-1864.en-gb.html?checkin=2026-11-21&checkout=2026-11-24&group_adults=2&group_children=1&age=10&no_rooms=1']]},
+ {tag:'A proper bed and breakfast',n:'Circa 1905',a:'Carrer de Provença 286 · Dreta de l\'Eixample · boutique B&amp;B',lat:41.3945,lng:2.1600,
+  total:'€915',per:'3 nights · €305 a night · breakfast in, taxes in',
+  feel:'A restored <b>1905 townhouse with about ten rooms</b>, run as a genuine bed and breakfast rather than a hotel — original mosaic floors, high moulded ceilings, antique furniture mixed with modern beds, and a small interior courtyard. Breakfast is cooked to order and served at a shared table, which is a different proposition from a buffet. It scores 9.3 across nearly a thousand reviews.',
+  dl:{'The room':'Double Room with Terrace, 24 m² — beds are "1 queen bed + 1 twin bed", so the shape is right without asking. 3 left.','Breakfast':'Included on every rate — it is a B&amp;B, so there is no room-only option','Extras':'The room has its own private terrace','Walk':'5 min to Passeig de Gràcia, 8 to La Pedrera'},
+  catch:'<b>The catch:</b> ten rooms and no lift in some parts of the building — check if stairs are an issue. A small B&amp;B also means no late reception, so tell them your arrival time.',
+  dinner:[["Easy", "La Bodegueta Provença", "4 min", "Provença 233 · quieter and more grown-up than the big tapas halls, and it takes bookings", "€25–35", "Mon–Sat from 07:00 to 01:00 · Sun 13:00–24:00"], ["Sit down", "Cervecería Catalana", "6 min", "Mallorca 236 · the classic Barcelona tapas bar. Point at the glass counter", "€25–35", "Daily 08:30–01:00 · no bookings, go at 20:00"], ["Treat", "Bar Mut", "5 min", "Pau Claris 192 · Michelin Bib Gourmand, Catalan market cooking, rice and grilled fish", "≈€55–75", "Daily 13:00–24:00 · book, it is small"]],
+  links:[['Hotel site and photos','https://www.circa1905.com/'],['Full gallery on Booking','https://www.booking.com/hotel/es/circa-1905-boutique-bed-breakfast.en-gb.html?checkin=2026-11-21&checkout=2026-11-24&group_adults=2&group_children=1&age=10&no_rooms=1']]},
+ {tag:'Nicest stay',n:'H10 Casa Mimosa',a:'Carrer de Pau Claris 179 · Dreta de l\'Eixample · 4★ Sup',lat:41.3958,lng:2.1633,
+  total:'€1,123',per:'3 nights · €374 a night · breakfast in, taxes in',
+  feel:'A <b>listed nineteenth-century Modernist building next door to La Pedrera</b>, and the most obviously lovely of the five. Calm, material interiors — natural light, timber, restraint. It has a <b>leafy modernist garden courtyard</b> called El Til·ler with a raised pool in it, a rooftop plunge pool, and a roof bar looking straight at La Pedrera at sunset. Booking reviewers rate the breakfast "wonderful".',
+  dl:{'The room':'Deluxe Double with Garden View, 32 m² — bed options include "1 king bed"; ask for that rather than the twins. 7 left.','Breakfast':'Included on this rate; taken in the garden room','Third bed':'A proper 90 × 195 sofa bed, not a loveseat','Metro':'Diagonal, 3 min — L3 and L5'},
+  catch:'<b>The catch:</b> the cheapest breakfast-inclusive rate here is non-refundable — the flexible version is about €60 more across the stay. Worth paying for on a trip this far out.',
+  dinner:[["Easy", "La Bodegueta Provença", "6 min", "Provença 233 · vermouth, anchovies, good bread. Calm enough to talk in", "€25–35", "Mon–Sat from 07:00 to 01:00 · Sun 13:00–24:00"], ["Sit down", "Cervecería Catalana", "8 min", "Mallorca 236 · the classic tapas bar — arrive at 20:00 and walk straight to the counter", "€25–35", "Daily 08:30–01:00 · no bookings"], ["Treat", "Bar Mut", "2 min", "Pau Claris 192 · effectively across the street. Michelin Bib Gourmand", "≈€55–75", "Daily 13:00–24:00 · book"]],
+  links:[['Hotel site and photos','https://www.h10hotels.com/en/barcelona-hotels/h10-casa-mimosa/rooms'],['Full gallery on Booking','https://www.booking.com/hotel/es/h10-casa-mimosa.en-gb.html?checkin=2026-11-21&checkout=2026-11-24&group_adults=2&group_children=1&age=10&no_rooms=1']]},
+ {tag:'Best for getting around',n:'Catalonia Plaza Catalunya',a:'Carrer de Bergara 11 · Plaça Catalunya · 4★',lat:41.3865,lng:2.1681,
+  total:'€1,206',per:'3 nights · €402 a night · breakfast in, taxes in',
+  feel:'A <b>fin-de-siècle building from 1899</b> by Emili Salas Cortés — who taught Gaudí — still with its marble staircase, Cuban mahogany doors and a coffered ceiling under a dome. Rooms are warm and contemporary rather than period. The surprise is a <b>heated outdoor pool and solarium in a landscaped interior patio</b>, which is not what you expect a street off Plaça Catalunya. Booking rates the breakfast "exceptional".',
+  dl:{'The room':'Premium Family Room, 28 m² — select "2 twin beds + 1 full bed". 3 left.','Breakfast':'Included on this rate; €29 a head if bought separately, so the upgrade nearly pays for itself','Metro':'Catalunya, 1–2 min — L1, L3, FGC and the Rodalies line straight to Sants','Walk':'6 min to Passeig de Gràcia'},
+  catch:'<b>The catch:</b> Plaça Catalunya is busy and touristy — ask for a patio-facing room. And do not book the cheaper Premium Triple: that one is three separate twins.',
+  dinner:[["Easy", "Ciudad Condal", "5 min", "Rambla de Catalunya 18 · montaditos and tapas on the good end of the street. Nothing to do with La Rambla", "€25–35", "Daily 08:00–01:30 · no bookings"], ["Sit down", "Cuines Santa Caterina", "12 min", "Inside Santa Caterina market · several open kitchens, so everyone orders something different", "€35–45", "Daily 10:00–24:00 · book at weekends"], ["Treat", "El Nacional", "6 min", "Passeig de Gràcia 24 bis · a restored 1870s hall split into four kitchens and three bars", "€45–65", "Open 365 days, noon to midnight · book"]],
+  links:[['Hotel site and photos','https://www.cataloniahotels.com/en/hotel/catalonia-plaza-catalunya'],['Full gallery on Booking','https://www.booking.com/hotel/es/catalonia-plaza-catalunya.en-gb.html?checkin=2026-11-21&checkout=2026-11-24&group_adults=2&group_children=1&age=10&no_rooms=1']]},
+ {tag:'Best address in the city',n:'Sixtytwo Hotel',a:'Passeig de Gràcia 62 · 4★',lat:41.3936,lng:2.1620,
+  total:'€1,412',per:'3 nights · €471 a night · breakfast in, taxes in',
+  feel:'On Passeig de Gràcia itself, <b>between Casa Batlló and La Pedrera</b> — you walk out of the door into the Monday afternoon of this itinerary. A quiet, wood-and-stone contemporary hotel with a small interior garden, scoring 9.4. The location is the product, and it is the best location on either list.',
+  dl:{'The room':'Double Room with Extra Bed, 30 m² — select "1 queen bed + 1 sofa bed". 2 left.','Breakfast':'Included on this rate, and it is a flexible booking','Walk':'La Pedrera 2 min, Casa Batlló 4 min, Plaça Catalunya 10 min','Metro':'Passeig de Gràcia — L2, L3, L4 and the Rodalies line to Sants'},
+  catch:'<b>The catch:</b> the most expensive of the five, and Passeig de Gràcia is a wide, busy shopping street — ask for a room off the front. At €471 it is still inside your ceiling.',
+  dinner:[["Easy", "Cervecería Catalana", "5 min", "Mallorca 236 · the classic. Go at 20:00 and eat at the bar rather than waiting for a table", "€25–35", "Daily 08:30–01:00 · no bookings"], ["Sit down", "Tapas 24", "7 min", "Diputació 269 · proper cooking in a basement tapas bar. Order the bikini", "€30–40", "Daily 12:00–24:00 · book"], ["Treat", "Lomo Alto", "5 min", "Aragó 283 · dry-aged beef over charcoal, and one of the few good rooms that opens at 19:30", "€60–90", "Dinner from 19:30, seven days · book"]],
+  links:[['Hotel site and photos','https://www.sixtytwohotel.com/en/'],['Full gallery on Booking','https://www.booking.com/hotel/es/sixtytwo-barcelona.en-gb.html?checkin=2026-11-21&checkout=2026-11-24&group_adults=2&group_children=1&age=10&no_rooms=1']]}
+],
+mad:[
+ {tag:'Cheapest, opposite the Prado',n:'Mercure Madrid Centro',a:'Calle de Lope de Vega 49 · Barrio de las Letras · 4★',lat:40.4136,lng:-3.6944,
+  total:'€875',per:'3 nights · €292 a night · Standard, breakfast in',
+  feel:'The address is the product here, not the finish. It sits <b>directly opposite the Prado</b>, a flat ten minutes from Atocha, and guests rate the location 4.7–5.0. The hotel itself is a mid-market Accor property that reviewers call dim and a little tired — #228 of 509 in Madrid. What you are buying is a floor plan and a postcode.',
+  dl:{'The room':'Standard Double with Sofa Bed, 25 m² — beds listed as twins plus sofa, so ask for them made up as a double.','The upgrade':'The <b>Junior Suite, 40 m²</b> — a king in its own bedroom, sofa bed in a separate living room, so there is a door between you and her — is <b>€1,109</b> for the three nights (€370 a night), also with breakfast. 1 left.','Breakfast':'Included on both rates, both flexible','Walk':'Across the street from the Prado, 10 min from Atocha, 14 to Plaza Mayor'},
+  catch:'<b>The catch:</b> 3.9/5 on TripAdvisor, with recurring notes about lighting and worn fittings. Look at the gallery before you decide — this is the one where the photographs matter most.',
+  dinner:[["Easy", "Cervecería Cervantes", "3 min", "Plaza de Jesús 7 · a proper local beer-and-tapas bar on a small square. Tortilla, croquetas, gambas", "€20–30", "Daily 11:00–23:00, no gap"], ["Sit down", "Casa Alberto", "6 min", "Huertas 18 · a taberna from 1827, in the house where Cervantes wrote part of Don Quixote. Albóndigas and croquetas", "€30–45", "Bar continuous from 12:00 · dining room from 20:00 · closed Mon"], ["Treat", "TriCiclo", "5 min", "Santa María 28 · modern Spanish, and dishes come in whole, half or third portions — genuinely useful with a child", "≈€55–70", "Dinner 20:00–23:00 · closed Sun · book"]],
+  links:[['Hotel site','https://all.accor.com/hotel/9618/index.en.shtml'],['Full gallery on Booking','https://www.booking.com/hotel/es/mercure-madrid-centro.en-gb.html?checkin=2026-11-24&checkout=2026-11-27&group_adults=2&group_children=1&age=10&no_rooms=1']]},
+ {tag:'Best neighbourhood',n:'Catalonia Las Cortes',a:'Calle del Prado 6 · Barrio de las Letras · 4★',lat:40.4147,lng:-3.6976,
+  total:'€992',per:'3 nights · €331 a night · breakfast in, taxes in',
+  feel:'An <b>eighteenth-century palace conversion</b> on Calle del Prado, in the old literary quarter where Cervantes and Lope de Vega lived — a street of bookshops, tapas bars and tiled façades. Public rooms keep the palace bones: a grand staircase, high ceilings, chandeliers. Bedrooms are ordinary four-star. It scores 9.3.',
+  dl:{'The room':'Triple Room, 19 m² — select "1 twin bed, 1 full bed" rather than the 3-twin option. 2 left.','Breakfast':'Included on this rate, and it is flexible','Walk':'8 min to the Prado, 10 to Plaza Mayor, 12 to Atocha','Neighbourhood':'The best-positioned of the five for evenings out on foot'},
+  catch:'<b>The catch:</b> 19 m² is the smallest room on either list, and Calle del Prado has bars — ask for an interior room.',
+  dinner:[["Easy", "Cervecería Cervantes", "7 min", "Plaza de Jesús 7 · packed with locals, tapas straight through the evening", "€20–30", "Daily 11:00–23:00, no gap"], ["Sit down", "Casa Alberto", "3 min", "Huertas 18 · an 1827 taberna doing real cocina madrileña. Eat croquetas at the bar at 19:15, then move to a table", "€30–45", "Bar from 12:00 · dining room from 20:00 · closed Mon"], ["Treat", "TriCiclo", "3 min", "Santa María 28 · third-portions mean she can have something plain while you eat properly", "≈€55–70", "Dinner 20:00–23:00 · closed Sun · book"]],
+  links:[['Hotel site and photos','https://www.cataloniahotels.com/en/hotel/catalonia-las-cortes'],['Full gallery on Booking','https://www.booking.com/hotel/es/catalonia-las-cortes.en-gb.html?checkin=2026-11-24&checkout=2026-11-27&group_adults=2&group_children=1&age=10&no_rooms=1']]},
+ {tag:'Best reviewed that fits you',n:'Urban Hive Madrid',a:'Calle del Clavel 8 · between Gran Vía and Chueca · 4★',lat:40.4198,lng:-3.6989,
+  total:'€1,028',per:'3 nights · €343 a night · breakfast in, taxes in',
+  feel:'A recently opened design hotel a couple of streets north of Gran Vía, scoring <b>9.5</b> — the highest of anything in Madrid that will sleep the three of you. Warm contemporary interiors, plants, good lighting, a rooftop. The family room is cheerfully called "La Funmily", which tells you the register.',
+  dl:{'The room':'La Funmily, 33 m² — bed options include "1 queen bed + 1 sofa bed". Take that one.','Breakfast':'Included on this rate, and it is flexible','Also there':'"La Supreme Clavel Suite", 68 m² with a separate living room — about €589 a night, over your ceiling','Walk':'5 min to Gran Vía, 12 to Puerta del Sol, 15 to Plaza Mayor'},
+  catch:'<b>The catch:</b> Calle del Clavel sits on the edge of Chueca, which is lively at night — ask for a quiet room. It is also the furthest of the five from Atocha, so taxi in from the train.',
+  dinner:[["Easy", "Mercado de San Antón", "5 min", "Augusto Figueroa 24 · ten show-cooking stalls on the second floor, communal tables, everyone gets what they want", "€15–25", "Stalls to midnight Mon–Sat · no bookings"], ["Sit down", "Celso y Manolo", "3 min", "Libertad 1 · a reworked Madrid tavern — vermouth, good tinned seafood, croquetas. Order more than you think", "€30–40", "Sun–Wed 13:00–01:30, no gap · book"], ["Treat", "Casa Salvador", "4 min", "Barbieri 12 · a 1941 bullfighting tavern hung with photographs. The house dish is battered hake, which she will eat", "≈€45–60", "<b>Dinner Tue–Thu only</b>, 20:30–23:00 — exactly your nights · book"]],
+  links:[['Hotel site','https://www.urbanhivehotels.com/'],['Full gallery on Booking','https://www.booking.com/hotel/es/urban-hive-madrid.en-gb.html?checkin=2026-11-24&checkout=2026-11-27&group_adults=2&group_children=1&age=10&no_rooms=1']]},
+ {tag:'Biggest bed, most space',n:'Hotel Liabeny',a:'Calle de la Salud 3 · between Sol, Callao and Gran Vía · 4★',lat:40.4192,lng:-3.7031,
+  total:'€1,263',per:'3 nights · €421 a night · breakfast in, taxes in',
+  feel:'Independent, contemporary and comfortable rather than characterful — a hotel that competes on service and space, not architecture. Rooms are larger than the central-Madrid average, plainly done, with a Mediterranean restaurant downstairs. Its distinction is the bedding: this is <b>the only room found in either city offering a full king</b>.',
+  dl:{'The room':'<b>Superior Double or Twin, 34 m²</b> — select "1 king bed + 1 sofa bed". ⚠️ 1 left.','Cheaper option':'The 26 m² Double with Extra Bed, queen plus sofa, is €417 a night with breakfast — only €4 less, so take the Superior','Breakfast':'Included, and flexible','Walk':'3 min to the Gran Vía lights, 9 to Plaza Mayor, 12 to the palace'},
+  catch:'<b>The catch:</b> one room left, and it is a 27-minute walk from Atocha — you arrive by train, so budget a taxi in as well as out.',
+  dinner:[["Easy", "Casa Labra", "3 min", "Tetuán 12 · founded 1860, famous for battered cod and cod croquetas over the counter at about €1.50 each", "€15–25", "<b>Dinner from 18:00</b> — the earliest in Madrid"], ["Sit down", "La Barraca", "7 min", "Reina 29 · a Valencian rice house since 1935, up a flight of stairs. Paella valenciana, arroz a banda", "€40–55", "Dinner from 19:30, seven days · book, €50 deposit"], ["Treat", "Lhardy", "6 min", "San Jerónimo 8 · Madrid's grandest surviving dining room, open since 1839. Or use the ground-floor shop for croquetas and consommé", "€80–110 · shop €20–30", "Mon–Sat 13:00–24:00 continuous · book"]],
+  links:[['Rooms and photos','https://www.liabeny.es/en/rooms/'],['Full gallery on Booking','https://www.booking.com/hotel/es/liabeny.en-gb.html?checkin=2026-11-24&checkout=2026-11-27&group_adults=2&group_children=1&age=10&no_rooms=1']]},
+ {tag:'Over budget, but genuinely better',n:'Hotel Regina',a:'Calle de Alcalá 19 · two minutes from Puerta del Sol · 4★',lat:40.4177,lng:-3.7011,
+  total:'€1,719',per:'3 nights · €573 a night · breakfast in, taxes in',
+  feel:'A 1906 building on the corner of Alcalá and Sevilla, restored and scoring <b>9.4</b>. Warm, classical interiors, a proper lobby, and the single most central address on this page: two minutes from Sol, five from Gran Vía, ten from Plaza Mayor. Every rate here includes breakfast as standard.',
+  dl:{'The room':'<b>Alcalá Junior Suite, 35 m²</b> — select "1 king bed + 2 sofa beds". Max 3.','Also there':'A 45 m² Suite with a separate king bedroom at about €672 a night, and two communicating rooms at ~€695','Breakfast':'Included on every rate, all flexible','Walk':'2 min to Sol, 5 to Gran Vía, 10 to Plaza Mayor, 20 to the Prado'},
+  catch:'<b>The catch:</b> €573 a night is €73 over your ceiling and nearly double the Mercure. It earns it on address and reviews, not on space — 35 m² is smaller than Urban Hive\'s room at €230 less.',
+  dinner:[["Easy", "Casa Labra", "5 min", "Tetuán 12 · battered cod at the counter since 1860. The earliest dinner service in the city", "€15–25", "<b>Dinner from 18:00</b>"], ["Sit down", "La Barraca", "5 min", "Reina 29 · proper Valencian paella since 1935. Allow 35 minutes from ordering", "€40–55", "Dinner from 19:30, seven days · book"], ["Treat", "Lhardy", "3 min", "San Jerónimo 8 · 1839, and a continuous kitchen — you can sit down to a formal dinner at 19:30", "€80–110 · shop €20–30", "Mon–Sat 13:00–24:00 continuous · book"]],
+  links:[['Hotel site and photos','https://www.hotelreginamadrid.com/en/'],['Full gallery on Booking','https://www.booking.com/hotel/es/regina-madrid.en-gb.html?checkin=2026-11-24&checkout=2026-11-27&group_adults=2&group_children=1&age=10&no_rooms=1']]}
+]};
+
+var DISCARD = {
+bcn:[
+ ['Olivia Plaza Hotel','€506/night with breakfast','Right on Plaça de Catalunya, 9.3 from 3,400 reviews, and it does have a queen plus a sofa bed. Once breakfast is added to a flexible rate it comes to €506 a night <b>for a 20 m² room</b> — over your ceiling, and beaten on space by the Sixtytwo at €471 on a better street.'],
+ ['Catalonia Magdalenes','€217/night · 9.3','The highest guest score of anything researched, on a quiet lane by the cathedral. Its only three-person room is <b>three separate twin beds</b>, and its queen rooms cap at two adults — so there is no way to get one double bed and a third berth in the same room.'],
+ ['Kimpton Vividora','~€600+/night','A very good Gothic Quarter hotel with a rooftop pool. Its "family room" is really <b>two interconnecting rooms</b>, which is a different and much more expensive product. Twice the ceiling.'],
+ ['Hotel El Palace','€629/night','The 1919 grande dame on Gran Via, and a genuinely great hotel. €129 a night over the ceiling before you have added anything.'],
+ ['Antiga Casa Buenavista','€558/night','9.4 and beautiful, in the Raval. Over budget, and the Raval is the one central district with real night-time street noise for a family.'],
+ ['Radisson Blu 1882','not priced','King plus sofa bed, so the bed shape works, and 200 m from the Sagrada Família. Killed by the rest of the geography: 22 minutes on foot from Passeig de Gràcia and the worst of the candidates for the Sants train.'],
+ ['Catalonia Catedral · Hotel Barcelona Catedral','no availability','Both sit on the pedestrian streets by the cathedral. Catalonia Catedral shows nothing at all for 21–24 November; Hotel Barcelona Catedral disappears the moment a third guest is added.'],
+ ['The Wittmore · The Mirror · Axel · Hotel Rec · Chic &amp; Basic Born','—','All adults-only, or 12-and-over only. She would be turned away at the desk. <b>Sir Victor, Ohla, Cotton House, Neri, Mercer and Serras are NOT adults-only</b> — they are out on price and configuration, not policy.'],
+ ['Motel One · Praktik · Sercotel Rosellón','—','Structurally no triples. Motel One sells a fixed two-person room across the whole chain; Sercotel Rosellón tops out at two people even in its 40 m² junior suite.'],
+ ['Apartments Sixtyfour · Aspasios · Eric Vökel and similar','€150–420/night','Apartments dominate every "Barcelona with kids" list precisely because they solve sleeping three. They are out on your rule rather than on quality — and Spain is legislating a VAT rise from 10% to 21% on tourist rentals.']
+],
+mad:[
+ ['Palacio Tirso de Molina','no breakfast at all','A 99 m² two-bedroom apartment for €500 a night, five minutes below Plaza Mayor — the most space of anything found, and her own bedroom with a door. It is an apart-hotel: <b>the word "breakfast" does not appear on its listing</b>, and there is no meal service. Out on your rule, not on quality.'],
+ ['Catalonia Plaza Mayor','€271/night · 9.4','Right street, right money, excellent reviews — and its only three-person room is <b>two twins plus two bunk beds</b>. Every full-bed room in the building caps at two adults.'],
+ ['Catalonia Atocha','€245/night · 9.2','The same problem at the same chain, and the best arrival in Madrid — ten minutes from the platform. Family Room is twins plus bunks; the full-bed rooms take two people only.'],
+ ['CoolRooms Palacio de Atocha','€964/night','9.5 and a beautiful palace conversion minutes from the station. Its <i>only</i> room that takes three people is a 100 m² two-bedroom suite at nearly a thousand a night.'],
+ ['Only YOU Boutique Madrid','€829/night','Handsome nineteenth-century palace in Chueca, but Chueca is the nightlife district, it is thirty minutes from Atocha, and it is well over budget.'],
+ ['Relais &amp; Châteaux Orfila · Heritage Madrid','€583–845/night','Both superb small luxury hotels. Both over the ceiling, and both in Chamberí/Salamanca rather than on your walking routes.'],
+ ['Four Seasons Madrid','€1,416/night','Nearly three times the ceiling. Wonderful, and you would resent leaving after three nights of paying for it.'],
+ ['NH Collection Palacio de Tepa','over budget','Genuinely has what you want — a 45 m² family room sleeping three with a king or twins, in the Barrio de las Letras. It prices above the ceiling across your dates.'],
+ ['Radisson RED Madrid','—','Six minutes from Atocha and it looked strong until the reviews: repeated reports of neighbouring nightclub noise from about 23:00 until 05:00.'],
+ ['Petit Palace Posada del Peine','not priced','A 1610 building billed as the oldest hotel in Spain, one doorway off Plaza Mayor — the best story on the list. Its bed layouts are unpublished and vary room to room, which is too much to gamble on.'],
+ ['SLEEP\'N Atocha · Latroupe · hostales','€100–241/night','Cheap, central, well reviewed, and registered as <i>hostales</i> or hostels rather than hotels — below the comfort bar you set.']
+]};
+
+var CHECK = [
+ ['<b>The mosaic studio is closed on Mondays in winter.</b> Mosaiccos runs Tue–Fri and Saturday mornings from September to June, so the Monday slot in this plan needs one of three fixes: ask them for a private session, move it to Saturday afternoon, or use the Gràcia studio instead. <b>info@Mosaiccos.com</b> — do this before you fix anything else about Monday.','now'],
+ ['<b>Decide Thursday, then book the train immediately.</b> Both day trips sell out — Renfe added 440 seats a day to the Toledo Avant in 2026 citing high occupancy, and Segovia\'s Alcázar tower tickets go early. Tickets open about three months ahead, so late August.','as soon as it opens'],
+ ['<b>Book the chocolate workshop first.</b> The whole Monday is built on it and the museum publishes no ages, times, days or language. If it runs only in Catalan you want to know while the day is still movable. <b>reserves@museuxocolata.cat</b>','now'],
+ ['<b>Sagrada Família tower slots and Park Güell entries.</b> Both genuinely sell out, both are timed, and Park Güell forfeits your slot if you are more than thirty minutes late.','2–4 weeks ahead'],
+ ['<b>Get the bed configuration in writing.</b> On four of the six rooms here the layout you want is an option you select rather than the default, and booking systems drop it. Say "one double bed for two adults, plus a separate bed or sofa bed for a child".','before paying'],
+ ['<b>The Segovia train leaves from Chamartín, not Atocha</b> — the other side of the city, about twenty minutes on the metro. Buy the Avant in advance.','when booking'],
+ ['<b>Barcelona\'s winter fountain timetable.</b> No renovation notice on the city site, so it is running, but the winter schedule is not published yet. Saturday is a show night under every pattern it has ever used.','late October'],
+ ['<b>Christmas lights dates, both cities.</b> Barcelona\'s switch-on may fall on your arrival Saturday; Madrid\'s has landed between the 21st and 23rd for three years running. Neither is confirmed for 2026.','mid-October'],
+ ['<b>The guard change actually running on the 25th.</b> Wednesdays and Saturdays, but cancelled for rain and for state occasions announced at short notice.','the day before'],
+ ['<b>The Sagrada Família "companion" charge.</b> A €10 line sits in the price table beside "under 11s free". Check what it covers before budgeting it for her.','when booking'],
+ ['<b>Your Madrid terminal.</b> T4 and T4S add about twenty minutes internally and sit ten kilometres from T1–T3. Assignments shift seasonally.','the night before']
+];
+
+/* ============ render ============ */
+function el(t,c,h){var e=document.createElement(t);if(c)e.className=c;if(h!=null)e.innerHTML=h;return e;}
+function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;');}
+function figure(key,alt){
+  var m=IMG[key]; if(!m) return '';
+  return '<figure><img src="'+m.url+'" alt="'+esc(alt)+'" loading="lazy" onerror="this.closest(\'figure\').style.display=\'none\'">'+
+    '<figcaption>'+esc(alt)+' · '+esc(m.by)+', '+esc(m.lic)+' · <a href="'+m.page+'" target="_blank" rel="noopener">Wikimedia Commons</a></figcaption></figure>';
+}
+var COUNT=0;
+function stopHTML(s){
+  var f=''; for(var k in s.facts) f+='<dt>'+k+'</dt><dd>'+s.facts[k]+'</dd>';
+  var imgs = figure(s.img, s.name);
+  if(s.img2) imgs += '<div style="margin-top:10px">'+figure(s.img2, s.name+' — second view')+'</div>';
+  return '<div class="spread" id="stop-'+s.id+'">'+imgs+
+    '<div class="body"><div>'+
+      '<p class="kicker"><span class="when">'+esc(s.when)+'</span> · stop '+(++COUNT)+'</p>'+
+      '<h4>'+esc(s.name)+'</h4>'+
+      '<p class="lede">'+s.lede+'</p>'+
+      '<div class="why"><b>Why it is here.</b> '+s.why+'</div>'+
+      (s.flag?'<div class="warn">'+s.flag+'</div>':'')+
+    '</div><div>'+
+      '<ul class="hl">'+s.hl.map(function(h){return '<li>'+h+'</li>';}).join('')+'</ul>'+
+      '<div class="facts"><dl>'+f+'</dl>'+
+      (s.link?'<a class="go" href="'+s.link+'" target="_blank" rel="noopener">Official site &nearr;</a>':'')+
+      '</div>'+
+    '</div></div></div>';
+}
+var HOPICON='<svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18"/><path d="M6 9l6-6 6 6"/></svg>';
+function choiceHTML(){
+  var o=CHOICE.opts.map(function(x){
+    var m=IMG[x.img];
+    return '<div class="opt'+(x.pick?' pick':'')+'">'+
+      (m?'<img src="'+m.url+'" alt="'+esc(x.n)+'" loading="lazy" onerror="this.style.display=\'none\'">':'')+
+      '<div class="in"><p class="lbl">'+esc(x.lbl)+'</p><h5>'+esc(x.n)+'</h5><p>'+x.p+'</p>'+
+      '<ul>'+x.li.map(function(l){return '<li>'+l+'</li>';}).join('')+'</ul>'+
+      '<p class="foot">'+esc(x.foot)+'</p></div></div>';
+  }).join('');
+  return '<div class="choice"><h4>'+esc(CHOICE.title)+'</h4><p class="intro">'+CHOICE.intro+'</p><div class="opts">'+o+'</div></div>';
+}
+function renderDays(){
+  ['bcn','mad'].forEach(function(city){
+    var host=document.getElementById(city+'-days'); if(!host) return;
+    DAYS.filter(function(d){return d.city===city;}).forEach(function(d){
+      var sec=el('section','wrap');
+      var h='<div class="dayhead"><div class="bar"><span class="date">'+esc(d.date)+'</span><h3>'+esc(d.title)+'</h3><span class="theme">'+esc(d.theme)+'</span></div></div>';
+      d.stops.forEach(function(s){
+        if(s.hop){ h+='<div class="hop">'+HOPICON+'<div>'+s.hop+'</div></div>'; }
+        else if(s.choice){ h+=choiceHTML(); }
+        else { h+=stopHTML(s); }
+      });
+      sec.innerHTML=h; host.appendChild(sec);
+    });
+  });
+}
+function renderHotels(){
+  ['bcn','mad'].forEach(function(city){
+    var host=document.getElementById(city+'-hotels'); if(!host) return;
+    HOTELS[city].forEach(function(x){
+      var dl=''; for(var k in x.dl) dl+='<dt>'+k+'</dt><dd>'+x.dl[k]+'</dd>';
+      host.appendChild(el('div','hotel',
+        '<div class="l"><p class="tag">'+esc(x.tag)+'</p><h4>'+esc(x.n)+'</h4><p class="addr">'+esc(x.a)+'</p>'+
+        '<p class="feel">'+x.feel+'</p><p class="catch">'+x.catch+'</p>'+
+        (x.dinner?('<div class="dinner"><h5>Dinner within a short walk</h5>'+x.dinner.map(function(d){
+          return '<div class="d"><div class="t">'+esc(d[0])+'</div>'+
+                 '<div class="nm">'+esc(d[1])+'<span>'+esc(d[2])+'</span></div>'+
+                 '<div class="ds">'+d[3]+'</div>'+
+                 '<div class="hr">'+d[5]+' · '+esc(d[4])+'</div></div>';
+        }).join('')+'</div>'):'')+'</div>'+
+        '<div class="r"><p class="rate">'+x.total+'<span>'+esc(x.per)+'</span></p><dl>'+dl+'</dl>'+
+        '<div class="links">'+x.links.map(function(l){return '<a href="'+l[1]+'" target="_blank" rel="noopener">'+esc(l[0])+' &nearr;</a>';}).join('')+'</div></div>'));
+    });
+  });
+}
+function renderDiscard(){
+  [['bcn','Barcelona'],['mad','Madrid']].forEach(function(c){
+    var host=document.getElementById(c[0]+'-hoteldiscard'); if(!host) return;
+    var rows=DISCARD[c[0]].map(function(d){
+      return '<div class="alt"><h5>'+d[0]+'</h5><p class="m">'+d[1]+'</p><p>'+d[2]+'</p></div>';
+    }).join('');
+    host.innerHTML='<details class="alts"><summary>Hotels considered and discarded in '+c[1]+
+      ' <small>'+DISCARD[c[0]].length+' entries, each with the reason</small></summary>'+
+      '<div class="in"><div class="altgrid">'+rows+'</div></div></details>';
+  });
+}
+function renderAlts(){
+  [['bcn','Barcelona','Also considered in Barcelona'],['mad','Madrid','Also considered in Madrid']].forEach(function(c){
+    var host=document.getElementById(c[0]+'-alts'); if(!host) return;
+    var rows=ALTS[c[0]].map(function(a){
+      return '<div class="alt"><h5>'+esc(a.n)+'</h5><p class="m">'+esc(a.m)+'</p><p>'+a.p+'</p>'+
+        (a.l?'<p><a href="'+a.l+'" target="_blank" rel="noopener">Official site &nearr;</a></p>':'')+'</div>';
+    }).join('');
+    host.innerHTML='<details class="alts"><summary>'+esc(c[2])+' <small>'+ALTS[c[0]].length+' options, each with the reason it is not in the plan</small></summary>'+
+      '<div class="in"><div class="altgrid">'+rows+'</div></div></details>';
+  });
+}
+function renderCheck(){
+  var ul=document.getElementById('check');
+  CHECK.forEach(function(c){ ul.appendChild(el('li',null,'<span>'+c[0]+'</span><span class="w">'+esc(c[1])+'</span>')); });
+}
+function renderCredits(){
+  var seen={},out=[];
+  DAYS.forEach(function(d){d.stops.forEach(function(s){[s.img,s.img2].forEach(function(k){if(k&&IMG[k]&&!seen[k]){seen[k]=1;out.push(k);}});});});
+  CHOICE.opts.forEach(function(o){ if(o.img&&IMG[o.img]&&!seen[o.img]){seen[o.img]=1;out.push(o.img);} });
+  ['bcn_view'].forEach(function(k){if(IMG[k]&&!seen[k]){seen[k]=1;out.unshift(k);}});
+  document.getElementById('credits').innerHTML = out.map(function(k){
+    var m=IMG[k]; return '<a href="'+m.page+'" target="_blank" rel="noopener">'+esc(decodeURIComponent(m.page.split('File:')[1]).replace(/_/g,' '))+'</a> — '+esc(m.by)+', '+esc(m.lic);
+  }).join(' · ');
+}
+
+/* ============ map ============ */
+var VIEWS={bcn:[[41.3600,2.1150],[41.4200,2.2000]],mad:[[40.4020,-3.7280],[40.4300,-3.6780]],seg:[[40.9350,-4.1400],[40.9530,-4.1050]]};
+function labelIcon(text,cls){
+  return L.divIcon({className:'pinlbl',html:'<div class="b '+(cls||'')+'">'+esc(text)+'</div>',iconSize:null,iconAnchor:[0,0]});
+}
+function initMap(){
+  var map=L.map('map',{scrollWheelZoom:true}).setView([41.390,2.165],13);
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',{
+    attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+    subdomains:'abcd',maxZoom:19}).addTo(map);
+  var n=0;
+  DAYS.forEach(function(d){ d.stops.forEach(function(s){
+    if(!s.lat) return; n++;
+    L.marker([s.lat,s.lng],{icon:labelIcon(n+'. '+s.name,''),zIndexOffset:600})
+      .addTo(map).bindPopup('<b>'+esc(s.name)+'</b><br>'+esc(d.date)+' · '+esc(s.when)+'<br><a href="#stop-'+s.id+'">Read the page &darr;</a>');
+  });});
+  ['bcn','mad'].forEach(function(c){ ALTS[c].forEach(function(a){
+    if(!a.lat) return;
+    L.marker([a.lat,a.lng],{icon:labelIcon(a.n,'alt'),opacity:.85,zIndexOffset:100})
+      .addTo(map).bindPopup('<b>'+esc(a.n)+'</b><br><i>Not in the plan</i><br>'+esc(a.m));
+  });});
+  ['bcn','mad'].forEach(function(c){ HOTELS[c].forEach(function(h){
+    L.marker([h.lat,h.lng],{icon:labelIcon(h.n,'hotel'),zIndexOffset:400})
+      .addTo(map).bindPopup('<b>'+esc(h.n)+'</b><br>'+esc(h.per));
+  });});
+  map.fitBounds(VIEWS.bcn);
+  document.querySelectorAll('.mapctl button').forEach(function(b){
+    b.addEventListener('click',function(){
+      document.querySelectorAll('.mapctl button').forEach(function(x){x.setAttribute('aria-pressed',x===b?'true':'false');});
+      map.flyToBounds(VIEWS[b.dataset.city],{duration:.7});
+    });
+  });
+  setTimeout(function(){map.invalidateSize();},300);
+}
+
+document.getElementById('coverimg').src = IMG.bcn_view.url;
+renderDays(); renderHotels(); renderDiscard(); renderAlts(); renderCheck(); renderCredits();
+if(window.L) initMap(); else document.getElementById('map').innerHTML='<p style="padding:24px;color:#7C726A">The map needs an internet connection to load.</p>';
+</script>
+</body>
+</html>
