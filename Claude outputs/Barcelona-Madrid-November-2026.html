@@ -146,10 +146,23 @@ img{max-width:100%;display:block}
 .mapctl button{font-family:"IBM Plex Mono",monospace;font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;padding:7px 13px;border:1px solid var(--line);background:var(--card);border-radius:20px;cursor:pointer;color:var(--ink2)}
 .mapctl button[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
 .leaflet-container{font-family:"Karla",sans-serif}
-.pinlbl{background:transparent;border:0;box-shadow:none}
-.pinlbl .b{background:var(--glaze);color:#fff;font-family:"IBM Plex Mono",monospace;font-size:11px;font-weight:500;padding:3px 7px;border-radius:3px;white-space:nowrap;box-shadow:0 1px 4px rgba(0,0,0,.3)}
-.pinlbl .b.alt{background:rgba(120,112,104,.82);font-size:10px;padding:2px 6px}
-.pinlbl .b.hotel{background:var(--cobalt)}
+.pin{background:transparent!important;border:0!important;box-shadow:none}
+.pin .w{display:flex;align-items:center;justify-content:center;width:26px;height:26px}
+.pin b{display:flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:50%;
+  font-family:"IBM Plex Mono",monospace;font-size:11.5px;font-weight:600;color:#fff;background:var(--glaze);
+  border:2px solid rgba(255,255,255,.94);box-shadow:0 1px 5px rgba(0,0,0,.35)}
+.pin b.gr{background:rgba(120,112,104,.92);width:20px;height:20px;font-size:10px;border-width:1.5px}
+.pin b.hot{background:var(--cobalt)}
+.leaflet-tooltip.pintip{font-family:"Karla",sans-serif;font-size:12.5px;font-weight:600;line-height:1.35;
+  padding:5px 9px;border:0;border-radius:5px;background:rgba(28,25,22,.93);color:#fff;
+  box-shadow:0 2px 10px rgba(0,0,0,.28);white-space:nowrap}
+.leaflet-tooltip.pintip small{display:block;font-weight:400;font-size:11px;opacity:.72;margin-top:1px}
+.leaflet-tooltip.pintip:before{display:none}
+.pinref{display:inline-flex;align-items:center;justify-content:center;width:23px;height:23px;border-radius:50%;
+  background:var(--cobalt);color:#fff;font-family:"IBM Plex Mono",monospace;font-size:11px;font-weight:600;flex:none}
+.pinref.gr{background:#8B837A;width:17px;height:17px;font-size:9.5px;margin-top:2px}
+.hotel h4{display:flex;align-items:center;gap:11px}
+.alt > h5{display:flex;align-items:flex-start;gap:8px}
 
 /* ---------- collapsed alternates ---------- */
 details.alts{margin-top:34px;background:var(--card);border:1px solid var(--line);border-radius:6px;overflow:hidden}
@@ -217,7 +230,7 @@ footer{background:var(--paper2);border-top:1px solid var(--line);padding:48px 0 
 <section class="wrap" style="padding-top:56px">
   <p class="kicker">Everywhere you are going</p>
   <h2 style="font-size:clamp(28px,4vw,42px);margin:10px 0 8px">The map</h2>
-  <p style="color:var(--ink2);max-width:60ch;margin:0 0 22px">Bright markers are the plan. Faded ones are the alternatives — worth seeing where they sit before you decide to swap anything in. Blue squares are the hotels. Scroll to zoom, drag to pan.</p>
+  <p style="color:var(--ink2);max-width:60ch;margin:0 0 22px">Green numbered circles are the plan, in the order you do them. Grey ones are the alternatives, worth seeing where they sit before you swap anything in. Blue letters are the hotels. Hover any circle for its name; click it to jump to the page. Scroll to zoom, drag to pan.</p>
   <div class="mapctl">
     <button type="button" data-city="bcn" aria-pressed="true">Barcelona</button>
     <button type="button" data-city="mad" aria-pressed="false">Madrid</button>
@@ -225,9 +238,9 @@ footer{background:var(--paper2);border-top:1px solid var(--line);padding:48px 0 
   </div>
   <div id="map"></div>
   <div class="maplegend">
-    <span><i style="background:#1C6E63"></i>In the plan</span>
-    <span><i style="background:#787068;opacity:.75"></i>Alternative</span>
-    <span><i style="background:#2A4A8A;border-radius:2px"></i>Hotel</span>
+    <span><i style="background:#1C6E63;border-radius:50%"></i>Numbered — in the plan</span>
+    <span><i style="background:#787068;opacity:.8;border-radius:50%"></i>Numbered, grey — an alternative</span>
+    <span><i style="background:#2A4A8A;border-radius:50%"></i>Lettered — a hotel</span>
     <span style="color:var(--muted)">Map data © OpenStreetMap contributors</span>
   </div>
 </section>
@@ -709,7 +722,7 @@ function renderHotels(){
     HOTELS[city].forEach(function(x){
       var dl=''; for(var k in x.dl) dl+='<dt>'+k+'</dt><dd>'+x.dl[k]+'</dd>';
       host.appendChild(el('div','hotel',
-        '<div class="l"><p class="tag">'+esc(x.tag)+'</p><h4>'+esc(x.n)+'</h4><p class="addr">'+esc(x.a)+'</p>'+
+        '<div class="l"><p class="tag">'+esc(x.tag)+'</p><h4><span class="pinref">'+esc(x.ltr)+'</span>'+esc(x.n)+'</h4><p class="addr">'+esc(x.a)+'</p>'+
         '<p class="feel">'+x.feel+'</p><p class="catch">'+x.catch+'</p>'+
         (x.dinner?('<div class="dinner"><h5>Dinner within a short walk</h5>'+x.dinner.map(function(d){
           return '<div class="d"><div class="t">'+esc(d[0])+'</div>'+
@@ -736,7 +749,7 @@ function renderAlts(){
   [['bcn','Barcelona','Also considered in Barcelona'],['mad','Madrid','Also considered in Madrid']].forEach(function(c){
     var host=document.getElementById(c[0]+'-alts'); if(!host) return;
     var rows=ALTS[c[0]].map(function(a){
-      return '<div class="alt"><h5>'+esc(a.n)+'</h5><p class="m">'+esc(a.m)+'</p><p>'+a.p+'</p>'+
+      return '<div class="alt"><h5><span class="pinref gr">'+esc(a.idx)+'</span>'+esc(a.n)+'</h5><p class="m">'+esc(a.m)+'</p><p>'+a.p+'</p>'+
         (a.l?'<p><a href="'+a.l+'" target="_blank" rel="noopener">Official site &nearr;</a></p>':'')+'</div>';
     }).join('');
     host.innerHTML='<details class="alts"><summary>Other Activities Considered <small>'+ALTS[c[0]].length+' in '+esc(c[1])+', each with the reason it is not in the plan</small></summary>'+
@@ -759,31 +772,37 @@ function renderCredits(){
 
 /* ============ map ============ */
 var VIEWS={bcn:[[41.3600,2.1150],[41.4200,2.2000]],mad:[[40.4020,-3.7280],[40.4300,-3.6780]],seg:[[40.9350,-4.1400],[40.9530,-4.1050]],tol:[[39.8500,-4.0400],[39.8640,-4.0180]]};
-function labelIcon(text,cls){
-  return L.divIcon({className:'pinlbl',html:'<div class="b '+(cls||'')+'">'+esc(text)+'</div>',iconSize:null,iconAnchor:[0,0]});
+function pinIcon(text,cls){
+  return L.divIcon({className:'pin',html:'<span class="w"><b class="'+(cls||'')+'">'+esc(text)+'</b></span>',
+    iconSize:[26,26],iconAnchor:[13,13],popupAnchor:[0,-13],tooltipAnchor:[0,-14]});
 }
+function tip(title,sub){ return '<span>'+esc(title)+(sub?'<small>'+esc(sub)+'</small>':'')+'</span>'; }
 function initMap(){
   var map=L.map('map',{scrollWheelZoom:true}).setView([41.390,2.165],13);
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{
     attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
     subdomains:'abc',maxZoom:19}).addTo(map);
+  var TIP={className:'pintip',direction:'top',opacity:1,sticky:false};
   var n=0;
   DAYS.forEach(function(d){ d.stops.forEach(function(s){
     if(!s.lat) return; n++;
-    L.marker([s.lat,s.lng],{icon:labelIcon(n+'. '+s.name,''),zIndexOffset:600})
-      .addTo(map).bindPopup('<b>'+esc(s.name)+'</b><br>'+esc(d.date)+' · '+esc(s.when)+'<br><a href="#stop-'+s.id+'">Read the page &darr;</a>');
+    L.marker([s.lat,s.lng],{icon:pinIcon(n,''),zIndexOffset:600,riseOnHover:true})
+      .addTo(map)
+      .bindTooltip(tip(s.name, d.date+' · '+s.when), TIP)
+      .bindPopup('<b>'+esc(s.name)+'</b><br>'+esc(d.date)+' · '+esc(s.when)+'<br><a href="#stop-'+s.id+'">Read the page &darr;</a>');
   });});
   ['bcn','mad'].forEach(function(c){ ALTS[c].forEach(function(a){
     if(!a.lat) return;
-    L.marker([a.lat,a.lng],{icon:labelIcon(a.n,'alt'),opacity:.85,zIndexOffset:100})
-      .addTo(map).bindPopup('<b>'+esc(a.n)+'</b><br><i>Not in the plan</i><br>'+esc(a.m));
+    L.marker([a.lat,a.lng],{icon:pinIcon(a.idx,'gr'),zIndexOffset:100,riseOnHover:true})
+      .addTo(map)
+      .bindTooltip(tip(a.n, 'Not in the plan · '+a.m), TIP)
+      .bindPopup('<b>'+esc(a.n)+'</b><br><i>Not in the plan</i><br>'+esc(a.m));
   });});
   ['bcn','mad'].forEach(function(c){ HOTELS[c].forEach(function(h){
-    var nm=h.n.replace('Catalonia ','C. ').replace(/^Hotel /,'').replace(' Madrid Centro',' Centro')
-              .replace(' Hotel','').replace('Palacio ','P. ');
-    if(nm.length>18) nm=nm.slice(0,17)+'…';
-    L.marker([h.lat,h.lng],{icon:labelIcon(nm,'hotel'),zIndexOffset:400})
-      .addTo(map).bindPopup('<b>'+esc(h.n)+'</b><br>'+esc(h.per));
+    L.marker([h.lat,h.lng],{icon:pinIcon(h.ltr,'hot'),zIndexOffset:400,riseOnHover:true})
+      .addTo(map)
+      .bindTooltip(tip(h.n, h.per), TIP)
+      .bindPopup('<b>'+esc(h.n)+'</b><br>'+esc(h.per));
   });});
   map.fitBounds(VIEWS.bcn);
   document.querySelectorAll('.mapctl button').forEach(function(b){
@@ -795,6 +814,10 @@ function initMap(){
   setTimeout(function(){map.invalidateSize();},300);
 }
 
+(function(){
+  var n=0; ['bcn','mad'].forEach(function(c){ ALTS[c].forEach(function(a){ a.idx=++n; }); });
+  var i=0; ['bcn','mad'].forEach(function(c){ HOTELS[c].forEach(function(h){ h.ltr=String.fromCharCode(65+(i++)); }); });
+})();
 document.getElementById('coverimg').src = IMG.bcn_view.url;
 renderDays(); renderHotels(); renderDiscard(); renderAlts(); renderCheck(); renderCredits();
 if(window.L) initMap(); else document.getElementById('map').innerHTML='<p style="padding:24px;color:#7C726A">The map needs an internet connection to load.</p>';
