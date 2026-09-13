@@ -106,7 +106,7 @@ a.chip[aria-current="true"] i{color:rgba(251,249,245,.62)}
 .spread .why b{color:var(--ink);font-family:"Fraunces",serif;font-weight:600}
 .optbadge{display:inline-block;font-family:"IBM Plex Mono",monospace;font-size:9px;letter-spacing:.13em;
   text-transform:uppercase;color:var(--paper);background:var(--ochre);padding:3px 8px;border-radius:10px;margin-left:4px}
-.spread.opt h4{font-style:italic;font-weight:400}
+.spread.softstop h4{font-style:italic;font-weight:400}
 .optbadge.pb{background:var(--cobalt)}
 .planb{margin:56px 0 -34px;font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.14em;
   text-transform:uppercase;color:var(--paper);background:var(--cobalt);display:inline-block;padding:6px 13px;border-radius:4px}
@@ -288,7 +288,7 @@ body.dockopen{--dockpad:0px}
 .pin b.from{background:var(--ochre);width:27px;height:27px;font-size:12px}
 .pin b.to{background:var(--glaze);width:27px;height:27px;font-size:12px}
 .pin b.rest{background:rgba(28,110,99,.8)}
-.pin b.opt{background:var(--ochre);border-style:dashed}
+.pin b.soft{background:var(--ochre);border-style:dashed}
 .leaflet-marker-icon{transition:opacity .25s}
 
 @media (max-width:820px){
@@ -818,7 +818,7 @@ function stopHTML(s){
   var f=''; for(var k in s.facts) f+='<dt>'+k+'</dt><dd>'+s.facts[k]+'</dd>';
   var imgs = figure(s.img, s.name);
   if(s.img2) imgs += '<div style="margin-top:10px">'+figure(s.img2, s.name+' — second view')+'</div>';
-  return '<div class="spread'+(s.opt||s.planb?' opt':'')+'" id="stop-'+s.id+'" data-anchor="stop:'+s.id+'">'+imgs+
+  return '<div class="spread'+(s.opt||s.planb?' softstop':'')+'" id="stop-'+s.id+'" data-anchor="stop:'+s.id+'">'+imgs+
     '<div class="body"><div>'+
       '<p class="kicker"><span class="when">'+esc(s.when)+'</span> · stop '+(++COUNT)+(s.opt?' <span class="optbadge">optional</span>':(s.planb?' <span class="optbadge pb">plan B</span>':''))+'</p>'+
       '<h4>'+esc(s.name)+'</h4>'+
@@ -966,7 +966,7 @@ function initMap(){
     attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OSM</a>',subdomains:'abc',maxZoom:19}).addTo(MAP);
   var TIP={className:'pintip',direction:'top',opacity:1,sticky:false};
   SEQ.forEach(function(o){
-    var m=L.marker([o.lat,o.lng],{icon:pinIcon(o.n,o.soft?'rest opt':'rest'),riseOnHover:true}).addTo(MAP)
+    var m=L.marker([o.lat,o.lng],{icon:pinIcon(o.n,o.soft?'rest soft':'rest'),riseOnHover:true}).addTo(MAP)
       .bindTooltip(tip(o.name,(o.tag?o.tag+' · ':'')+o.day.dow+' · '+o.when),TIP);
     m.on('click',function(){goTo(o.id);});
     MK[o.id]=m;
@@ -1004,7 +1004,7 @@ function paint(force){
     var cur=SEQ[i],prev=SEQ[i-1]||null,next=SEQ[i+1]||null;
     SEQ.forEach(function(o,j){
       var cls = j===i?'now' : (prev&&j===i-1?'from' : (next&&j===i+1?'to':'rest'));
-      MK[o.id].setIcon(pinIcon(o.n,cls+(o.soft?' opt':'')));
+      MK[o.id].setIcon(pinIcon(o.n,cls+(o.soft?' soft':'')));
       MK[o.id].setOpacity(cls==='rest' ? (o.geo===cur.geo?.34:.1) : 1);
       MK[o.id].setZIndexOffset(cls==='now'?1400:(cls==='rest'?0:800));
     });
@@ -1031,7 +1031,7 @@ function paint(force){
     var city=MODE.city, pts2=[];
     SEQ.forEach(function(o){
       var on=o.geo===city;
-      MK[o.id].setIcon(pinIcon(o.n,o.soft?'rest opt':'rest'));
+      MK[o.id].setIcon(pinIcon(o.n,o.soft?'rest soft':'rest'));
       MK[o.id].setOpacity(on?(o.soft?.75:1):.08);
       MK[o.id].setZIndexOffset(on?(o.soft?300:600):0);
       if(on) pts2.push(o);
