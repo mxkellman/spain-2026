@@ -190,7 +190,7 @@ a.chip[aria-current="true"] i{color:rgba(251,249,245,.62)}
 .pin b{display:flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:50%;
   font-family:"IBM Plex Mono",monospace;font-size:11.5px;font-weight:600;color:#fff;background:var(--glaze);
   border:2px solid rgba(255,255,255,.94);box-shadow:0 1px 5px rgba(0,0,0,.35)}
-.pin b.gr{background:rgba(120,112,104,.92);width:20px;height:20px;font-size:10px;border-width:1.5px}
+.pin b.gr{background:#BDB5AC;width:20px;height:20px;font-size:10px;border-width:1.5px}
 .pin b.hot{background:var(--cobalt)}
 .leaflet-tooltip.pintip{font-family:"Karla",sans-serif;font-size:12.5px;font-weight:600;line-height:1.35;
   padding:5px 9px;border:0;border-radius:5px;background:rgba(28,25,22,.93);color:#fff;
@@ -199,7 +199,7 @@ a.chip[aria-current="true"] i{color:rgba(251,249,245,.62)}
 .leaflet-tooltip.pintip:before{display:none}
 .pinref{display:inline-flex;align-items:center;justify-content:center;width:23px;height:23px;border-radius:50%;
   background:var(--cobalt);color:#fff;font-family:"IBM Plex Mono",monospace;font-size:11px;font-weight:600;flex:none}
-.pinref.gr{background:#8B837A;width:17px;height:17px;font-size:9.5px;margin-top:2px}
+.pinref.gr{background:#BDB5AC;width:17px;height:17px;font-size:9.5px;margin-top:2px}
 .hotel h4{display:flex;align-items:center;gap:11px}
 .alt > h5{display:flex;align-items:flex-start;gap:8px}
 
@@ -295,7 +295,16 @@ body.dockopen{--dockpad:0px}
 .pin b.from{background:var(--ochre);width:27px;height:27px;font-size:12px}
 .pin b.to{background:var(--glaze);width:27px;height:27px;font-size:12px}
 .pin b.rest{background:rgba(28,110,99,.8)}
-.pin b.soft{background:var(--ochre);border-style:dashed}
+.pin b.soft{background:#6B645D}
+.pin b.sub{font-size:10px;letter-spacing:-.03em}
+.pin b.air{background:#181614;color:#fff}
+.pin b.air svg{display:block}
+.docktrack .route{font-size:12.5px;line-height:1.6;color:var(--ink2);padding-top:4px;border-top:1px solid var(--line2);margin-top:2px}
+.docktrack .route i{color:var(--muted)}
+.docktrack .route span{color:var(--muted);font-size:11px}
+.daykey{display:flex;flex-wrap:wrap;gap:4px 14px;font-size:12px;color:var(--ink2)}
+.daykey i{display:inline-block;width:16px;height:3px;border-radius:2px;margin-right:6px;vertical-align:3px}
+.pinref.op{background:#6B645D;width:auto;min-width:24px;height:20px;padding:0 6px;border-radius:10px;font-size:10px;margin-right:7px;vertical-align:1px}
 .leaflet-marker-icon{transition:opacity .25s}
 
 @media (max-width:820px){
@@ -332,30 +341,10 @@ body.dockopen{--dockpad:0px}
   </div>
 </nav>
 
-<section class="wrap" style="padding-top:56px">
-  <p class="kicker">Everywhere you are going</p>
-  <h2 style="font-size:clamp(28px,4vw,42px);margin:10px 0 8px">The map follows you</h2>
-  <p style="color:var(--ink2);max-width:64ch;margin:0 0 20px">The map is a panel you can open at any point and leave open. As you read down the itinerary it keeps pace with you: it marks <b>where you are</b>, <b>where you have just come from</b> and <b>where you are going next</b>, draws the leg between them, and dims everything else. The things you decided against stay on it, greyed, so you can see where they sit before you swap anything in. Open a city instead and it shows that city whole.</p>
-  <div class="mapcta">
-    <button type="button" class="openmap" data-openmap>
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3 3 6v15l6-3 6 3 6-3V3l-6 3Z"/><path d="M9 3v15"/><path d="M15 6v15"/></svg>
-      Open the map
-    </button>
-    <span class="mapctahint">It stays pinned to the corner while you scroll.</span>
-  </div>
-  <div class="maplegend">
-    <span><i style="background:#96322A"></i>Where you are</span>
-    <span><i style="background:#B87514"></i>Where you came from</span>
-    <span><i style="background:#1C6E63"></i>Where you go next</span>
-    <span><i style="background:#2A4A8A"></i>Your hotel</span>
-    <span><i style="background:#8B837A;opacity:.75"></i>Considered, not chosen</span>
-  </div>
-</section>
-
 <section class="citybreak wrap" id="barcelona" data-anchor="city:bcn">
   <p class="kicker">Part one · three nights</p>
   <h2>Barcelona</h2>
-  <p>Short days — the sun is gone by twenty-five past five — and the first mornings belong to the jet lag rather than to you, so <b>nothing happens before half eleven on any of them</b>. The whole Barcelona half is pinned to one immovable thing: the chocolate workshop runs at weekends only and has a single session, <b>12:30 on Sunday</b>. Everything else was arranged around it, and the arrangement turned out well — Sunday now runs trencadís on a façade, then in chocolate, then underneath you on the Park Güell terrace, all in four hours. Monday is the basilica and then one street in the dark.</p>
+  <p>Short days — the sun is gone by 5:25 — and the first mornings belong to the jet lag rather than to you, so <b>nothing happens before 11:30 on any of them</b>. The whole Barcelona half is pinned to one immovable thing: the chocolate workshop runs at weekends only and has a single session, <b>12:30 on Sunday</b>. Everything else was arranged around it, and the arrangement turned out well — Sunday now runs trencadís on a façade, then in chocolate, then underneath you on the Park Güell terrace, all in four hours. Monday is the basilica and then one street in the dark.</p>
 </section>
 <div id="bcn-days"></div>
 <div class="wrap" id="bcn-alts" style="padding-top:44px"></div>
@@ -416,7 +405,7 @@ body.dockopen{--dockpad:0px}
     </div>
     <div class="note">
       <h4>Dinner at nine, and how to cope</h4>
-      <p>Spanish kitchens open for dinner at 20:00–20:30 and 21:00 is normal. Make <b>lunch</b> the big meal and take the €13–20 <i>menú del día</i>, and bridge the gap with a <b>merienda</b> of churros and thick chocolate around half five — a real meal slot here, not a cheat.</p>
+      <p>Spanish kitchens open for dinner at 20:00–20:30 and 21:00 is normal. Make <b>lunch</b> the big meal and take the €13–20 <i>menú del día</i>, and bridge the gap with a <b>merienda</b> of churros and thick chocolate around 5:30 — a real meal slot here, not a cheat.</p>
       <p>The trick that actually works with a child is <b>eat at a counter, not a table</b>. Barcelona's Eixample tapas houses — Cervecería Catalana, Vinitus, Ciudad Condal, La Bodegueta — serve straight through the afternoon, so at 20:00 you get instant service in an empty room, while the same place at 21:15 is a forty-minute wait. In Madrid the equivalents are <b>Casa Labra, which starts dinner at 18:00</b>, La Barraca at 19:30, and Lhardy's continuous kitchen.</p>
       <p>Each hotel section lists three places within a few minutes' walk of your own door, checked for the nights you are actually there — which matters in Barcelona, where a lot of good restaurants close on Sunday or Monday.</p>
     </div>
@@ -492,7 +481,9 @@ body.dockopen{--dockpad:0px}
     <span><i style="background:#B87514"></i>From</span>
     <span><i style="background:#1C6E63"></i>Next</span>
     <span><i style="background:#2A4A8A"></i>Hotel</span>
-    <span><i style="background:#8B837A"></i>Not chosen</span>
+    <span><i style="background:#6B645D"></i>Optional</span>
+    <span><i style="background:#BDB5AC"></i>Not chosen</span>
+    <span><i style="background:#181614"></i>Airport</span>
   </div>
 </aside>
 
@@ -502,47 +493,43 @@ var IMG={"sagrada_ext": {"url": "https://upload.wikimedia.org/wikipedia/commons/
 var DAYS = [
 {city:'bcn',key:'sat',nav:'Arrive',dow:'Sat',view:'bcn',date:'Sat 21 Nov',title:'Land, and do almost nothing',theme:'Ten minutes from the hotel',stops:[
   {hop:'<b>Airport to the hotel, and nowhere else.</b> A taxi from El Prat into the centre is a flat <b>€39</b> and about twenty-five minutes; the Aerobús A1/A2 is €7.25 a head and sets you down on Plaça de Catalunya, two minutes from the door of the <b>Catalonia Plaza Catalunya</b>. Check-in is from 15:00 and the desk takes the suitcases whatever time you land. Then stop moving.'},
-  {id:'arrive',when:'Afternoon',name:'An afternoon with nothing in it',img:'born',lat:41.3870,lng:2.1701,
+  {id:'arrive',when:'Afternoon',name:'An afternoon with nothing in it',img:'born',lat:41.3865,lng:2.1681,nopin:true,
+   opts:[{k:'a',name:'El Corte Inglés, top floor',lat:41.3876,lng:2.1706},{k:'b',name:'Cathedral cloister',lat:41.3840,lng:2.1762},{k:'c',name:'Passeig de Gràcia after dark',lat:41.3908,lng:2.1662}],
    lede:'This is the day you have just crossed an ocean, and the plan is a nap and a ten-minute radius. Everything below is optional, interchangeable and abandonable the moment somebody flags — pick one, or pick none and sit in the hotel patio. Nothing here is booked, ticketed or timed, which is the entire point of it.',
-   hl:['<b>The top floor of El Corte Inglés</b>, across the square from your door — free lift, a food hall and a terrace looking over Plaça de Catalunya and down toward the sea. Maximum payoff, two minutes from your bed','<b>The Gothic Quarter and the cathedral cloister</b>, ten minutes on foot — and thirteen geese live in the cloister, which lands with a ten-year-old better than any museum would today','<b>Passeig de Gràcia after dark</b>, six minutes away — Casa Batlló and La Pedrera lit from the outside, free, and a preview of Monday rather than a repeat of it','<b>Or nothing at all.</b> The hotel has a heated pool in the interior patio. Using it is a completely respectable way to spend a first afternoon'],
-   why:'The version of this day that goes wrong is the one with a museum in it. You will have six more days of walking, three of them heavily programmed, and the single best thing you can do for all of them is to arrive, sleep, eat early and go to bed at a normal hour.',
+   hl:['<span class="pinref op">1a</span><b>The top floor of El Corte Inglés</b>, across the square from your door — free lift, a food hall and a terrace looking over Plaça de Catalunya and down toward the sea. Maximum payoff, two minutes from your bed','<span class="pinref op">1b</span><b>The Gothic Quarter and the cathedral cloister</b>, ten minutes on foot — and thirteen geese live in the cloister, which lands with a ten-year-old better than any museum would today','<span class="pinref op">1c</span><b>Passeig de Gràcia after dark</b>, six minutes away — Casa Batlló and La Pedrera lit from the outside, free, and a preview of Monday rather than a repeat of it','<b>Or nothing at all.</b> The hotel has a heated pool in the interior patio. Using it is a completely respectable way to spend a first afternoon'],
    facts:{'Sunset':'17:25 — it is dark by six','El Corte Inglés':'Pl. de Catalunya 14 · Mon–Sat to 21:00 · lift to the top floor is free','Cathedral cloister':'Pla de la Seu, 10 min · small entry fee, about half an hour','Dinner':'Ciudad Condal, 5 min — it serves continuously from 08:00, so there is no 21:00 problem'},
-   flag:'<b>The one piece of advice worth taking.</b> Sleep in the afternoon if you need to, but set an alarm for about half five and get up. Going to bed at six on the first night is what produces a family standing in a hotel room at two in the morning; eating at seven and sleeping at nine is what resets everybody by Sunday.'},
+   flag:'<b>The one piece of advice worth taking.</b> Sleep in the afternoon if you need to, but set an alarm for about 5:30 and get up. Going to bed at six on the first night is what produces a family standing in a hotel room at two in the morning; eating at seven and sleeping at nine is what resets everybody by Sunday.'},
   {hop:'<b>Only if the afternoon has gone well.</b> Espanya is eight minutes from Catalunya on the L1 and the fountain is at the bottom of the steps below the Palau Nacional. If nobody is up for it, skip straight past — there is nothing to cancel and nothing is lost.'},
   {id:'fountain',opt:true,when:'If you are up for it · 20:00',name:'The Magic Fountain',img:'fountain',lat:41.3712,lng:2.1518,
    lede:'Two and a half thousand litres of water a second, lit and choreographed to music, below the floodlit palace. Built for the 1929 Exposition and still doing exactly what it was built to do. It is free, it takes twenty minutes, and it is the least complicated thing on this entire itinerary.',
    hl:['<b>Saturday is the only night it is possible.</b> In November the fountain runs Thursday, Friday and Saturday only, and you leave on Tuesday afternoon','Shows at 20:00 and 20:30 — the first is less crowded','Free, no ticket, no booking, just turn up. Stand on the Avinguda side rather than up by the museum','<b>20:00 in Barcelona is noon by your body clock.</b> The obstacle is the overnight flight, not the hour — so this is a decision to make at six, not one to make now'],
-   why:'Left here as an option rather than a plan. It costs nothing, asks nothing and is twenty minutes long, so if the nap worked it is the cheapest good evening in the city — and if it did not, it is the easiest thing in the week to drop.',
    facts:{'When':'November: Thursday to Saturday only, 20:00–21:00','Price':'Free','Time':'Twenty minutes, plus twenty either side','Getting there':'L1 Catalunya → Espanya, eight minutes','Getting back':'A taxi to the hotel door is €10–12 and ten minutes','Worth knowing':'Re-check the timetable in late October — the city publishes the winter schedule then'},
    flag:'If you skip it, you are not trading it for another night: <b>there is no other night</b>. The evening spectacle moves to Sunday instead, where the Christmas lights switch-on may well be waiting for you on Passeig de Gràcia.',
    link:'https://www.barcelona.cat/en/what-to-do-in-bcn/magic-fountain'},
   {hop:'<b>Back to the hotel.</b> Espanya to Catalunya is four stops on L1, about eight minutes, and the Carrer de Bergara entrance is two minutes from the station exit. If she is asleep on her feet by then, a taxi across is €10–12.'}
 ]},
 {city:'bcn',key:'sun',nav:'Chocolate',dow:'Sun',view:'bcn',date:'Sun 22 Nov',title:'Build the bench, then go and sit on it',theme:'Passeig de Gràcia → El Born → Park Güell',stops:[
-  {hop:'<b>Nothing before half eleven.</b> This is the deepest hour of the jet lag — about eighteen hours in Spain — so there is no alarm and nothing to get through first. Hotel breakfast runs late; take all of it.'},
-  {hop:'<b>The stop along the way: Casa Batlló, from the pavement.</b> Leave Carrer de Bergara around a quarter past eleven and walk six minutes up Passeig de Gràcia. You are not going in — that is tomorrow evening if you want it. The point is the <b>façade</b>, which is entirely <b>trencadís</b>: broken ceramic and coloured glass set across the whole front so it shifts as you move. Ten minutes on the pavement opposite, and she has seen the technique at full scale an hour before she builds it in chocolate. Then straight down into Passeig de Gràcia station: the L4 runs to Jaume I in three stops, and the museum is six minutes from the exit.'},
+  {hop:'<b>Nothing before 11:30.</b> This is the deepest hour of the jet lag — about eighteen hours in Spain — so there is no alarm and nothing to get through first. Hotel breakfast runs late; take all of it.'},
+  {hop:'<b>The stop along the way: Casa Batlló, from the pavement.</b> Leave Carrer de Bergara around 11:15 and walk six minutes up Passeig de Gràcia. You are not going in — that is tomorrow evening if you want it. The point is the <b>façade</b>, which is entirely <b>trencadís</b>: broken ceramic and coloured glass set across the whole front so it shifts as you move. Ten minutes on the pavement opposite, and she has seen the technique at full scale an hour before she builds it in chocolate. Then straight down into Passeig de Gràcia station: the L4 runs to Jaume I in three stops, and the museum is six minutes from the exit.'},
   {id:'xocolata',when:'12:30, booked',name:'The Xoco Trencadís workshop',img:'xocolata',lat:41.3873,lng:2.1826,
    lede:'A chocolate museum in a former monastery in the Born, where the entry ticket is a bar of chocolate. The workshop is Xoco Trencadís: you build a Gaudí-style broken-tile mosaic, in chocolate, an hour after seeing the real technique on the front of Casa Batlló and three hours before sitting on the most famous example of it in the world. The museum itself is included, so you carry on round it afterwards.',
    hl:['€13 a head including museum entry — €39 for all three','<b>12:30 is the only session there is.</b> The family workshops run at weekends only and this is the single slot — everything else in Barcelona was arranged around it','About an hour in the workshop, then as much of the museum as she wants','Ten minutes on foot from the Mosaiccos studio you come back to on Tuesday morning'],
-   why:'It is the mosaic workshop, the chocolate workshop and the Gaudí workshop in one hour, and there is nothing quite like it in another city. It also now sits in the middle of the best sequence of the week: the façade at half eleven, the chocolate at half twelve, the real bench at half three.',
-   facts:{'Booked':'<b>Sunday 22 November, 12:30</b> — the only session offered','Where':'C. del Comerç 36, El Born — Jaume I or Arc de Triomf','Paid':'€39 — 2 adults €26, 1 child €13, museum entry included','Language':'<b>Catalan</b> — see the note below','Be there':'A quarter past twelve'},
+   facts:{'Booked':'<b>Sunday 22 November, 12:30</b> — the only session offered','Where':'C. del Comerç 36, El Born — Jaume I or Arc de Triomf','Paid':'€39 — 2 adults €26, 1 child €13, museum entry included','Language':'<b>Catalan</b> — see the note below','Be there':'12:15'},
    flag:'<b>The ticket says the session runs in Catalan.</b> That is the one thing worth an email before you fly, and there is no second session to switch to. Two things to ask <b>reserves@museuxocolata.cat</b> (+34 932 68 78 78): whether the monitor can run it in Spanish or English for your group, and if not, whether a Saturday session on the 21st is in either. If the answer is no to both, it is still probably fine — this is a demonstrate-and-copy workshop with your hands in melted chocolate, not a lecture — but you want to know before you are standing there, not while she is looking at you.',
    link:'https://museudelaxocolata.cat/en/family-workshops-and-all-audiences/family-workshops-and-all-audiences/'},
-  {hop:'<b>Lunch in the Born, and be moving by a quarter to three.</b> This quarter serves straight through the afternoon, which is what you need on a Sunday when the rest of the Eixample has shut its kitchen. If the workshop runs short, <b>Parc de la Ciutadella</b> is two minutes behind the museum and the monumental cascade in it is a young Gaudí\'s first public work — five minutes, free, and the earliest thing by him you will see all week. Then a taxi across to Park Güell: about thirty minutes and €18–22, and worth every euro against forty minutes and a change on the metro.'},
+  {hop:'<b>Lunch in the Born, and be moving by 2:45.</b> This quarter serves straight through the afternoon, which is what you need on a Sunday when the rest of the Eixample has shut its kitchen. If the workshop runs short, <b>Parc de la Ciutadella</b> is two minutes behind the museum and the monumental cascade in it is a young Gaudí\'s first public work — five minutes, free, and the earliest thing by him you will see all week. Then a taxi across to Park Güell: about thirty minutes and €18–22, and worth every euro against forty minutes and a change on the metro.'},
   {id:'parkguell',when:'15:30, booked',name:'Park Güell',img:'guell_bench',img2:'guell_drac',lat:41.4145,lng:2.1527,
    lede:'A failed housing development that became the best public space in Barcelona. The mosaic bench snakes around a terrace with the whole city underneath it; the gatehouses look like they were piped out of a bag; and the salamander on the stairs is the single most photographed lizard in Europe. She will have built a small version of that bench three hours earlier, in chocolate.',
-   hl:['Children 7–12 pay €13.50 — €49.50 for the three of you','<b>The park closes at 17:30 and sunset is 17:25</b>, so a half-three entry gives you two hours that end in the gold and then you are walked out into the dark','Go straight for the dragon stairway, the hypostyle hall and the terrace — the free zone can wait for a life you are not living this week','Thirty minutes\' grace after your slot, and no re-entry once you leave'],
-   why:'It is the picture she already has in her head, and putting it three hours after the chocolate is the best thing this itinerary does. She makes the thing, and then stands on a hundred metres of it above the city with the light going.',
+   hl:['Children 7–12 pay €13.50 — €49.50 for the three of you','<b>The park closes at 17:30 and sunset is 17:25</b>, so a 3:30 entry gives you two hours that end in the gold and then you are walked out into the dark','Go straight for the dragon stairway, the hypostyle hall and the terrace — the free zone can wait for a life you are not living this week','Thirty minutes\' grace after your slot, and no re-entry once you leave'],
    facts:{'Booked':'<b>Sunday 22 November, 15:30</b>','Paid':'€49.50 — €18 each for the two of you, €13.50 for Pippa','Bring':'<b>Photo ID.</b> Tickets are named and non-transferable, and staff may check','Hours':'Winter 09:30–17:30 · <b>last entry 16:30</b>','If the day goes wrong':'Date and time can be moved up to the day before, subject to availability — but there are no refunds','Getting away':'Walk down into Gràcia — downhill all the way'},
    link:'https://parkguell.barcelona/en/planning-your-visit/prices-and-times'},
   {hop:'<b>Downhill into Gràcia for dinner.</b> Fifteen minutes on foot, all of it down, and you come out in Plaça de la Virreina or Plaça del Sol — the best squares in the city to eat in with a tired child, because nobody there minds. Fontana on the L3 is then six stops to Catalunya, or a taxi to the hotel door for about €12.'}
 ]},
 {city:'bcn',key:'mon',nav:'Sagrada',dow:'Mon',view:'bcn',date:'Mon 23 Nov',title:'The basilica, and one street in the dark',theme:'Sagrada Família → Sant Pau → Passeig de Gràcia',stops:[
-  {hop:'<b>Out at about half past ten.</b> Catalunya to Sagrada Família is the L1 to Urquinaona then the L4, fifteen minutes, or a flat ten-minute taxi for €9–11. Monday to Saturday the basilica opens at nine, which is the whole reason this is not a Sunday — and eleven o\'clock is still comfortably inside the morning light.'},
+  {hop:'<b>Out at about 10:30.</b> Catalunya to Sagrada Família is the L1 to Urquinaona then the L4, fifteen minutes, or a flat ten-minute taxi for €9–11. Monday to Saturday the basilica opens at nine, which is the whole reason this is not a Sunday — and 11:00 is still comfortably inside the morning light.'},
   {id:'sagrada',when:'11:00 · Nativity tower at 11:30',name:'Sagrada Família',img:'sagrada_ext',img2:'sagrada_int',lat:41.4036,lng:2.1744,
    lede:'Gaudí described the interior as a forest and then built one: the columns branch, the light falls in patches, and the whole thing behaves more like weather than architecture. At eleven the east windows are still throwing blue and green down the nave and the west side has not yet taken over — which is the argument for a Monday morning and the reason the day is built around it.',
    hl:['<b>€72 paid</b> — €36 each for the two of you with tower access, and Pippa free on an under-11 ticket that includes the tower too','<b>The Nativity tower</b>, the one Gaudí lived to see built. The pinnacles you come up beside are <b>trencadís</b> — the same broken tile as Casa Batlló\'s front, the chocolate she built yesterday and the ceramic she cuts tomorrow','<b>Neither tower has a lift down.</b> You ride up and walk down a narrow spiral staircase — about 340 steps on the Nativity side against 426 on the Passion','Half an hour in the nave before you go up, which is exactly what the 11:00 and 11:30 pairing gives you. Out by about one'],
-   why:'The one unarguable thing in the city. If the trip has a single image she remembers in twenty years, it is the light in this room — and it is the fourth and last time this week she meets trencadís, this time seventy metres up.',
    facts:{'Booked':'<b>Monday 23 November · basilica 11:00 · Nativity tower 11:30</b>','Entrance':'Carrer de la Marina — not the Sagrada Família metro side','Paid':'€72 — €36 each with towers, Pippa free','Bring':'<b>Photo ID.</b> The tickets are non-transferable and staff can ask for it','The descent':'About 340 steps of spiral staircase — no lift down from either tower','If the day goes wrong':'No refunds, but an unused ticket exchanges to another date within 15 days, free, subject to availability','Time':'About two hours — out by around one'},
    flag:'<b>Towers close at short notice in high wind or heavy rain.</b> It is not common and nothing can be done about it, but it is the one thing that can take the staircase away on the day. The basilica itself stays open regardless, so the visit still happens.',
    link:'https://sagradafamilia.org/en/prices'},
@@ -550,21 +537,18 @@ var DAYS = [
   {id:'santpau',opt:true,when:'Optional · afternoon',name:'Recinte Modernista de Sant Pau',img:'santpau',lat:41.4118,lng:2.1745,
    lede:'A hospital built as a village: twenty-seven pavilions of mosaic, stained glass and tiled domes, set in gardens and connected by tunnels, so that patients would recover among beautiful things. Domènech i Montaner finished it the year Gaudí died. It is a UNESCO site and it is almost always empty.',
    hl:['<b>No timed entry and no booking</b> — you buy at the door, which is exactly why it is the right thing to leave hanging','Under-12s free; €36 for the two of you','Open space to run around in, which matters by the second hour of a museum day','Last entry 16:30, and you are finishing lunch around two — so it is a relaxed decision rather than a race'],
-   why:'The flex item of the whole week, and now the only thing standing between lunch and the evening. It is at the top of the street you have just eaten on, it takes walk-up tickets, and if the tower has finished everybody off you skip it and go and sit somewhere instead.',
    facts:{'Hours':'Nov–Mar 09:30–17:00 daily, last entry 16:30','Price':'€18 each before 14:00, €17 after · under-12s free','Booking':'None — walk up and buy at the door','Time':'An hour and a half, or forty minutes if you only do the gardens'},
    link:'https://santpaubarcelona.org/en/prepara-la-teva-visita/'},
   {hop:'<b>Down to Passeig de Gràcia as it gets dark.</b> Sant Pau sits on the L5 — five stops to Diagonal, about twelve minutes — and you come up at the top of the street with the lights already on. From the basilica itself the L2 or L5 reaches the same place.'},
   {id:'passeig',opt:true,when:'Optional · from about five',name:'Passeig de Gràcia, with the lights on',img:'batllo',lat:41.3953,lng:2.1619,
    lede:'The walk home is also the best free architecture in Barcelona, and taking it in the dark costs nothing and can be cut at any block. From the top: <b>Casa de les Punxes</b> a block east on Diagonal, a neo-Gothic castle with six turrets dropped into a boulevard; then <b>La Pedrera</b>, the wave-fronted one with the warrior chimneys; then the <b>Illa de la Discòrdia</b>, where Casa Batlló, Casa Amatller and Casa Lleó Morera stand shoulder to shoulder — three architects competing in public on a single block, and the front you stood in front of yesterday morning.',
    hl:['Free, outdoors, no ticket, and it finishes at your own front door on Plaça de Catalunya','<b>The Christmas lights should be on.</b> Barcelona lit up on 22 November in 2025 with a ceremony on this street and has held the same weekend for years — so by tonight they are almost certainly running','Twenty minutes walked straight, an hour if you stop, and every block has a metro entrance if anyone has had enough','The switch-on itself, if it falls this year on the Saturday or Sunday, is worth catching on the night — but the lights run from 18:00 every evening after it'],
-   why:'This is the replacement for the Magic Fountain and it lands on the better night: you have slept twice, the basilica is behind you, and it is a walk home rather than an expedition.',
-   facts:{'Where':'Passeig de Gràcia, Diagonal down to Plaça de Catalunya — about 1.2 km','When':'Dark by about half five; lights from 18:00','Price':'Free','2026 switch-on':'Announced in late October — the city has used the weekend closest to 22 November for years','Cut it short':'Diagonal, Passeig de Gràcia and Catalunya are all stations on the same street'},
+   facts:{'Where':'Passeig de Gràcia, Diagonal down to Plaça de Catalunya — about 1.2 km','When':'Dark by about 17:30; lights from 18:00','Price':'Free','2026 switch-on':'Announced in late October — the city has used the weekend closest to 22 November for years','Cut it short':'Diagonal, Passeig de Gràcia and Catalunya are all stations on the same street'},
    link:'https://www.barcelona.cat/nadal/en'},
-  {hop:'You are standing outside Casa Batlló at about six — the front you looked at from the pavement yesterday morning — and it takes visitors until a quarter to eight. If the day has gone well it is the obvious thing to walk into; if it has not, it is nine minutes from here to your bed.'},
+  {hop:'You are standing outside Casa Batlló at about six — the front you looked at from the pavement yesterday morning — and it takes visitors until 7:45. If the day has gone well it is the obvious thing to walk into; if it has not, it is nine minutes from here to your bed.'},
   {id:'batllo',opt:true,when:'Optional · evening',name:'Casa Batlló, inside this time',img:'batllo',lat:41.3917,lng:2.1650,
    lede:'Gaudí took an ordinary apartment block and gave it a scaled roof, bone-shaped balconies and a light well that shades from white at the bottom to deep blue at the top so the light falls evenly. Inside there is almost no straight line. The tablet you are handed reconstructs each room as Gaudí imagined it.',
    hl:['Children 0–12 go free — €58 for the two of you','<b>Last access 19:45</b>, which makes it the only major Gaudí interior you can still decide on at six in the evening','The augmented-reality tablet is included, not an upsell','You will have seen the front twice by now, from the pavement on Sunday and again on the walk down tonight — so skipping it is not skipping it entirely'],
-   why:'The most theatrical Gaudí interior for a ten-year-old, and deliberately the last item of the last full Barcelona day, so that it is the thing that gives way if the week has already been enough.',
    facts:{'Hours':'From 09:00, last access 19:45','Price':'General Visit from €29 · children 0–12 free','Booking':'Online saves up to €15 a head but ties you to a slot — take a late one so it can absorb a slow afternoon','Watch out':'The cheaper Night Visit does not include the rooftop'},
    link:'https://www.casabatllo.es/en/online-tickets/'},
   {hop:'<b>Back to the hotel on foot.</b> Casa Batlló to Carrer de Bergara is nine minutes straight down Passeig de Gràcia with the shop windows lit — the easiest walk home of the week, and it passes two of the hotel dinner options on the way.'}
@@ -574,7 +558,6 @@ var DAYS = [
   {id:'trencadis',when:'Morning, 10:00',name:'Trencadís mosaic workshop',img:'trencadis',lat:41.3856,lng:2.1795,
    lede:'Two hours in a working mosaic studio in the Born, cutting and laying broken tile in Gaudí\'s trencadís technique. You choose what to make — a photo frame, a box, a coaster, or the Park Güell salamander — and the studio grouts it afterwards. Mosaiccos is a real mosaic school run by an artist with a Catalan government mosaic diploma, not a gift-shop activity.',
    hl:['€48 a head for the two-hour class — €144 for the three of you','<b>From age ten she works with real ceramic</b>, a tile cutter and safety goggles, not the pre-cut acrylic younger children get','The finished piece is grouted after you leave and collected that evening or the next morning'],
-   why:'She turns ten into exactly the age this studio hands over real tools. She sees trencadís on the front of Casa Batlló on Sunday morning, builds it in chocolate at half twelve, sits on the real bench at half three, meets it again seventy metres up the Nativity tower on Monday — and then cuts it herself, in ceramic, here on Tuesday.',
    facts:{'Where':'Mosaiccos, C/ dels Assaonadors 10, El Born — 4 min from the chocolate museum','Sessions':'Tue–Fri 10:00, 14:00, 16:30 · Saturday mornings','Price':'€48 pp, two hours. Book direct — it is cheaper than the resellers','Language':'English, max 30 per session'},
    flag:'In winter Mosaiccos runs <b>Tuesday to Saturday only</b> — closed Sunday and Monday — which is why this sits on your last morning rather than earlier in the week. One thing to settle when you book: the studio grouts the finished piece and you normally collect it later that day or the next, and you will be on a train. Ask them to glue-only so it travels with you, or to post it.',
    link:'https://experiencegaudibarcelona.com/'},
@@ -582,41 +565,36 @@ var DAYS = [
   {id:'train',when:'13:50, arriving 16:52',name:'Barcelona Sants to Madrid Atocha',img:'ave',lat:41.3792,lng:2.1400,
    lede:'Three hours and two minutes at up to 300 km/h across Aragón and Castile, which is a pleasant way to spend a Tuesday morning with a book. High-speed departures are security-screened, so allow half an hour at the station rather than turning up at the platform.',
    hl:['Renfe gives under-14s 40% off — roughly €110–170 for the three of you','Rodalies from Plaça Catalunya or Passeig de Gràcia gets you to Sants in 5–8 minutes','Book now: a Tuesday in a trade-fair week is not a quiet departure'],
-   why:'The mid-afternoon train is what buys you the workshop. You lose the Madrid daylight — but Tuesday evening in Madrid is a Christmas market, churros and Gran Vía in the dark, so there is nothing to lose it from.',
    facts:{'Journey':'3h02 on the fast services, 3h15 typical','Operators':'Renfe AVE, Ouigo and iryo all run it — Renfe is the comfortable one','Arrives':'Madrid Puerta de Atocha','Allow':'30 minutes at Sants for security','Earlier option':'If you skip the workshop, the 11:14 arrives 14:16'},
    link:'https://www.renfe.com/es/en'}
 ]},
 {city:'mad',key:'tue-mad',nav:'Lights',dow:'Tue',view:'mad',date:'Tue 24 Nov',title:'Into Madrid, and the lights are already on',theme:'Los Austrias',stops:[
-  {hop:'<b>Atocha to the hotel, first.</b> You are off the train at 16:52. <b>Urban Hive</b> is on Calle del Clavel, 4.5 km north: a taxi is €10–14 and about fifteen minutes with three suitcases, or L1 from Atocha Renfe to Gran Vía is nine stops and fourteen minutes with five on foot at the end. Check in, drop everything, and be back out by half five — Plaza Mayor is a twelve-minute walk downhill.'},
+  {hop:'<b>Atocha to the hotel, first.</b> You are off the train at 16:52. <b>Urban Hive</b> is on Calle del Clavel, 4.5 km north: a taxi is €10–14 and about fifteen minutes with three suitcases, or L1 from Atocha Renfe to Gran Vía is nine stops and fourteen minutes with five on foot at the end. Check in, drop everything, and be back out by 5:30 — Plaza Mayor is a twelve-minute walk downhill.'},
   {id:'plazamayor',when:'Evening, from 18:00',name:'Plaza Mayor and the Christmas market',img:'plazamayor',lat:40.4155,lng:-3.7074,
    lede:'A closed rectangle of four-storey buildings with four hundred balconies, which has been in turn a market, a bullring, a place of execution and now — for five weeks a year — a hundred-odd wooden stalls selling nativity figures, tinsel and the traditional Spanish Christmas joke figurines you may have to explain.',
    hl:['Free, and open Sun–Thu 10:00–21:00','Cortylandia\'s animated musical facade is four hundred metres away on Calle Preciados','The frescoed Casa de la Panadería on the north side is worth looking up at'],
-   why:'You are off a train at five and out of the hotel again by half past, with nothing booked and everyone tired. This asks nothing of you, costs nothing, and is the fastest possible way to feel like you are in Madrid.',
    facts:{'Market hours':'Sun–Thu 10:00–21:00','Price':'Free','Cortylandia':'Shows on the hour, 17:00–21:00 — the 19:00 is the sweet spot','2026 dates':'Described as "late November" and not yet confirmed'},
    link:'https://www.esmadrid.com/en/whats-on/plaza-mayor-christmas-market'},
   {hop:'Four minutes on foot through the arcades and down the Pasadizo de San Ginés, an alley you would never find on purpose.'},
   {id:'sangines',when:'From 18:45',name:'Chocolate con churros at San Ginés',img:'sangines',lat:40.4165,lng:-3.7075,
-   lede:'Open twenty-four hours a day, every day of the year, since 1894. Green and white tiles, marble tables, waiters in white jackets, and chocolate thick enough that the churro stands up in it. Madrileños come here at six in the morning on the way home; you are coming at a quarter to seven in the evening, which is the civilised version.',
+   lede:'Open twenty-four hours a day, every day of the year, since 1894. Green and white tiles, marble tables, waiters in white jackets, and chocolate thick enough that the churro stands up in it. Madrileños come here at six in the morning on the way home; you are coming at 6:45 in the evening, which is the civilised version.',
    hl:['About €5–6 a head','No booking, no menu decisions, open whenever you turn up','This is the merienda that gets you to a 21:00 dinner without a meltdown'],
-   why:'Non-negotiable. It is the single most Madrid thing you can do in twenty minutes, and it solves the gap between a late lunch and a Spanish dinner hour.',
    facts:{'Hours':'24 hours, 365 days','Price':'≈€17 for three','Where':'Pasadizo de San Ginés 5, behind the church','Booking':'None, except large groups off-peak'},
    link:'https://chocolateriasangines.com/'},
   {hop:'Walk up to Gran Vía — ten minutes, and the lights have been on since six, nine minutes after sunset.'},
   {id:'granvia',when:'From 19:30',name:'The Christmas lights on Gran Vía',img:'granvia',lat:40.4200,lng:-3.7038,
    lede:'Thirteen million bulbs across two hundred and forty locations, including a 1.3-kilometre run of snowflake arches down Gran Vía itself and a twenty-two-metre tree where it meets Calle de Alcalá. Madrid does this on a scale that is genuinely hard to convey until you are standing under it.',
    hl:['Free, and on from 18:00 to midnight','Walk Gran Vía east to Cibeles, then down toward your hotel','The switch-on has fallen between 21 and 23 November three years running'],
-   why:'It costs nothing, it happens outside, and it turns a tired arrival evening into the part of the trip she describes first when she gets home.',
    facts:{'Hours':'Sun–Thu 18:00–24:00','Price':'Free','2026 date':'Not yet announced, but the pattern puts it before you arrive','Best stretch':'Gran Vía between Callao and Alcalá'},
    link:'https://www.esmadrid.com/agenda/navidadmadrid/luces-navidad-madrid'},
   {hop:'<b>Back to the hotel.</b> Urban Hive is eight minutes off Gran Vía — up Calle de Hortaleza and right into Calle del Clavel — and dinner is on the same block: the Mercado de San Antón five minutes away, Celso y Manolo three.'}
 ]},
 {city:'mad',key:'wed',nav:'Toledo',dow:'Wed',view:'tol',date:'Wed 25 Nov',title:'Toledo, the whole day',theme:'Atocha → the rock in the river → Atocha',stops:[
-  {hop:'<b>Hotel to Atocha.</b> Gran Vía to Atocha Renfe is nine stops on L1, about fourteen minutes, plus five at each end — leave Calle del Clavel by twenty past eight for a nine o\'clock train.'},
+  {hop:'<b>Hotel to Atocha.</b> Gran Vía to Atocha Renfe is nine stops on L1, about fourteen minutes, plus five at each end — leave Calle del Clavel by 8:20 for a 9:00 train.'},
   {hop:'<b>Avant from Atocha.</b> Thirty-four minutes, about fifteen trains a day, first out at 06:45 and last back at 20:45. Aim for a train around nine out and around seven back, which gives a full nine-hour day without ever feeling rushed. On whether to book ahead, see <i>Toledo: what it costs to keep the option open</i> in the practical layer below — the short answer is book it, because an Avant ticket cancels for a flat 15%.'},
   {id:'toledo_in',when:'Morning, from 09:40',name:'Toledo — arriving, and the €14 wristband',img:'toledo',lat:39.8567,lng:-4.0244,
    lede:'Toledo sits on a granite spur inside a hairpin bend of the Tagus, walled on the one side that is not cliff. It was the capital of Visigothic Spain, then a Muslim taifa, then Castile’s capital until Philip II moved the court to Madrid in 1561 and, in effect, froze the city. What is left is a whole medieval capital at full scale, where a cathedral, a mosque and two synagogues stand within a few hundred metres of each other. The station itself is worth the first two minutes — a 1919 neo-Mudéjar fantasy with a clock tower and stained glass.',
    hl:['<b>The Pulsera Turística costs €14 and covers seven monuments</b> — buy it at the door of any of them, no booking','<b>Under-11s are free</b>, so she pays nothing at all: this is €28 for the three of you, not €42','What is on it: <b>Santa María la Blanca</b> ✓, <b>San Juan de los Reyes</b> ✓, <b>Iglesia de Santo Tomé</b> ✓ (the El Greco), the <b>Mezquita del Cristo de la Luz</b> ✓, plus the Iglesia de los Jesuitas, the Iglesia del Salvador and the Real Colegio de Doncellas Nobles','✓ marks the four worth your time. Singly those four are €16 a head, so the wristband pays for itself on the third door — and the Jesuitas tower is the one to add if the light is good','The wristband does <b>not</b> include the cathedral, which is ticketed separately'],
-   why:'It is a whole medieval city rather than a monument with a queue, it leaves from your own station, and the single €14 purchase removes every subsequent ticket decision from the day.',
    facts:{'Train':'Avant, Atocha → Toledo — 34 min, ~15 a day, from about €17 each way','Up the hill':'Cross the bridge and take the Safont escalators — free, 7:00–22:00, and they lift you to the Miradero in a few minutes. Buses 5, 61 and 62 also run to Zocodover','Wristband':'€14 · free for 10 and under · valid one week, one entry each','Monument hours':'Winter (to 28 Feb) 10:00–17:45 daily — note the Jesuitas closes 17:45 and El Salvador opens 11:30 on Sundays'},
    flag:'<b>No Fly Toledo.</b> The 180 m zip line across the gorge is the thing every list leads with, and it is out of this plan on purpose: it is a twenty-minute round trip on the wrong side of the river from everything else, and it eats an hour you will want back at four in the afternoon.',
    link:'https://turismo.toledo.es/'},
@@ -624,31 +602,27 @@ var DAYS = [
   {id:'toledo_cat',when:'Late morning, from 10:30',name:'Catedral Primada de Toledo',img:'toledo_cat',lat:39.8570,lng:-4.0235,
    lede:'Two hundred and fifty years in the building and, by most accounts, the finest High Gothic interior in Spain. Five naves, eight hundred stained-glass panels, and behind the high altar the <i>Transparente</i> — an eighteenth-century marble explosion of saints and angels lit by a hole punched through the vault above it, so that at midday a shaft of real sunlight lands on it. The sacristy is a small picture gallery in its own right: El Greco’s <i>Expolio</i>, plus Goya, Titian, Caravaggio, Rubens and van Dyck.',
    hl:['€12 adult, €6 for her (8–14) — €30 in total, audio guide included','The <i>Transparente</i> is the one to stand still in front of; aim for late morning when the shaft is working','The Monstrance of Arfe in the treasury is three metres of solid silver and gold and reliably stops a ten-year-old dead','Sixty to ninety minutes is right — more than that and you have spent the day indoors'],
-   why:'It is the single best building in either city and it is fifteen minutes from every other stop on this day. Skipping it to save €30 would be the wrong economy.',
    facts:{'Hours':'Mon–Sat 10:00–18:00 (last entry 17:30) · Sun 14:00–18:00','Price':'€12 adult · €6 ages 8–14 · under 8 free','Time':'Sixty to ninety minutes','Note':'Not on the €14 wristband — buy at the Puerta Llana door or online'},
    link:'https://www.catedralprimada.es/en/'},
   {hop:'Lunch. The streets immediately west of the cathedral are where the sensible places are — look for a <i>menú del día</i> around €15–18 rather than anything on Zocodover itself. Then walk ten minutes downhill along Calle de Santo Tomé.'},
   {id:'orgaz',when:'Early afternoon',name:'The Burial of the Count of Orgaz',img:'orgaz',lat:39.8571,lng:-4.0286,
    lede:'One painting, in one small dark side chapel of the Iglesia de Santo Tomé, hung exactly where El Greco put it in 1586 and never moved. The lower half is a row of sixteenth-century Toledan gentlemen watching a burial; the upper half is heaven opening above their heads, painted in a completely different register — longer, stranger, lit from nowhere. The boy in the front left corner pointing at the miracle is El Greco’s son, and the handkerchief in his pocket carries the painter’s signature.',
    hl:['First stop on the wristband — nothing more to pay','It is genuinely one room: you are in and out in twenty minutes','Give her the game of finding the boy, then the join between the two halves — it is the most legible “look at how this was made” in the whole trip','€4 a head if you somehow skip the wristband, free for under-11s either way'],
-   why:'A ten-year-old who has spent the week looking at how things are made will get more out of twenty minutes here than an hour in a large museum, and it costs nothing extra.',
    facts:{'Hours':'Oct–Mar 10:00–17:45 daily','Price':'Included in the €14 wristband','Time':'Twenty minutes','Where':'Plaza del Conde 4, on Calle Santo Tomé'},
    link:'https://santotome.org/'},
   {hop:'Sixty seconds. The Santo Tomé marzipan obrador is on the same street, at number 3, and the queue outside it is the local landmark.'},
   {id:'mazapan',when:'Mid-afternoon',name:'Marzipan, from the obrador and the convent door',img:'mazapan',lat:39.8574,lng:-4.0272,
    lede:'Toledo has been making marzipan since the thirteenth century, when — the story goes — the nuns of San Clemente ground almonds and sugar into a paste during a wheat famine. It is still made here in convents and in family obradores, in figures rather than blocks, and it is not the waxy stuff on a supermarket cake.',
    hl:['<b>Santo Tomé, Calle de Santo Tomé 3</b> — the obrador beside the El Greco church, sixty seconds from the last stop and open daily roughly 09:00–21:00. Buy a mixed box of figures for a few euros','<b>Or buy from the nuns.</b> Several convents still sell marzipan at the door — San Clemente on Calle San Clemente is the closest to your route. Ring, order through the hatch, no conversation required. This is the thing she will actually remember','A box of figures is <b>€6–12</b>, and a couple of pieces each is plenty — eat them on the train home','Look for <i>anguilas</i> and <i>figuritas</i> rather than a slab; the shapes are the point, and they survive a suitcase badly but a train ride fine'],
-   why:'Ten minutes, a few euros, and the most memorable transaction of the day — a hatch in a convent door beats any counter in Madrid. It also gives the afternoon a break between two churches without sitting down anywhere.',
    facts:{'Santo Tomé':'Calle de Santo Tomé 3 · daily, roughly 09:00–21:00','Convent':'San Clemente, Calle San Clemente 1 — door sales, mornings and late afternoons','Cost':'A box of figures is €6–12','Time':'Ten minutes, less if the queue is short'},
    link:'https://mazapan.com/en/'},
   {hop:'Ten minutes downhill and west into the old Jewish quarter — narrow, quiet, and the best walking in the city.'},
   {id:'juderia',when:'Late afternoon',name:'Santa María la Blanca and San Juan de los Reyes',img:'blanca',img2:'sjr',lat:39.8578,lng:-4.0311,
    lede:'Santa María la Blanca was built as a synagogue in the twelfth century by Muslim craftsmen for a Jewish congregation under Christian rule, and later became a church — four faiths’ worth of history in one whitewashed room of horseshoe arches and pine-cone capitals. Five minutes further on, San Juan de los Reyes is Ferdinand and Isabella’s own monastery, with a two-storey cloister full of carved animals and, hanging on the outside wall, the actual chains of Christian prisoners freed at Granada in 1492.',
    hl:['Both on the wristband — nothing more to pay, and both under half an hour','Santa María la Blanca is one white room and it lands immediately; no explanation needed','The San Juan cloister is the best thing in Toledo for a child — gargoyles, carved monkeys, and an upper gallery with a painted Mudéjar ceiling','The chains on the east wall are real, and the story attached to them takes thirty seconds to tell'],
-   why:'These two are why the wristband exists, they are five minutes apart, and they close the day on the quiet side of town with the light going gold on the walls.',
    facts:{'Hours':'Oct–Mar 10:00–17:45 daily','Price':'Both included in the €14 wristband','Time':'Thirty minutes each','Then':'Fifteen minutes downhill to the Puente de San Martín and the river path'},
    link:'https://toledomonumental.com/en/'},
-  {hop:'<b>Back to the hotel.</b> Down to the station — the Recaredo escalators run to 23:00 — and a train around seven puts you into Atocha by half past. L1 back up to Gran Vía and you are at the door on Calle del Clavel by ten past eight, which is exactly when Madrid starts eating. Nothing tomorrow needs an early start, so do not set an alarm.'},
+  {hop:'<b>Back to the hotel.</b> Down to the station — the Recaredo escalators run to 23:00 — and a train around seven puts you into Atocha by half past. L1 back up to Gran Vía and you are at the door on Calle del Clavel by 8:10, which is exactly when Madrid starts eating. Nothing tomorrow needs an early start, so do not set an alarm.'},
   {choice:true}
 ]},
 {city:'mad',key:'wed-alt',chip:'wed',alt:true,nav:'Madrid instead',dow:'Wed',view:'mad',date:'Wed 25 Nov',title:'Wednesday without Toledo',theme:'Ópera → the Paseo del Prado → Cibeles',stops:[
@@ -657,29 +631,25 @@ var DAYS = [
   {id:'palacio',when:'Morning, from 10:00',name:'Palacio Real de Madrid',img:'palacio_ext',img2:'palacio_int',lat:40.4179,lng:-3.7143,
    lede:'Three thousand rooms, of which you see about fifty: the Hall of Halberdiers, the Gasparini Room with its dripping rococo ceiling, the throne room, and a porcelain room whose walls are entirely made of it. Still the official residence of the Spanish Crown, which is why sections shut at short notice.',
    hl:['€9 for her, €18 each for you — €45 in total','The Royal Armoury is the bit most children come out talking about','A combined ticket with the Galería next door is €24 and saves €8 a head'],
-   why:'The castle she came for, and the only one in Madrid that delivers on the scale a child expects. Buy the combined ticket and do both in one go.',
    facts:{'Hours':'Oct–Mar Mon–Sat 10:00–18:00 · ticket office closes 17:00','Price':'€18 adult, €9 ages 5–16','Time':'Sixty to ninety minutes with a child','Note':'The free evening window is EU and Ibero-American passports only'},
    link:'https://tickets.patrimonionacional.es/en/tickets/palacio-real-de-madrid'},
   {hop:'Lunch in Los Austrias, or in the iron-and-glass Mercado de San Miguel a few minutes east. The Galería is next door to the palace, so there is no travelling afterwards.'},
   {id:'colecciones',when:'Afternoon',name:'Galería de las Colecciones Reales',img:'colecciones',lat:40.4183,lng:-3.7152,
    lede:'The best modern building in Madrid, finished in 2023: vast stone galleries stepping down the hillside under the palace terrace, lit from a clerestory slot along the top. Inside are Bosch, Velázquez, Goya, Titian, royal armour and the state carriages, in rooms the size of aircraft hangars.',
    hl:['€7 for her, €14 each for you — or €24 each combined with the palace','Open until 20:00, so it absorbs a whole afternoon','The carriages and armour are the child-legible half'],
-   why:'It is the architectural "wow" of the Madrid half, it is next door to the palace, and it stays open long after everything else has closed.',
    facts:{'Hours':'Mon–Sat 10:00–20:00','Price':'€14 adult, €7 child','Time':'An hour to ninety minutes','Note':'Its free evening window carries the same nationality restriction'},
    link:'https://www.galeriadelascoleccionesreales.es/horarios-y-tarifas'},
   {hop:'East across the middle of the city — Ópera to Banco de España on the L2 is four stops, or twenty-five minutes on foot through Sol if the afternoon is holding up. Go in at the Jerónimos door, which is the modern extension and never has the queue.'},
   {id:'prado_b',when:'Mid-afternoon, 15:30',name:'The Prado, for ninety minutes and no more',img:'prado',lat:40.4138,lng:-3.6921,
    lede:'One of the three or four greatest picture galleries on earth — the Spanish royal collection, which means <i>Las Meninas</i>, Goya\'s black paintings and Bosch\'s <i>Garden of Earthly Delights</i> are all in the same building. The trick with a child is to treat it as a scavenger hunt rather than a gallery, and the museum agrees: it publishes an illustrated family map with a seven-picture children\'s route, and its own guidance says ninety minutes is the maximum.',
-   hl:['<b>€15 each for you, free for her</b> — under-18s are always free','Download the family map before you travel; it is the difference between an hour she enjoys and an hour she endures','<b>Free for everyone 18:00–20:00</b> if you would rather go late — but the queue for the free window starts forming around half five','The Bosch is the one that works on a ten-year-old. Start there, end at <i>Las Meninas</i>, skip everything in between without guilt'],
-   why:'If you are giving Thursday back to Madrid, the Prado is the thing you would regret not having done. Ninety minutes, two pictures she will remember, and then out — it is a stop, not a destination.',
+   hl:['<b>€15 each for you, free for her</b> — under-18s are always free','Download the family map before you travel; it is the difference between an hour she enjoys and an hour she endures','<b>Free for everyone 18:00–20:00</b> if you would rather go late — but the queue for the free window starts forming around 5:30','The Bosch is the one that works on a ten-year-old. Start there, end at <i>Las Meninas</i>, skip everything in between without guilt'],
    facts:{'Hours':'Mon–Sat 10:00–20:00 · Sun 10:00–19:00','Price':'€15 adult · under-18s free · free for all 18:00–20:00','Time':'Ninety minutes, and the museum says so itself','Door':'Use the Jerónimos entrance, not the Velázquez one'},
-   flag:'<b>Pick one, not both.</b> If you take the free 18:00 window here, you lose the Cibeles rooftop below, which wants the same hour. Paying the €30 and going in at half three is the version that gets you both, and it is worth it.',
+   flag:'<b>Pick one, not both.</b> If you take the free 18:00 window here, you lose the Cibeles rooftop below, which wants the same hour. Paying the €30 and going in at 3:30 is the version that gets you both, and it is worth it.',
    link:'https://www.museodelprado.es/en/visit-the-museum/opening-hours-and-admission'},
   {hop:'Ten minutes north up the Paseo del Prado to Cibeles, past the fountain everyone photographs, and into the white wedding cake on the corner.'},
   {id:'mirador_b',when:'Evening, book 18:00',name:'The Cibeles rooftop, as the lights come on',img:'cibeles',lat:40.4192,lng:-3.6928,
-   lede:'Madrid\'s city hall is a colossal 1919 palace that was the central post office until 2007, and you can ride a lift to a viewing terrace on the eighth floor and look straight down Gran Vía and Calle de Alcalá. Book the six o\'clock slot and the Christmas lights come on beneath you while you are standing there.',
+   lede:'Madrid\'s city hall is a colossal 1919 palace that was the central post office until 2007, and you can ride a lift to a viewing terrace on the eighth floor and look straight down Gran Vía and Calle de Alcalá. Book the 6:00 slot and the Christmas lights come on beneath you while you are standing there.',
    hl:['<b>About €10 for all three of you</b> — the cheapest good view in Madrid','Half an hour is plenty, and it is indoors-adjacent, which matters at six in November','The 18:00 or 18:30 slot is the one: lights on at six, nine minutes after sunset','Ten minutes on foot back to the hotel afterwards, straight up Alcalá and Gran Vía'],
-   why:'It closes the day with the thing Madrid does better than anywhere — the lights, from above — and it puts you a ten-minute walk from your own front door at half past six, which is exactly when a nine-hour Toledo day would have had you still on a train.',
    facts:{'Hours':'Tue–Sun, slots through the afternoon and evening','Price':'≈€3 a head, about €10 for three','Time':'Thirty to forty minutes','Booking':'Slots are timed and the sunset ones go first — book a few days ahead'},
    link:'https://www.esmadrid.com/en/tourist-information/mirador-madrid'},
   {hop:'<b>Back to the hotel.</b> Ten minutes up Alcalá and Gran Vía and you are on Calle del Clavel — and Thursday, with the class in the evening, works exactly the same either way.'}
@@ -689,7 +659,6 @@ var DAYS = [
   {id:'man',when:'Morning, from 10:00',name:'Museo Arqueológico Nacional',img:'man',lat:40.4237,lng:-3.6893,
    lede:'Fifteen minutes east of the hotel on Serrano, and the most underrated big museum in Madrid. It runs from prehistory to the nineteenth century in a building rebuilt in 2014 to be walked rather than trudged, and it holds three things worth the morning on their own: the <i>Dama de Elche</i>, an Iberian stone bust from the fourth century BC with a face that stops people mid-sentence; the Visigothic votive crowns of the <b>Treasure of Guarrazar</b>, hanging gold set with sapphires; and, in the garden, a full-size reproduction of the painted ceiling of the Altamira cave that you walk underneath.',
    hl:['<b>€3 for you, free for her</b> — under-18s always free. Six euros gets all three of you in','Free for everyone Saturday afternoons and Sunday mornings, which is not your day, so just pay the €3','<b>The Guarrazar crowns were dug up outside Toledo</b> — so the plan-B day still gets the best thing Toledo ever produced, under better lighting and with a bench to sit on','Altamira in the garden is the one to end on: a cave ceiling at full scale, painted 14,000 years ago, that she can stand under'],
-   why:'It is the right size for a day that has to end well: fifteen minutes from the door, ninety minutes inside, six euros, and out by half eleven with the whole afternoon still loose. It is also the only major Madrid museum where a ten-year-old is not being asked to care about paintings.',
    facts:{'Hours':'Tue–Sat 09:30–20:00 · Sun 09:30–15:00 · closed Mondays','Price':'€3 adult, under-18s free','Time':'Ninety minutes is right; two hours if she takes to it','Where':'Calle de Serrano 13 — 15 min on foot from the hotel, or L5 to Serrano'},
    link:'https://www.man.es/man/en/visita.html',
    flag:'<b>Only if you took the Toledo version of Wednesday.</b> The Plan B day above ends at the Prado and the Cibeles rooftop, not here — but if you build your own Wednesday and the Arqueológico ends up in it, swap this morning for the <b>Templo de Debod</b> or <b>CaixaForum</b>, both in the considered list below. Whatever else you add to this day, add it in the morning — the late afternoon is the part to protect.'},
@@ -697,18 +666,16 @@ var DAYS = [
   {id:'cocina',when:'Evening, 19:00',name:'Tapas & Paella Cooking Class with Lola',img:'lola',lat:40.4022,lng:-3.6742,
    lede:'Three hours in Lola\'s kitchen on Calle Valderribas, just the four of you, cooking the dinner you then sit down and eat. Her standard menu is <b>ham croquettes, ensaladilla rusa, bacalao ajoarriero</b> and <b>arroz negro</b> — the squid-ink cousin of paella, which is blacker and more interesting than the yellow version and will get more of a reaction from a ten-year-old. The booking is private and the menu is a conversation: Withlocals puts you in a chat with her once you book, and <b>churros and chocolate at the end</b> is the tweak to ask for.',
    hl:['<b>Always private</b> — it is only ever your group with Lola, which is what makes the 19:00 start and the custom menu possible at all','<b>5.0 from 41 reviews</b>, and she runs it as a working chef rather than a host with a kitchen','About <b>$128 a head</b>, so roughly <b>$510</b> for four — the listing shows €108, so check what it actually comes to at your date and party size before you commit','<b>Ask for churros at the end.</b> That is the tweak that saves you booking a separate churros class, and made rather than bought is the version she will talk about','Soft drinks are included and unlimited, so nobody has to explain that you are not drinking','<b>Pacífico is on the L1</b> — the same line as Gran Vía, no changes, about twelve minutes from the hotel'],
-   why:'It is private, so the hour is yours rather than the schedule\'s — which is the whole problem solved in one line. Everything else in Madrid either starts at half five or will not take a ten-year-old.',
    facts:{'Where':'Calle de Valderribas, two minutes from Pacífico — L1 from Gran Vía, no change','Getting there':'Twelve to fifteen minutes door to door from Calle del Clavel','Duration':'Three hours · 19:00–22:00','Ask her for':'Churros and chocolate to finish · soft drinks rather than wine · confirm a ten-year-old is fine','Cost':'≈$128 a head, about $510 for four — child pricing unknown'},
    flag:'<b>Two things to settle in the chat before you pay.</b> First, your niece: an 18:20 finish makes 19:00 at Pacífico tight if she is coming from Moncloa or the Autónoma — ask which line she is on, and request <b>19:30</b> if there is any doubt. Second, and more important: <b>the same class sold through another platform is listed as unsuitable for under-twelves.</b> Withlocals does not say that and calls it family friendly, but your daughter is ten and this is not a thing to discover on the night. Ask Lola directly, in writing, before you book.',
    link:'https://www.withlocals.com/experience/tapas-paella-cooking-class-with-a-professional-chef-in-madrid-3d2160ac/'},
-  {hop:'<b>Back to the hotel.</b> Pacífico to Gran Vía is eight stops on the L1 and about twelve minutes, or a taxi for nine or ten euros if everyone has had enough. Either way you are on Calle del Clavel by half past ten, which in Madrid is an ordinary time to be walking home from dinner.'}
+  {hop:'<b>Back to the hotel.</b> Pacífico to Gran Vía is eight stops on the L1 and about twelve minutes, or a taxi for nine or ten euros if everyone has had enough. Either way you are on Calle del Clavel by 10:30, which in Madrid is an ordinary time to be walking home from dinner.'}
 ]},
 {city:'mad',key:'fri',nav:'Fly home',dow:'Fri',view:'mad',date:'Fri 27 Nov',title:'Nothing, on purpose',theme:'Whatever is nearest, then Barajas',stops:[
   {hop:'<b>The bags stay at the hotel.</b> Check-out is midday and the desk holds luggage afterwards, so you walk out with nothing in your hands. The Retiro is fifteen minutes east on foot through Alcalá; the Templo de Debod is twenty minutes west, or L2 from Gran Vía to Plaza de España.'},
   {id:'easy',when:'Morning',name:'A slow morning and an easy run to the airport',img:'retiro',lat:40.4170,lng:-3.6845,
    lede:'There is no plan here and that is the plan. You will have spent six days walking, and the version of this morning that goes wrong is the one where you squeeze in a museum, lose track of time and arrive at Barajas tense. Have a long breakfast, check the bags with the desk, and spend the time outside.',
    hl:['<b>The Retiro</b> — a hundred and twenty hectares, ten minutes from anywhere central, with a boating lake, the glass Palacio de Cristal and enough space to do nothing in','<b>The Templo de Debod</b>, twenty minutes west of the hotel — a real Egyptian temple given to Spain in 1968, in a park on a bluff, free and never busy in the morning','<b>Or simply Chueca and Las Salesas</b>, the streets around the hotel, one last time — a coffee and a churro and no map','Urban Hive holds the bags after checkout, so you are carrying nothing all morning'],
-   why:'The last morning is the one people over-programme and regret. Leaving it deliberately empty is the difference between arriving at the airport rested and arriving at it frayed.',
    facts:{'Retiro':'Open daily 06:00–22:00 in winter · free','Templo de Debod':'Tue–Sun 10:00–20:00 · free · park open all day','To Barajas':'Taxi is a €33 flat fare from anywhere inside the M-30 — no meter, no negotiation','Timing':'Leave the centre three hours before the flight and the whole thing is uneventful'},
    flag:'<b>Metro Line 8 is the cheap alternative</b> — Nuevos Ministerios to T4 in about fifteen minutes, €5 each with the airport supplement. It is quick, but it means stairs and changes with luggage. With three of you the taxi costs about €18 more and removes the entire problem.',
    link:'https://www.esmadrid.com/en/tourist-information/parque-del-retiro'},
@@ -726,7 +693,7 @@ var CHOICE = {
    foot:'Avant from Chamartín — not Atocha · 27 min · station 6 km out, then the line 11 bus'},
   {img:'mad_view',lbl:'Written out in full below',n:'Plan B — stay in Madrid',
    p:'Keep reading. The next day in this itinerary is the Madrid version of Wednesday, built out stop by stop: the Royal Palace at ten, the Galería de las Colecciones Reales after lunch, ninety minutes in the Prado, and the Cibeles rooftop as the Christmas lights come on. It is the only version of the week in which you see the palace at all.',
-   li:['No train, no 09:00 start, no nine-hour commitment','It is the only day that gets you into the Royal Palace and the Galería, which Toledo otherwise costs you','Under-18s are free at the Prado, so she pays nothing there','You are home by half six with the evening intact'],
+   li:['No train, no 09:00 start, no nine-hour commitment','It is the only day that gets you into the Royal Palace and the Galería, which Toledo otherwise costs you','Under-18s are free at the Prado, so she pays nothing there','You are home by 6:30 with the evening intact'],
    foot:'About €150 for the three of you — the palace and the Galería are the cost'}
  ]
 };
@@ -818,12 +785,12 @@ mad:[
 
 var CHECK = [
  ['<b>Lola\'s class is booked — now settle three things in the chat.</b> That <b>a ten-year-old is fine</b> (the same class sold elsewhere says under-twelves are not suitable, and Lola\'s own listing does not); that the menu can flex if anyone does not eat seafood; and that <b>four</b> of you are coming, your niece included. Do it well before the day rather than on the night.','now'],
- ['<b>Ask your niece which metro line she is coming from.</b> An 18:20 finish makes 19:00 at Pacífico tight from Moncloa or the Autónoma — though Pacífico is on the L1 and easy to reach from most of the city. If there is any doubt, book <b>19:30</b> instead; you are still done by half ten. Settle this before you book, not after.','this week'],
+ ['<b>Ask your niece which metro line she is coming from.</b> An 18:20 finish makes 19:00 at Pacífico tight from Moncloa or the Autónoma — though Pacífico is on the L1 and easy to reach from most of the city. If there is any doubt, book <b>19:30</b> instead; you are still done by 10:30. Settle this before you book, not after.','this week'],
  ['<b>Book the 10:00 mosaic session for Tuesday the 24th — and ask them not to grout it.</b> Mosaiccos runs Tue–Sat only in winter, which is why it sits on your last Barcelona morning. The studio normally grouts the piece and you collect it a day later, and you will be on a train at 13:50. Ask for glue-only so it travels, or for them to post it. <b>info@Mosaiccos.com</b>','now'],
  ['<b>Book the Toledo Avant for Wednesday the 25th.</b> Every seat is reserved, the nine-out-and-seven-back pair is what every other day-tripper also wants, and the fare cancels for a flat 15% — about €13 for the three of you. Cancel both legs together if you drop it; cancelling one leg of a return costs 40%. If you switch to Segovia instead, that leaves from Chamartín and the Alcázar tower tickets go early too.','when you fix the date'],
  ['<b>The chocolate workshop is booked in Catalan.</b> The ticket says so explicitly, and 12:30 on Sunday is the only session there is. Email <b>reserves@museuxocolata.cat</b> (+34 932 68 78 78) and ask whether the monitor can run it in Spanish or English for your group, and whether the Saturday session on the 21st is in either. It is a demonstrate-and-copy workshop, so it is probably survivable either way — but find out now rather than on the day.','now'],
- ['<b>Go straight for the terrace at Park Güell.</b> The park shuts at 17:30 and sunset is 17:25, so a half-three entry is two hours — enough for the dragon stairway, the hypostyle hall and the bench without hurrying, but not for the free zone as well. Take the bench first if the light is already going.','on the day'],
- ['<b>Book a taxi for the Born to Park Güell hop on Sunday.</b> It is the one tight joint in the week: out of the workshop about half one, lunch, then moving by a quarter to three for a half-three entry. A taxi is thirty minutes and €18–22 against forty minutes and a change on the metro — and Park Güell gives you thirty minutes\' grace and nothing more.','the night before'],
+ ['<b>Go straight for the terrace at Park Güell.</b> The park shuts at 17:30 and sunset is 17:25, so a 3:30 entry is two hours — enough for the dragon stairway, the hypostyle hall and the bench without hurrying, but not for the free zone as well. Take the bench first if the light is already going.','on the day'],
+ ['<b>Book a taxi for the Born to Park Güell hop on Sunday.</b> It is the one tight joint in the week: out of the workshop about 1:30, lunch, then moving by 2:45 for a 3:30 entry. A taxi is thirty minutes and €18–22 against forty minutes and a change on the metro — and Park Güell gives you thirty minutes\' grace and nothing more.','the night before'],
  ['<b>Confirm the bed configuration in writing on both hotels.</b> They are booked, but the layout you want is an option that booking systems quietly drop. At the Plaza Catalunya it is the <b>Premium Family Room</b> with "2 twin beds + 1 full bed" — <i>not</i> the Premium Triple, which is three separate twins. At Urban Hive it is <b>La Funmily</b> with "1 queen bed + 1 sofa bed". Email both and get it in writing: "one double bed for two adults, plus a separate bed for a child".','now'],
  ['<b>Ask for a quiet room at each, in the same email.</b> Plaça de Catalunya is busy and touristy — ask the Plaza Catalunya for a room facing the interior patio. Calle del Clavel sits on the edge of Chueca, which is lively late — ask Urban Hive for something off the street.','now'],
  ['<b>Toledo leaves from Atocha; Segovia leaves from Chamartín.</b> If you swap the day trip you also swap stations — Chamartín is the other side of the city, about twenty minutes on the metro, and Segovia’s station is a further 6 km outside the town.','when booking'],
@@ -854,7 +821,6 @@ function stopHTML(s){
       '<p class="kicker"><span class="when">'+esc(s.when)+'</span> · stop '+(++COUNT)+(s.opt?' <span class="optbadge">optional</span>':(s.planb?' <span class="optbadge pb">plan B</span>':''))+'</p>'+
       '<h4>'+esc(s.name)+'</h4>'+
       '<p class="lede">'+s.lede+'</p>'+
-      '<div class="why"><b>Why it is here.</b> '+s.why+'</div>'+
       (s.flag?'<div class="warn">'+s.flag+'</div>':'')+
     '</div><div>'+
       '<ul class="hl">'+s.hl.map(function(h){return '<li>'+h+'</li>';}).join('')+'</ul>'+
@@ -863,7 +829,7 @@ function stopHTML(s){
       '</div>'+
     '</div></div></div>';
 }
-var HOPICON='<svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18"/><path d="M6 9l6-6 6 6"/></svg>';
+var HOPICON='<svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="19" r="2.5"/><circle cx="18" cy="5" r="2.5"/><path d="M8.5 19H16a3.5 3.5 0 0 0 0-7H8a3.5 3.5 0 0 1 0-7h7.5" stroke-dasharray="2.2 3"/></svg>';
 function choiceHTML(){
   var o=CHOICE.opts.map(function(x){
     var m=IMG[x.img];
@@ -971,11 +937,44 @@ function setChip(key){
 /* ============ map ============ */
 var VIEWS={bcn:[[41.3600,2.1150],[41.4200,2.2000]],mad:[[40.4020,-3.7280],[40.4300,-3.6780]],tol:[[39.8500,-4.0400],[39.8640,-4.0180]]};
 var CITYNAME={bcn:'Barcelona',mad:'Madrid',tol:'Toledo'};
-var SEQ=[],MK={},ALTMK=[],HOTMK={},MAP=null,LEG=null,DOCK=false,NEEDFIT=false;
-var MODE={kind:'city',city:'bcn',id:null,pinned:false};
+var SEQ=[],MK={},ALTMK=[],HOTMK={},OPTMK=[],AIRMK=[],DAYLINE={},MAP=null,LEG=null,DOCK=false,NEEDFIT=false;
+var MODE={kind:'city',city:'bcn',id:null,day:null,pinned:false};
+
+/* places the days pass through that are not stops themselves */
+var WP={
+  bcnair:{lat:41.2974,lng:2.0833,label:'El Prat airport',geo:'bcn',air:true,note:'Arrival · Sat 21 Nov'},
+  madair:{lat:40.4914,lng:-3.5935,label:'Barajas airport, T4',geo:'mad',air:true,note:'Departure · Fri 27 Nov'},
+  hbcn:{hotel:'bcn',geo:'bcn'},
+  hmad:{hotel:'mad',geo:'mad'},
+  batllofront:{lat:41.3917,lng:2.1650,label:'Casa Batlló façade',geo:'bcn'},
+  atocha:{lat:40.4066,lng:-3.6897,label:'Atocha station',geo:'mad'},
+  toledostn:{lat:39.8651,lng:-4.0117,label:'Toledo station',geo:'tol'}
+};
+/* each day, in the order you actually move through it */
+var ROUTES={
+  'sat':['bcnair','arrive','fountain','hbcn'],
+  'sun':['hbcn','batllofront','xocolata','parkguell','hbcn'],
+  'mon':['hbcn','sagrada','santpau','passeig','batllo','hbcn'],
+  'tue-bcn':['hbcn','trencadis','hbcn','train'],
+  'tue-mad':['atocha','hmad','plazamayor','sangines','granvia','hmad'],
+  'wed':['hmad','atocha','toledostn','toledo_in','toledo_cat','orgaz','mazapan','juderia','toledostn','atocha','hmad'],
+  'wed-alt':['hmad','palacio','colecciones','prado_b','mirador_b','hmad'],
+  'thu':['hmad','man','hmad','cocina','hmad'],
+  'fri':['hmad','easy','hmad','madair']
+};
+var SHORT={arrive:'Hotel afternoon',fountain:'Magic Fountain',xocolata:'Chocolate workshop',parkguell:'Park Güell',
+  sagrada:'Sagrada Família',santpau:'Sant Pau',passeig:'Passeig de Gràcia',batllo:'Casa Batlló',trencadis:'Mosaic workshop',
+  train:'Sants station',plazamayor:'Plaza Mayor',sangines:'San Ginés',granvia:'Gran Vía',toledo_in:'Toledo',
+  toledo_cat:'Cathedral',orgaz:'Santo Tomé',mazapan:'Marzipan',juderia:'Jewish quarter',palacio:'Royal Palace',
+  colecciones:'Galería',prado_b:'Prado',mirador_b:'Cibeles rooftop',man:'Arqueológico',cocina:'Cooking class',easy:'Retiro'};
+var PAL=['#B87514','#1C6E63','#2A4A8A','#96322A','#6B4E9B'];
 
 function pinIcon(text,cls){
   return L.divIcon({className:'pin',html:'<span class="w"><b class="'+(cls||'')+'">'+esc(text)+'</b></span>',
+    iconSize:[26,26],iconAnchor:[13,13],tooltipAnchor:[0,-15]});
+}
+function airIcon(){
+  return L.divIcon({className:'pin',html:'<span class="w"><b class="air"><svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor"><path d="M21 16v-2l-8-5V3.5a1.5 1.5 0 0 0-3 0V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"/></svg></b></span>',
     iconSize:[26,26],iconAnchor:[13,13],tooltipAnchor:[0,-15]});
 }
 function tip(title,sub){ return '<span>'+esc(title)+(sub?'<small>'+esc(sub)+'</small>':'')+'</span>'; }
@@ -983,10 +982,27 @@ function buildSeq(){
   var n=0;
   DAYS.forEach(function(d){ d.stops.forEach(function(s){
     if(!s.lat) return; n++;
-    SEQ.push({id:s.id,name:s.name,lat:s.lat,lng:s.lng,geo:d.view||d.city,day:d,n:n,when:s.when,
+    SEQ.push({id:s.id,name:s.name,lat:s.lat,lng:s.lng,geo:d.view||d.city,day:d,n:n,when:s.when,nopin:!!s.nopin,opts:s.opts||[],
       soft:!!(s.opt||d.alt),tag:s.opt?'Optional':(d.alt?'Plan B':'')});
   });});
 }
+function seqById(id){ for(var i=0;i<SEQ.length;i++) if(SEQ[i].id===id) return SEQ[i]; return null; }
+function rpt(key){
+  var o=seqById(key);
+  if(o) return {key:key,lat:o.lat,lng:o.lng,geo:o.geo,label:SHORT[key]||o.name,full:o.name,stop:o,soft:o.soft};
+  var w=WP[key]; if(!w) return null;
+  if(w.hotel){ var h=HOTELS[w.hotel][0]; return {key:key,lat:h.lat,lng:h.lng,geo:w.geo,label:'Hotel',full:'Your hotel — '+h.n,hotel:true}; }
+  return {key:key,lat:w.lat,lng:w.lng,geo:w.geo,label:w.label,full:w.label,air:!!w.air};
+}
+function buildRoutes(){
+  var n={bcn:0,mad:0},byKey={};
+  DAYS.forEach(function(d){
+    d.rt=(ROUTES[d.key]||[]).map(rpt).filter(Boolean);
+    d.col=(d.alt&&d.chip&&byKey[d.chip])?byKey[d.chip].col:PAL[(n[d.city]++)%PAL.length];
+    byKey[d.key]=d;
+  });
+}
+function dayByKey(k){ for(var i=0;i<DAYS.length;i++) if(DAYS[i].key===k) return DAYS[i]; return null; }
 function goTo(id){
   var e=document.getElementById('stop-'+id);
   if(e) e.scrollIntoView({behavior:'smooth',block:'start'});
@@ -996,11 +1012,29 @@ function initMap(){
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{
     attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OSM</a>',subdomains:'abc',maxZoom:19}).addTo(MAP);
   var TIP={className:'pintip',direction:'top',opacity:1,sticky:false};
+  /* the day routes go down first, so every marker sits on top of them */
+  DAYS.forEach(function(d){
+    if(!d.rt||d.rt.length<2) return;
+    DAYLINE[d.key]=L.polyline(d.rt.map(function(p){return [p.lat,p.lng];}),
+      {color:d.col,weight:3,opacity:0,lineCap:'round',lineJoin:'round',dashArray:d.alt?'8 7':null,interactive:false}).addTo(MAP);
+  });
+  LEG=L.polyline([],{color:'#181614',weight:4.5,opacity:.85,lineCap:'round',lineJoin:'round',interactive:false}).addTo(MAP);
   SEQ.forEach(function(o){
+    if(o.nopin) return;
     var m=L.marker([o.lat,o.lng],{icon:pinIcon(o.n,o.soft?'rest soft':'rest'),riseOnHover:true}).addTo(MAP)
       .bindTooltip(tip(o.name,(o.tag?o.tag+' · ':'')+o.day.dow+' · '+o.when),TIP);
     m.on('click',function(){goTo(o.id);});
     MK[o.id]=m;
+  });
+  SEQ.forEach(function(o){ o.opts.forEach(function(x){
+    var m=L.marker([x.lat,x.lng],{icon:pinIcon(o.n+x.k,'rest soft sub'),zIndexOffset:250,riseOnHover:true}).addTo(MAP)
+      .bindTooltip(tip(x.name,'Optional · '+o.day.dow),TIP);
+    m.on('click',function(){goTo(o.id);});
+    OPTMK.push({m:m,day:o.day,geo:o.geo});
+  });});
+  Object.keys(WP).forEach(function(k){ var w=WP[k]; if(!w.air) return;
+    var m=L.marker([w.lat,w.lng],{icon:airIcon(),zIndexOffset:450,riseOnHover:true}).addTo(MAP).bindTooltip(tip(w.label,w.note),TIP);
+    AIRMK.push({m:m,key:k,geo:w.geo});
   });
   ['bcn','mad'].forEach(function(c){ ALTS[c].forEach(function(a){
     if(!a.lat) return;
@@ -1014,7 +1048,6 @@ function initMap(){
     m.on('click',function(){var e=document.getElementById(c+'-stay'); if(e) e.scrollIntoView({behavior:'smooth',block:'start'});});
     HOTMK[c]=m;
   });});
-  LEG=L.polyline([],{color:'#96322A',weight:2.5,opacity:.62,dashArray:'2 7',lineCap:'round'}).addTo(MAP);
   MAP.fitBounds(VIEWS.bcn);
   paint(true);
 }
@@ -1023,64 +1056,97 @@ function fit(pts){
   NEEDFIT=false;
   if(pts.length===1) MAP.flyTo([pts[0].lat,pts[0].lng],15.4,{duration:.6});
   else MAP.flyToBounds(L.latLngBounds(pts.map(function(o){return [o.lat,o.lng];})),
-      {padding:[42,42],maxZoom:15.6,duration:.65});
+      {padding:[38,38],maxZoom:15.6,duration:.65});
 }
 function track(rows){ document.getElementById('docktrack').innerHTML=rows; }
+function showLines(keys,emph){
+  for(var k in DAYLINE){ var on=keys.indexOf(k)>=0;
+    DAYLINE[k].setStyle({opacity:on?(emph||.7):0,weight:on&&emph?3.5:3}); }
+}
+function setPin(o,cls,op,z){
+  var m=MK[o.id]; if(!m) return;
+  m.setIcon(pinIcon(o.n,cls==='rest'&&o.soft?'rest soft':cls)); m.setOpacity(op); m.setZIndexOffset(z);
+}
+function others(geo,day){
+  OPTMK.forEach(function(x){ x.m.setOpacity(day?(x.day===day?1:(x.geo===geo?.22:.06)):(x.geo===geo?1:.06)); });
+  ALTMK.forEach(function(a){ a.m.setOpacity(a.geo===geo?(day?.35:.5):.06); });
+  AIRMK.forEach(function(a){
+    var inDay=day&&day.rt.some(function(p){return p.key===a.key;});
+    a.m.setOpacity(inDay?1:(a.geo===geo?(day?.3:.8):.08)); });
+  for(var c in HOTMK) HOTMK[c].setOpacity((c===geo||(geo==='tol'&&c==='mad'))?1:.12);
+}
+function routeText(d){
+  return '<div class="route">'+d.rt.map(function(p){
+    return p.soft?'<i>'+esc(p.label)+'</i>':esc(p.label);}).join(' <span>→</span> ')+'</div>';
+}
 function paint(force){
   if(!MAP) return;
-  var i=-1,k;
-  if(MODE.kind==='stop'){ for(k=0;k<SEQ.length;k++) if(SEQ[k].id===MODE.id){i=k;break;} }
+  var cur=MODE.kind==='stop'?seqById(MODE.id):null;
 
-  if(i>=0){
-    var cur=SEQ[i],prev=SEQ[i-1]||null,next=SEQ[i+1]||null;
-    SEQ.forEach(function(o,j){
-      var cls = j===i?'now' : (prev&&j===i-1?'from' : (next&&j===i+1?'to':'rest'));
-      MK[o.id].setIcon(pinIcon(o.n,cls+(o.soft?' soft':'')));
-      MK[o.id].setOpacity(cls==='rest' ? (o.geo===cur.geo?.34:.1) : 1);
-      MK[o.id].setZIndexOffset(cls==='now'?1400:(cls==='rest'?0:800));
-    });
-    ALTMK.forEach(function(a){ a.m.setOpacity(a.geo===cur.geo?.4:.08); });
-    for(var c in HOTMK) HOTMK[c].setOpacity((c===cur.geo||(cur.geo==='tol'&&c==='mad'))?.95:.12);
-    var line=[]; if(prev&&prev.geo===cur.geo) line.push([prev.lat,prev.lng]);
-    line.push([cur.lat,cur.lng]); if(next&&next.geo===cur.geo) line.push([next.lat,next.lng]);
-    LEG.setLatLngs(line.length>1?line:[]);
-    var pts=[cur]; if(prev&&prev.geo===cur.geo)pts.push(prev); if(next&&next.geo===cur.geo)pts.push(next);
-    fit(pts);
-    document.getElementById('dockwhere').textContent = cur.day.nav+' · '+cur.day.dow;
-    var h='';
-    if(prev) h+='<div class="r from"><em>From</em><b>'+esc(prev.name)+'</b></div>';
-    h+='<div class="r now"><em>Here</em><b>'+esc(cur.name)+'</b></div>';
-    if(next) h+='<div class="r to"><em>Next</em><b>'+esc(next.name)+'</b></div>';
-    var notes=[];
-    if(prev&&prev.geo!==cur.geo) notes.push('You have just come from '+CITYNAME[prev.geo]+'.');
-    if(next&&next.geo!==cur.geo) notes.push('Next is in '+CITYNAME[next.geo]+'.');
-    if(!next) notes.push('Last stop of the trip.');
-    if(notes.length) h+='<div class="note">'+esc(notes.join(' '))+'</div>';
-    track(h);
-    setModeButtons(null);
-  } else {
-    var city=MODE.city, pts2=[];
+  if(cur){
+    /* one stop: the whole day stays drawn, the legs either side of here go dark */
+    var d=cur.day,rt=d.rt||[],idx=-1,k;
+    for(k=0;k<rt.length;k++) if(rt[k].key===cur.id){idx=k;break;}
+    var pr=idx>0?rt[idx-1]:null, nx=(idx>=0&&idx<rt.length-1)?rt[idx+1]:null;
     SEQ.forEach(function(o){
-      var on=o.geo===city;
-      MK[o.id].setIcon(pinIcon(o.n,o.soft?'rest soft':'rest'));
-      MK[o.id].setOpacity(on?(o.soft?.75:1):.08);
-      MK[o.id].setZIndexOffset(on?(o.soft?300:600):0);
-      if(on) pts2.push(o);
+      var cls=o===cur?'now':(pr&&pr.stop===o?'from':(nx&&nx.stop===o?'to':'rest'));
+      var op=cls!=='rest'?1:(o.day===d?1:(o.geo===cur.geo?.22:.08));
+      setPin(o,cls,op,cls==='now'?1400:(cls!=='rest'?900:(o.day===d?600:0)));
     });
-    var ns=pts2.filter(function(o){return !o.soft;}).length, nsoft=pts2.length-ns;
-    var na=0;
-    ALTMK.forEach(function(a){ var on=a.geo===city; a.m.setOpacity(on?.55:.06); if(on) na++; });
-    for(var c2 in HOTMK){ var on2=(c2===city); HOTMK[c2].setOpacity(on2?1:.08); if(on2) pts2.push({lat:HOTMK[c2].getLatLng().lat,lng:HOTMK[c2].getLatLng().lng}); }
-    LEG.setLatLngs([]);
-    fit(pts2.length?pts2:[]);
-    if(!pts2.length) MAP.flyToBounds(VIEWS[city],{duration:.6});
-    document.getElementById('dockwhere').textContent=CITYNAME[city]+', whole';
-    track('<div class="r now"><em>All of</em><b>'+CITYNAME[city]+'</b></div>'+
-      '<div class="note">'+ns+' stops in the plan'+(nsoft?', '+nsoft+' optional or plan B':'')+
-      (na?', '+na+' considered and dimmed back':'')+(HOTMK[city]?', and your hotel':'')+
-      '. Tap any circle to jump to it.</div>');
-    setModeButtons(city);
+    others(cur.geo,d);
+    showLines([d.key],.55);
+    var leg=[]; if(pr) leg.push([pr.lat,pr.lng]); leg.push([cur.lat,cur.lng]); if(nx) leg.push([nx.lat,nx.lng]);
+    LEG.setLatLngs(leg.length>1?leg:[]);
+    var pts=[cur]; if(pr&&pr.geo===cur.geo) pts.push(pr); if(nx&&nx.geo===cur.geo) pts.push(nx);
+    fit(pts);
+    document.getElementById('dockwhere').textContent=d.nav+' · '+d.dow;
+    var h='';
+    if(pr) h+='<div class="r from"><em>From</em><b>'+esc(pr.full)+'</b></div>';
+    h+='<div class="r now"><em>Here</em><b>'+esc(cur.name)+'</b></div>';
+    if(nx) h+='<div class="r to"><em>Next</em><b>'+esc(nx.full)+'</b></div>';
+    else h+='<div class="note">Last stop of the day.</div>';
+    track(h+routeText(d));
+    setModeButtons(null);
+    return;
   }
+
+  if(MODE.kind==='day'&&dayByKey(MODE.day)){
+    /* a whole day: every stop in it, the route through it, nothing else competing */
+    var dd=dayByKey(MODE.day), g=dd.view||dd.city;
+    SEQ.forEach(function(o){ setPin(o,'rest',o.day===dd?1:(o.geo===g?.22:.08),o.day===dd?600:0); });
+    others(g,dd);
+    showLines([dd.key],.9);
+    LEG.setLatLngs([]);
+    fit(dd.rt.filter(function(p){return p.geo===g;}));
+    document.getElementById('dockwhere').textContent=dd.nav+' · '+dd.dow+', the whole day';
+    var nStop=dd.rt.filter(function(p){return p.stop&&!p.soft;}).length,
+        nSoft=dd.rt.filter(function(p){return p.stop&&p.soft;}).length;
+    track('<div class="r now"><em>'+esc(dd.dow)+'</em><b>'+esc(dd.title)+'</b></div>'+routeText(dd)+
+      '<div class="note">'+nStop+' stop'+(nStop===1?'':'s')+(nSoft?', '+nSoft+(dd.alt?' in plan B':' optional, in italics'):'')+
+      '. Lines are straight point-to-point, not the route you will walk.</div>');
+    setModeButtons(null);
+    return;
+  }
+
+  /* a whole city: every day's route in its own colour */
+  var city=MODE.city, pts2=[];
+  var days=DAYS.filter(function(d){ return city==='tol'?d.view==='tol':d.city===city; });
+  SEQ.forEach(function(o){
+    var on=o.geo===city;
+    setPin(o,'rest',on?1:.08,on?(o.soft?300:600):0);
+    if(on&&!o.nopin) pts2.push(o);
+  });
+  others(city,null);
+  if(HOTMK[city]){ var hl=HOTMK[city].getLatLng(); pts2.push({lat:hl.lat,lng:hl.lng}); }
+  showLines(days.map(function(d){return d.key;}),.7);
+  LEG.setLatLngs([]);
+  if(pts2.length) fit(pts2); else MAP.flyToBounds(VIEWS[city],{duration:.6});
+  document.getElementById('dockwhere').textContent=CITYNAME[city]+', every day';
+  track('<div class="r now"><em>All of</em><b>'+CITYNAME[city]+'</b></div>'+
+    '<div class="daykey">'+days.map(function(d){
+      return '<span><i style="background:'+d.col+(d.alt?';opacity:.55':'')+'"></i>'+esc(d.dow)+' · '+esc(d.nav)+'</span>';}).join('')+'</div>'+
+    '<div class="note">Gray circles are optional; pale ones were considered and not chosen. Tap any circle to jump to it.</div>');
+  setModeButtons(city);
 }
 function setModeButtons(city){
   document.querySelectorAll('#dockmodes button').forEach(function(b){
@@ -1104,11 +1170,11 @@ function onScroll(){
   var bits=a.split(':');
   if(bits[0]==='stop'){
     var o=null; for(var j=0;j<SEQ.length;j++) if(SEQ[j].id===bits[1]){o=SEQ[j];break;}
-    if(o){ setChip(o.day.chip||o.day.key); if(!MODE.pinned){ MODE.kind='stop'; MODE.id=o.id; MODE.city=o.geo; paint(); } }
+    if(o){ setChip(o.day.chip||o.day.key); if(!MODE.pinned){ MODE.kind='stop'; MODE.id=o.id; MODE.day=o.day.key; MODE.city=o.geo; paint(); } }
   } else if(bits[0]==='day'){
     var d=null; for(var q=0;q<DAYS.length;q++) if(DAYS[q].key===bits[1]) d=DAYS[q];
     setChip(d?(d.chip||d.key):bits[1]);
-    if(d&&!MODE.pinned){ MODE.kind='city'; MODE.city=d.view||d.city; MODE.id=null; paint(); }
+    if(d&&!MODE.pinned){ MODE.kind='day'; MODE.day=d.key; MODE.city=d.view||d.city; MODE.id=null; paint(); }
   } else {
     if(!MODE.pinned){ MODE.kind='city'; MODE.city=bits[1]; MODE.id=null; paint(); }
   }
@@ -1153,7 +1219,7 @@ function wireDock(){
 })();
 document.getElementById('coverimg').src = IMG.bcn_view.url;
 renderNav(); renderDays(); renderHotels(); renderDiscard(); renderAlts(); renderCheck(); renderCredits();
-buildSeq(); buildAnchors(); wireDock();
+buildSeq(); buildRoutes(); buildAnchors(); wireDock();
 if(window.L) initMap();
 else document.getElementById('map').innerHTML='<p style="padding:24px;color:#7C726A">The map needs an internet connection to load.</p>';
 onScroll();
